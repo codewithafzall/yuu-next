@@ -1,0 +1,40 @@
+.footer {
+  background-color: #283897;
+  .icons {
+    @media (max-width: 767px) {
+      padding-bottom: 20px;
+    }
+    a {
+      font-size: 25px;
+      color: #fff;
+      transition: 0.3s;
+    }
+    a:hover {
+      color: #e34c24;
+    }
+  }
+  h5 {
+    color: #fff;
+  }
+  p {
+    color: #fff;
+  }
+  a {
+    color: #fff;
+  }
+  a:hover {
+    color: #e34c24;
+  }
+  .footer-links {
+    margin-left: 20px;
+    @media (max-width: 767px) {
+      margin-left: 0px;
+    }
+  }
+  .footer-links1 {
+    .icons {
+      color: #e34c24 !important;
+      margin-right: 10px;
+    }
+  }
+}

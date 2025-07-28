@@ -1,0 +1,3 @@
+﻿User-Agent : *
+Allow: /
+sitemap: https://heuristicacademy.in/sitemap.xml
