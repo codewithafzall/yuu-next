@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <>
       <header>
-      <div className="absolute w-full">
+      <div className="absolute w-full z-50">
       {/* Navbar */}
       <nav className="flex items-center justify-between py-7 pl-[5%] pr-10 bg-transparent">
         <div>
@@ -64,8 +64,8 @@ const Header = () => {
         </button>
         {/* Desktop Links */}
         <ul className="hidden laptop:flex space-x-6">
-          <li><a href="#home" className="uppercase">Home</a></li>
-          <li><a href="#home" className="uppercase">About us</a></li>
+          <li><a href="/" className="uppercase">Home</a></li>
+          <li><a href="/about" className="uppercase">About us</a></li>
           <li><a href="#home" className="uppercase">Location</a></li>
           <li><a href="#home" className="uppercase">latest</a></li>
           <li><a href="#home" className="uppercase">virtual tour</a></li>
