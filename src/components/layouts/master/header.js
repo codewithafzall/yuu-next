@@ -66,7 +66,7 @@ const Header = () => {
         <ul className="hidden laptop:flex space-x-6">
           <li><a href="/" className="uppercase">Home</a></li>
           <li><a href="/about" className="uppercase">About us</a></li>
-          <li><a href="#home" className="uppercase">Location</a></li>
+          <li><a href="/location" className="uppercase">Location</a></li>
           <li><a href="#home" className="uppercase">latest</a></li>
           <li><a href="#home" className="uppercase">virtual tour</a></li>
           <li><a href="#home" className="uppercase">contact us</a></li>
@@ -81,9 +81,9 @@ const Header = () => {
         } transition-transform duration-300 z-50`}
       >
         <ul className="space-y-6 mt-7 text-xl px-6">
-        <li><a href="#home" className="uppercase">Home</a></li>
-          <li><a href="#home" className="uppercase">About us</a></li>
-          <li><a href="#home" className="uppercase">Location</a></li>
+        <li><a href="/" className="uppercase">Home</a></li>
+          <li><a href="/about" className="uppercase">About us</a></li>
+          <li><a href="/location" className="uppercase">Location</a></li>
           <li><a href="#home" className="uppercase">latest</a></li>
           <li><a href="#home" className="uppercase">virtual tour</a></li>
           <li><a href="#home" className="uppercase">contact us</a></li>
