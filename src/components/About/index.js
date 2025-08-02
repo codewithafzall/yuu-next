@@ -1,18 +1,21 @@
 import React, { useRef, useEffect, useState } from "react";
-import CircleType from "circletype";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const HeroCarousel = () => {
   return (
-    <section className="relative pb-20 w-full bg-[#fdf7f0] flex flex-row max-[768px]:flex-col items-center justify-between px-4 max-[768px]:px-6 pt-32 max-[768px]:pt-32 overflow-visible">
+    <section className="relative pb-20 w-full flex items-center justify-center pt-32 bg-[#fef9f3]">
       {/* Text Content */}
-      <div className="w-1/4 max-[768px]:w-full">
-        <div className="pl-8 max-[768px]:pl-4">
-          <h2 className="text-[#d16f52] text-3xl max-[768px]:text-2xl font-semibold mb-4">
+      <div className="w-2/6 flex items-center">
+        <div className="mx-auto">
+          <h1 className="mb-4 text-start">
             Discover the
             <br />
             World of YUU
-          </h2>
-          <p className="text-[#7c6565] text-lg max-[768px]:text-sm mb-4">
+          </h1>
+          <p className="text-[#7c6565] mb-4">
             Welcome to YUU by Nahar, a place
             <br /> where calm, culture, and community
             <br />
@@ -21,78 +24,133 @@ const HeroCarousel = () => {
           </p>
         </div>
       </div>
-      {/* Illustration */}
-      <div className="w-3/4 max-[768px]:w-full flex  max-[768px]:justify-center max-[768px]:mt-10">
-        <div className="w-full max-[768px]:w-[80vw] max-[768px]:max-w-[400px] ">
-          <img
-            src="/images/about-bg.png"
-            alt="Lifestyle Illustration"
-            className="w-full"
-            style={{ objectFit: "contain" }}
-          />
-        </div>
-      </div>
+      <img
+        src="/images/about-bg.png"
+        alt="Lifestyle Illustration"
+        className="w-4/6"
+      />
     </section>
   );
 };
 
 const AboutSection = () => {
-  const textRef = useRef(null);
-
   useEffect(() => {
-    const applyCurve = async () => {
-      const { default: CircleType } = await import("circletype");
+    // Create a timeline for sequential animations
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".about-section",
+        start: "top top", // Start when section is 80% in viewport
+        end: "+=1500", // Extended duration for additional animation
+        scrub: 1, // Smoothly tie animations to scroll
+        pin: true, // Pin the section
+        pinSpacing: true,
+      },
+    });
 
-      if (textRef.current) {
-        const width = window.innerWidth;
+    // Animate h1
+    tl.fromTo(
+      ".about-title",
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+    );
 
-        let radius = 500; // default for desktop
-        let fontSize = "40px";
+    const treeAndRectTl = gsap.timeline();
+    treeAndRectTl
+      .fromTo(
+        ".about-tree",
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }
+      )
+      .fromTo(
+        ".about-rect",
+        { borderTopLeftRadius: "0px", borderTopRightRadius: "0px", opacity: 0 },
+        {
+          borderTopLeftRadius: "200px",
+          borderTopRightRadius: "200px",
+          opacity: 1,
+          duration: 2,
+          ease: "power2.out",
+        },
+        0 // Start at the same time as tree animation
+      );
 
-        if (width < 768) {
-          // tablet
-          radius = 300;
-          fontSize = "28px";
-        }
-        if (width < 480) {
-          // mobile
-          radius = 200;
-          fontSize = "20px";
-        }
+    // Add tree and rectangle animations to main timeline
+    tl.add(treeAndRectTl);
 
-        textRef.current.style.fontSize = fontSize;
+    // Animate right text block (moved to second)
+    tl.fromTo(
+      ".about-text-one",
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
+    );
+    tl.fromTo(
+      ".about-text-two",
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
+    );
+    tl.fromTo(
+      ".about-text-three",
+      { opacity: 0, x: -50 },
+      { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
+    );
 
-        new CircleType(textRef.current).radius(radius).dir(1).forceWidth(true);
-      }
+    tl.to(".about-text-one p", {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        document.querySelector(".about-text-one").innerHTML = `
+          <h3>
+            At YUU Every Detail is Intentional,
+          </h3>`;
+      },
+    }).fromTo(
+      ".about-text-one h2",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+    );
+    tl.to(".about-text-two p", {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        document.querySelector(".about-text-two").innerHTML = `
+          <h3>
+            Every Space is Beautiful,
+          </h3>`;
+      },
+    }).fromTo(
+      ".about-text-two h2",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+    );
+    tl.to(".about-text-three p", {
+      opacity: 0,
+      duration: 0.3,
+      onComplete: () => {
+        document.querySelector(".about-text-three").innerHTML = `
+          <h3>
+            And every Moment is Built aroud YUU
+          </h3>`;
+      },
+    }).fromTo(
+      ".about-text-three h2",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
+    );
+
+    // Cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-
-    applyCurve();
-
-    // Re-apply on window resize
-    window.addEventListener("resize", applyCurve);
-    return () => window.removeEventListener("resize", applyCurve);
   }, []);
+
   return (
-    <section className="relative w-full bg-[#fdf7f0] flex flex-col items-center justify-center py-24 max-[768px]:py-10 px-4 overflow-visible">
-      {/* Arched Heading (SVG Curve) */}
-      <div
-        ref={textRef}
-        style={{
-          fontSize: "40px",
-          color: "#d16f52",
-          textAlign: "center",
-          // marginTop: "200px",
-          display: "inline-block",
-          whiteSpace: "nowrap",
-        }}
-      >
-        A Lifestyle Crafted Around Youu
-      </div>
+    <section className="about-section relative w-full bg-[#fdf7f0] flex flex-col items-center justify-center py-24 max-[768px]:py-10 px-4 overflow-visible">
+      <h1 className="about-title">A Lifestyle crafted Around YUU</h1>
       {/* Main Content Row */}
       <div className="w-full flex flex-row max-[900px]:flex-col items-center justify-center gap-8 relative">
         {/* Left Text Block */}
         <div className="w-1/3 max-[900px]:w-full max-[900px]:mb-8 flex flex-col items-end max-[900px]:items-center">
-          <div className="max-w-xs text-right max-[900px]:text-center">
+          <div className="about-text-one max-w-xs text-right max-[900px]:text-center">
             <p
               className="text-[#513335] text-sm leading-relaxed"
               style={{ fontFamily: "Montserrat, sans-serif" }}
@@ -110,7 +168,7 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="max-w-xs text-right max-[900px]:text-center mt-20">
+          <div className="about-text-three max-w-xs text-right max-[900px]:text-center mt-20">
             <p
               className="text-[#513335] text-sm leading-relaxed"
               style={{ fontFamily: "Montserrat, sans-serif" }}
@@ -133,10 +191,10 @@ const AboutSection = () => {
         </div>
 
         {/* Center Tree with Box */}
-        <div className="relative flex flex-col items-center justify-center w-[420px] max-w-full max-[900px]:w-full">
+        <div className="relative flex flex-col items-center justify-center">
           {/* Half Box behind tree */}
           <div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[200px] max-[768px]:w-[280px] max-[768px]:h-[140px] bg-[#f3e2d2] z-10 shadow-lg"
+            className="about-rect absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[200px] max-[768px]:w-[280px] max-[768px]:h-[140px] bg-[#f3e2d2] z-10 shadow-lg"
             style={{
               filter: "blur(0.5px)",
               transform: "translate(-50%, -50%) translateY(115px)",
@@ -146,13 +204,13 @@ const AboutSection = () => {
           <img
             src="/images/about-tree.png"
             alt="Yuu Tree"
-            className="relative z-20 w-[450px] h-[450px] max-[768px]:w-[260px] max-[768px]:h-[260px]"
+            className="about-tree relative z-20 w-[450px] h-[450px] max-[768px]:w-[260px] max-[768px]:h-[260px]"
             style={{ marginBottom: 0 }}
           />
         </div>
         {/* Right Text Block */}
         <div className="w-1/3 max-[900px]:w-full max-[900px]:mt-8 flex flex-col items-start max-[900px]:items-center">
-          <div className="max-w-xs text-left max-[900px]:text-center">
+          <div className="about-text-two max-w-xs text-left max-[900px]:text-center">
             <p
               className="text-[#513335] text-sm leading-relaxed"
               style={{ fontFamily: "Montserrat, sans-serif" }}
@@ -165,64 +223,6 @@ const AboutSection = () => {
               <span className="text-[#d16f52] font-semibold">imperfection</span>
               .
             </p>
-          </div>
-        </div>
-      </div>
-
-      {/* after scroll section */}
-      <div className="w-full flex flex-row max-[900px]:flex-col items-center justify-center gap-8 relative">
-        {/* Left Text Block */}
-        <div className="w-1/3 max-[900px]:w-full max-[900px]:mb-8 flex flex-col items-end max-[900px]:items-center">
-          <div className="max-w-xs text-right max-[900px]:text-center max-[768px]:mt-10">
-            <h2
-              className="text-[#d16f52] text-2xl font-bold uppercase leading-relaxed max-[786px]:text-base"
-              style={{ fontFamily: "Montserrat, sans-serif" }}
-            >
-              At YUU, every detail
-              <br /> is intentional,
-            </h2>
-          </div>
-
-          <div className="max-w-xs text-right max-[900px]:text-center z-20 absolute top-[80%] left-[24%] max-[768px]:left-[0%]">
-            <h2
-              className="text-[#d16f52] text-2xl  font-bold uppercase leading-relaxed max-[786px]:text-base"
-              style={{ fontFamily: "Montserrat, sans-serif" }}
-            >
-              and every moment is
-              <br />
-              built around YUU
-            </h2>
-          </div>
-        </div>
-
-        {/* Center Tree with Box */}
-        <div className="relative flex flex-col items-center justify-center w-[420px] max-w-full max-[900px]:w-full">
-          {/* Half Box behind tree */}
-          <div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[200px] max-[768px]:w-[280px] max-[768px]:h-[140px] bg-[#f3e2d2] z-10 shadow-lg"
-            style={{
-              borderRadius: "200px 200px 0 0",
-              filter: "blur(0.5px)",
-              transform: "translate(-50%, -50%) translateY(115px)",
-            }}
-          />
-          {/* Tree image */}
-          <img
-            src="/images/about-tree.png"
-            alt="Yuu Tree"
-            className="relative z-20 w-[450px] h-[450px] max-[768px]:w-[260px] max-[768px]:h-[260px]"
-            style={{ marginBottom: 0 }}
-          />
-        </div>
-        {/* Right Text Block */}
-        <div className="w-1/3 max-[900px]:w-full max-[900px]:mt-8 flex flex-col items-start max-[900px]:items-center">
-          <div className="max-w-xs text-left max-[900px]:text-center max-[768px]:mt-10">
-            <h2
-              className="text-[#d16f52] text-2xl font-bold uppercase leading-relaxed max-[786px]:text-base"
-              style={{ fontFamily: "Montserrat, sans-serif" }}
-            >
-              every space is meaningful,
-            </h2>
           </div>
         </div>
       </div>
@@ -289,15 +289,14 @@ const VisionarySection = () => {
             <div className="flex flex-col gap-6 max-[768px]:gap-4">
               {/* All Images in One Line */}
               <div className="flex flex-row gap-4 max-[768px]:flex-col max-[768px]:gap-6">
-                
                 {/* Two Smaller Images with Same Design (excluding selected one) */}
                 {Object.keys(visionaryData)
                   .filter((key) => key !== selectedPerson)
                   .map((key) => {
                     const person = getPersonData(key);
-                    
+
                     return (
-                      <div 
+                      <div
                         key={key}
                         onClick={() => handlePersonSelect(key)}
                         className="cursor-pointer transition-all duration-300 flex-1 relative top-40 hover:opacity-80 max-[768px]:top-0 max-[768px]:flex-none max-[768px]:w-full"
@@ -307,13 +306,13 @@ const VisionarySection = () => {
                           <img
                             src={person.image}
                             alt={person.name}
-                            className="z-10 relative w-[60%] h-40 relative top-4 rounded-t-full g grayscale max-[768px]:w-48 max-[768px]:h-48 max-[768px]:rounded-full"
+                            className="z-10 w-[60%] h-40 relative top-4 rounded-t-full g grayscale max-[768px]:w-48 max-[768px]:h-48 max-[768px]:rounded-full"
                           />
                         </div>
                       </div>
                     );
                   })}
-                
+
                 {/* Main Colored Image */}
                 <div className="flex-1 relative max-[768px]:flex-none max-[768px]:w-full">
                   <div className="relative flex justify-center items-center z-20">
@@ -321,10 +320,10 @@ const VisionarySection = () => {
                     <div className="absolute w-80 h-96 bg-[#d16f52] rounded-t-full max-[768px]:w-64 max-[768px]:h-80"></div>
 
                     {/* Main Portrait */}
-                    <img 
+                    <img
                       src={getPersonData(selectedPerson).image}
                       alt={getPersonData(selectedPerson).name}
-                      className="z-10 relative w-80 h-80 relative top-8 rounded-lg max-[768px]:w-64 max-[768px]:h-64 max-[768px]:top-4"
+                      className="z-10 w-80 h-80 relative top-8 rounded-lg max-[768px]:w-64 max-[768px]:h-64 max-[768px]:top-4"
                     />
                   </div>
                 </div>
@@ -376,23 +375,23 @@ const AwardsSection = () => {
     {
       name: "Ar. Shitesh Agarwal",
       role: "Sankalp Architects",
-      image: "/images/Sankalp.png"
+      image: "/images/Sankalp.png",
     },
     {
-      name: "Ar. Ketan Vaidya", 
+      name: "Ar. Ketan Vaidya",
       role: "KV Associates",
-      image: "/images/KV.png"
+      image: "/images/KV.png",
     },
     {
       name: "Mr. Birju Patel",
-      role: "MEP Consulting", 
-      image: "/images/Birju.png"
+      role: "MEP Consulting",
+      image: "/images/Birju.png",
     },
     {
       name: "Mr. Nikhil J Inamdar",
       role: "Stardum Consultants",
-      image: "/images/Nikhil.png"
-    }
+      image: "/images/Nikhil.png",
+    },
   ];
 
   return (
@@ -400,38 +399,40 @@ const AwardsSection = () => {
       <div className="max-w-7xl mx-auto">
         {/* Main Content */}
         <div className="flex flex-row max-[1024px]:flex-col gap-12 mb-16">
-          
           {/* Left Column */}
           <div className="w-1/2 max-[1024px]:w-full">
             {/* Title Block */}
             <div className="inline-block bg-[#d16f52] bg-opacity-10 border border-[#d16f52] rounded-full px-8 py-3 mb-6">
-              <h2 
+              <h2
                 className="text-[#513335] text-2xl font-bold"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 THE EXPERTS BEHIND YUU
               </h2>
             </div>
-            
+
             {/* Description */}
-            <p 
+            <p
               className="text-[#513335] text-base leading-relaxed"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
-              Great architecture is a collaboration of vision, expertise, and craftsmanship. 
-              YUU by Nahar is brought to life by some of the finest minds in the industry, 
-              ensuring excellence in design, execution, and innovation.
+              Great architecture is a collaboration of vision, expertise, and
+              craftsmanship. YUU by Nahar is brought to life by some of the
+              finest minds in the industry, ensuring excellence in design,
+              execution, and innovation.
             </p>
           </div>
 
           {/* Right Column */}
           <div className="w-1/2 max-[1024px]:w-full max-[1024px]:mt-8">
             <div className="text-center max-[1024px]:text-left">
-              <h3 
+              <h3
                 className="text-[#d16f52] text-2xl font-bold leading-tight"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
-                TOGETHER, THEY SHAPE YUU<br/> INTO A SPACE THAT IS MODERN,<br/> EFFICIENT, AND BUILT TO INSPIRE.
+                TOGETHER, THEY SHAPE YUU
+                <br /> INTO A SPACE THAT IS MODERN,
+                <br /> EFFICIENT, AND BUILT TO INSPIRE.
               </h3>
             </div>
           </div>
@@ -445,11 +446,11 @@ const AwardsSection = () => {
               <div className="relative mb-4">
                 {/* Arched Background */}
                 <div className="w-32 h-40 bg-[#d16f52] bg-opacity-20 rounded-t-full"></div>
-                
+
                 {/* Circular Portrait */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-24 h-40 rounded-t-full rounded-b-full overflow-hidden bg-[#d16f52] border-4 border-[#d16f52] shadow-lg">
-                    <img 
+                    <img
                       src={expert.image}
                       alt={expert.name}
                       className="w-full h-full object-cover grayscale"
@@ -457,23 +458,23 @@ const AwardsSection = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Name and Role Label */}
               <div className="relative w-32">
-              <div className="bg-[#513335] w-full text-white px-4 py-2 rounded-full text-center absolute bottom-10 left-20">
-                <p 
-                  className="text-[10px] font-semibold"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}
-                >
-                  {expert.name}
-                </p>
-                <p 
-                  className="text-[10px] opacity-90"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}
-                >
-                  {expert.role}
-                </p>
-              </div>
+                <div className="bg-[#513335] w-full text-white px-4 py-2 rounded-full text-center absolute bottom-10 left-20">
+                  <p
+                    className="text-[10px] font-semibold"
+                    style={{ fontFamily: "Montserrat, sans-serif" }}
+                  >
+                    {expert.name}
+                  </p>
+                  <p
+                    className="text-[10px] opacity-90"
+                    style={{ fontFamily: "Montserrat, sans-serif" }}
+                  >
+                    {expert.role}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

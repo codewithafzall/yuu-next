@@ -34,7 +34,7 @@ const Header = () => {
       <header>
       <div className="absolute w-full z-50">
       {/* Navbar */}
-      <nav className="flex items-center justify-between py-7 pl-[5%] pr-10 bg-transparent">
+      <nav className="flex items-center justify-between py-7 pl-[5%] bg-transparent">
         <div>
            <img src="/images/Logo.png" className="w-32 h-16" />
         </div>
@@ -63,9 +63,9 @@ const Header = () => {
           ></span>
         </button>
         {/* Desktop Links */}
-        <ul className="hidden laptop:flex space-x-6">
+        <ul className="hidden laptop:flex bg-[#eddcc3] rounded-s-full py-4 px-6 space-x-6">
           <li><a href="/" className="uppercase">Home</a></li>
-          <li><a href="/about" className="uppercase">About us</a></li>
+          <li><a href="/about" className="uppercase">About yuu</a></li>
           <li><a href="/location" className="uppercase">Location</a></li>
           <li><a href="#home" className="uppercase">latest</a></li>
           <li><a href="#home" className="uppercase">virtual tour</a></li>
@@ -82,7 +82,7 @@ const Header = () => {
       >
         <ul className="space-y-6 mt-7 text-xl px-6">
         <li><a href="/" className="uppercase">Home</a></li>
-          <li><a href="/about" className="uppercase">About us</a></li>
+          <li><a href="/about" className="uppercase">About yuu</a></li>
           <li><a href="/location" className="uppercase">Location</a></li>
           <li><a href="#home" className="uppercase">latest</a></li>
           <li><a href="#home" className="uppercase">virtual tour</a></li>

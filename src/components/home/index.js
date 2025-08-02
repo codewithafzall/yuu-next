@@ -1,177 +1,292 @@
-import React from "react";
 import Tablet from "./Tablet";
-import DynamicHeading from "./DynamicHeading";
-// import Footer from "../Components/Footer";
-import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
-const Bedroom = "/images/Bedroom.png";
-const Building = "/images/Asset-1.png";
-const Building2 = "/images/Asset-2.png";
-const Gallery = "/images/Gallery.png";
+const index = () => {
+  const containerRef = useRef(null); // Container for the whole section
+  const imageRef = useRef(null); // Reference for the image to apply tilt and scale
+  const textRef = useRef(null); // Reference for the text to apply movement
+  const otherElementsRef = useRef([]); // Array of other elements to follow cursor
 
-const Home = () => {
-  const messages = [
-    "Keeping you at the\ncenter of everything",
-    "Delivering excellence\nevery day",
-    "Innovating for a\nbrighter tomorrow",
-  ];
+  // Apply mouse movement for tilt effect and scale down on hover
+  const handleMouseMove = (e) => {
+    const { current: container } = containerRef;
+    const { left, top, width, height } = container.getBoundingClientRect();
 
-  const messages2 = ["Luxurious Lifestyle", "Beautiful Scenary"];
+    // Get mouse position relative to the container
+    const x = e.clientX - left;
+    const y = e.clientY - top;
 
-  const heading = ["YUU LUNA", "YUU NAHAR"];
+    // Calculate center of the container
+    const centerX = width / 2;
+    const centerY = height / 2;
 
-  const images = [Building, Building2];
+    // Calculate tilt effect intensity
+    const tiltX = ((y - centerY) / centerY) * 10; // Tilt on Y axis
+    const tiltY = ((x - centerX) / centerX) * -10; // Tilt on X axis
 
-  const para = [
-    [
-      "Discover a world where comfort meets elegance. Our real estate platform is designed to help you find your perfect home, whether you're looking for a cozy apartment, a spacious family home, or a luxurious villa.",
-    ],
-    [
-      "We pride ourselves on offering personalized services that cater to your unique needs. With years of experience in the real estate market, we understand what it takes to find the perfect match.",
-    ],
-  ];
+    // Apply tilt to the image
+    gsap.to(imageRef.current, {
+      rotationX: tiltX,
+      rotationY: tiltY,
+      scale: 0.95, // Slightly scale down the image on hover
+      transformPerspective: 1000,
+      transformOrigin: "center",
+      duration: 0.3,
+    });
+
+    // Apply the movement to the text and other elements
+    otherElementsRef.current.forEach((el) => {
+      gsap.to(el, {
+        x: (x - centerX) / 10, // Move elements in sync with cursor on X axis
+        y: (y - centerY) / 10, // Move elements in sync with cursor on Y axis
+        ease: "power3.out",
+        duration: 0.3,
+      });
+    });
+  };
+
+  // Reset on mouse leave
+  const handleMouseLeave = () => {
+    gsap.to(imageRef.current, {
+      rotationX: 0,
+      rotationY: 0,
+      scale: 1, // Reset image scale to normal
+      duration: 0.5,
+      ease: "power3.out",
+    });
+
+    // Reset the position of all other elements
+    otherElementsRef.current.forEach((el) => {
+      gsap.to(el, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: "power3.out",
+      });
+    });
+  };
+
+  useEffect(() => {
+    // Attach event listeners for mousemove and mouseleave
+    const container = containerRef.current;
+    container.addEventListener("mousemove", handleMouseMove);
+    container.addEventListener("mouseleave", handleMouseLeave);
+
+    // Cleanup event listeners
+    return () => {
+      container.removeEventListener("mousemove", handleMouseMove);
+      container.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   return (
-    <>
-      <section id="hero" className="overflow-visible">
-        <div className="pl-4 md:pl-[5%] z-10">
-          <DynamicHeading messages={messages} color="#513335" />
-        </div>
-      </section>
-      <div className="flex justify-center items-center relative z-30 -mb-12 md:mb-0">
-        <Tablet />
-      </div>
-      <div className="bedroom-carousel flex justify-between items-center relative bottom-10 bg-[#d16f52] w-full -z-10 
-                max-[768px]:flex-col max-[768px]:bottom-0">
-  <img src={Bedroom} className="w-1/2 max-[768px]:w-full" />
-  <div className="text-white w-1/2 px-[10%] max-[768px]:w-full max-[768px]:px-6 max-[768px]:text-center max-[768px]:mt-6">
-    <h2 className="circula text-4xl max-[768px]:text-2xl">Lavish Bedroom</h2>
-    <p className="text-sm mt-5 max-[768px]:mt-3">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-      nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-      volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-      ullamcorper
-    </p>
-  </div>
-</div>
-
-<div className="bg-[#e0d1b6] w-full bottom-10 relative flex items-center 
-                max-[768px]:flex-col max-[768px]:bottom-0 max-[768px]:py-6 max-[768px]:px-6">
-  <div className="w-1/2 flex pl-[5%] max-[768px]:w-full max-[768px]:pl-0 max-[768px]:px-6 max-[768px]:mb-6">
-    <DynamicHeading
-      messages={messages2}
-      para={para}
-      extraHeadings={heading}
-      color="#513335"
-    />
-  </div>
-  <div className="desktop:w-1/2 flex gap-x-10 overflow-x-hidden 
-                  max-[768px]:w-full max-[768px]:gap-x-4 max-[768px]:overflow-x-auto">
-    {images.map((image, index) => (
+    <div>
       <img
-        key={index}
-        className={`laptop:h-[75vh] desktop:h-[100vh] ${
-          index === 0 ? "" : "opacity-50"
-        } object-cover max-[768px]:h-[250px]`}
-        src={image}
-        alt={`Slide ${index}`}
+        className="w-full h-screen object-cover"
+        src="/images/banner-home.jpg"
       />
-    ))}
-  </div>
-</div>
 
-<div className="bg-[#e0d1b6] w-full bottom-10 relative pt-16 max-[768px]:pt-10 max-[768px]:bottom-0 z-20">
-  <h2 className="text-4xl circula pl-[5%] max-[768px]:text-2xl max-[768px]:pl-6">amenties that amaze</h2>
-  <p className="w-1/4 text-sm mt-5 pl-[5%] max-[768px]:w-[90%] max-[768px]:pl-6 max-[768px]:mx-auto">
-    We pride ourselves on offering personalized services that cater to
-    your unique needs. With years of experience in the real estate market,
-    we understand what it takes to find the perfect match.
-  </p>
-  <div className="grid grid-cols-4 gap-x-4 mt-16 w-5/6 mx-auto laptop:h-[300px] desktop:h-[350px] max-[768px]:grid-cols-2 max-[768px]:gap-y-6 max-[768px]:mt-10 relative z-30 -mb-24 max-[768px]:-mb-12">
-    <div className="laptop:w-56 laptop:h-[400px] desktop:w-72 desktop:h-[500px] bg-white shadow-md rounded-3xl max-[768px]:w-full max-[768px]:h-[200px]">
-      <img src="/images/amen1.png" alt="ameneties" className="w-full rounded-3xl desktop:h-[500px] laptop:h-[400px] max-[768px]:h-[200px]"/>
-    </div>
-    <div className="laptop:w-56 laptop:h-[400px] desktop:w-72 desktop:h-[500px] bg-white shadow-md rounded-3xl max-[768px]:w-full max-[768px]:h-[200px]">
-      <img src="/images/amen2.png" alt="ameneties" className="w-full rounded-3xl desktop:h-[500px] laptop:h-[400px] max-[768px]:h-[200px]"/>
-    </div>
-    <div className="laptop:w-56 laptop:h-[400px] desktop:w-72 desktop:h-[500px] bg-white shadow-md rounded-3xl max-[768px]:w-full max-[768px]:h-[200px]">
-      <img src="/images/amen3.png" alt="ameneties" className="w-full rounded-3xl desktop:h-[500px] laptop:h-[400px] max-[768px]:h-[200px]"/>
-    </div>
-    <div className="laptop:w-56 laptop:h-[400px] desktop:w-72 desktop:h-[500px] bg-white shadow-md rounded-3xl max-[768px]:w-full max-[768px]:h-[200px]">
-      <img src="/images/amen4.png" alt="ameneties" className="w-full rounded-3xl desktop:h-[500px] laptop:h-[400px] max-[768px]:h-[200px]"/>
-    </div>
-  </div> 
-</div>
+      {/* Second Section of Home Page */}
 
-<div className="bg-[#b4a255] h-auto w-full z-10 relative pt-24 max-[768px]:pt-12">
-  <div className="w-2/4 mx-auto text-white mt-[8%] max-[768px]:w-[90%] max-[768px]:mt-10">
-    <h2 className="circula text-4xl text-center max-[768px]:text-2xl">
-      see it, envision it, live it
-    </h2>
-    <p className="text-center text-sm mt-4">
-      We pride ourselves on offering personalized services that cater to
-      your unique needs. With years of experience in the real estate
-      market, we understand what it takes to find the perfect match.
-    </p>
-    <button className="border-2 border-[#ffffff] flex mx-auto rounded-full text-xs px-6 py-2 mt-5">
-      Know more
-    </button>
-  </div>
-  <img className="w-[500px] mx-auto mt-7 max-[768px]:w-[90%]" src={Gallery} />
-  <div className="text-white py-10 flex gap-x-10 w-full justify-between items-center 
-                  max-[768px]:flex-col max-[768px]:gap-y-6">
-    <div className="w-[30%] max-[768px]:w-[90%]">
-      <h2 className="text-4xl circula pl-[5%] max-[768px]:text-2xl max-[768px]:pl-0">testimonials</h2>
-      <p className="text-sm mt-5 pl-[5%] max-[768px]:pl-0">
-        We pride ourselves on offering personalized services that cater to
-        your unique needs. With years of experience in the real estate
-        market, we understand what it takes to find the perfect match.
-      </p>
-    </div>
-    <div className="flex gap-x-20 w-[70%] max-[768px]:flex-col max-[768px]:w-[90%] max-[768px]:gap-y-6">
-      <div className="bg-[#e0d1b6] p-10 rounded-3xl text-black text-sm flex justify-center items-center italic">
-        <p>
-          "I never thought finding the perfect home could be this easy!
-          The team guided me through every step of the process, ensuring
-          all my questions were answered. The property listings were
-          accurate, and I couldn’t be happier with my new home. Highly
-          recommended!"
-        </p>
+      <div className="relative w-full bg-[#fef9f3]">
+        <Tablet />
+        <div className="flex items-center w-full gap-x-16">
+          <img className="w-[60%]" src="/images/Home-1.png" />
+          <div className="w-1/4">
+            <h3 className="mb-4 leading-10">
+              Welcome to YUU by Nahar Where Urban Living Meets Inspired
+              Lifestyle
+            </h3>
+            <small className="">
+              A vibrant, integrated development in the heart of Chandivali,
+              combining fully furnished studio apartments, organised retail,
+              culinary delights, and dynamic community spaces.
+            </small>
+          </div>
+        </div>
+        <div className="flex items-center w-full gap-x-16">
+          <div>
+            <p className="text-end w-2/6 flex ml-auto mb-6">
+              An integration of premium residences, high-street retail and world
+              class amenities, it’s destined to be the centerpiece of
+              conversation.
+            </p>
+            <button className="border-2 ml-auto flex border-[#513335] rounded-full px-4 py-1 uppercase text-sm">
+              Know More
+            </button>
+          </div>
+          <img className="w-[60%]" src="/images/Home-2.png" />
+        </div>
       </div>
-      <div className="bg-[#e0d1b6] p-10 rounded-3xl text-black text-sm flex justify-center items-center italic">
-        <p>
-          "I never thought finding the perfect home could be this easy!
-          The team guided me through every step of the process, ensuring
-          all my questions were answered. The property listings were
-          accurate, and I couldn’t be happier with my new home. Highly
-          recommended!"
-        </p>
+
+      {/* Third Section of Home Page */}
+      <div
+        className="flex relative px-28 justify-center items-center"
+        ref={containerRef}
+      >
+        <div
+          className="absolute top-0 left-0 border-2 border-[#d06d52] rounded-e-full py-3 w-72 flex justify-end"
+        >
+          <h1 className="text-black mr-16">
+            YUU
+            <br /> NOVA
+          </h1>
+        </div>
+        <div
+          className="w-1/4 mb-16 space-y-6 px-6"
+          ref={(el) => otherElementsRef.current.push(el)}
+        >
+          <h2>
+            Your Dream <br /> Space Awaits
+          </h2>
+          <p className="text-orange-950">
+            A home is where your story begins, reflecting who you are and what
+            you aspire to be. It’s a space that grows with you, inspires you,
+            and makes every moment extraordinary.
+          </p>
+        </div>
+
+          <img
+            className="w-2/4 pt-6 pb-10 h-screen object-contain" // Image will fill the container
+            src="/images/Yuu-Nova.png"
+            ref={imageRef} // Reference to apply animations
+          />
+
+        <div
+          className="w-1/4 space-y-12 mt-52 px-3"
+          ref={(el) => otherElementsRef.current.push(el)}
+        >
+          <p>
+            At YUU Nova, smart layouts, modern amenities, and thoughtful details
+            are a prerequisite.
+          </p>
+          <p className="text-end">
+            Designed with the contemporary lifestyle in mind, the apartments in
+            YUU Nova are an excellent example of modern comfort.
+          </p>
+          <button className="border-2 ml-auto flex border-[#513335] rounded-full px-4 py-1 uppercase text-sm">
+            Know More
+          </button>
+        </div>
+      </div>
+
+      {/* Fourth Section of Homepage */}
+
+      <div className="flex bg-[#fef9f3] gap-x-10">
+        <div className="w-2/6 flex flex-col items-end justify-center">
+          <h1>SEE IT,</h1>
+          <h1>ENVISION IT,</h1>
+          <h1>LIVE IT</h1>
+
+          <p className="text-end my-10">
+            Explore the stunning details <br /> and features of YUU by Nahar
+          </p>
+
+          <button className="border-2 ml-auto flex border-[#513335] rounded-full px-4 py-2 uppercase text-sm">
+            Know More
+          </button>
+        </div>
+        <div className="w-4/6 relative flex justify-between items-center pr-10 pb-16 pt-8">
+          <img
+            src="/images/Asset 11.png"
+            className="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+          />
+          <div className="flex flex-col">
+            <img
+              src="/images/Asset 10.png"
+              className="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            />
+            <img
+              src="/images/Asset 8.png"
+              className="mt-12 mr-12 grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            />
+          </div>
+          <img
+            src="/images/Asset 9.png"
+            className="mt-12 grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+          />
+        </div>
+      </div>
+
+      <img className="w-full h-screen object-fill" src="/images/Yuu-luna.png" />
+
+      {/* Fifth Section of Homepage */}
+
+      <div className="relative pb-20 flex items-start bg-[#fcf8f0]">
+        <div className="mt-16 border-2 border-[#d06d52] rounded-e-full py-3 w-96 flex justify-end">
+          <h1 className="text-[#d78d78] mr-16">LATEST</h1>
+        </div>
+        <div className="w-full">
+          <div className="flex justify-center gap-x-20 mt-16">
+            <div className="bg-[#d06d52] w-1/4 py-16 rounded-3xl">
+              <h1 className="text-center text-[#936153]">UPDATES</h1>
+            </div>
+            <div className="w-2/4 bg-[#726d6c] py-16 rounded-3xl">
+              <h1 className="text-center">SOCIAL</h1>
+            </div>
+          </div>
+          <div className="flex justify-center gap-x-20 mt-16">
+            <div className="w-2/4 bg-[#6b6665] py-16 rounded-3xl">
+              <h1 className="text-center">PHOTOS</h1>
+            </div>
+            <div className="bg-[#d06d52] w-1/4 py-16 rounded-3xl">
+              <h1 className="text-center text-[#936153]">NEWS</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Testimonials */}
+
+      <div className="flex items-center justify-center rounded-bl-full px-10 bg-[#fcf8f0] py-12">
+        <h1>TESTIMONIALS</h1>
+        <div className="flex items-center gap-x-10 mx-16">
+          <div className="p-4 w-96 rounded-2xl border border-[#d06d52]">
+            <small>
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+              erat volutpat euismod tincidunt ut laoreet dolore magna aliquam
+              erat volutpat.
+            </small>
+          </div>
+          <div className="bg-[#d06d52] w-60 rounded-full p-10 flex items-center justify-center text-center whitespace-normal break-words">
+            <small className="text-xs">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+            </small>
+          </div>
+          <div className="bg-[#d06d52] w-60 rounded-full p-10 flex items-center justify-center text-center whitespace-normal break-words">
+            <small className="text-xs">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+            </small>
+          </div>
+        </div>
+      </div>
+
+      {/* Sixth Section of Homepage */}
+
+      <div className="flex items-center">
+        <img className="w-1/2" src="/images/Above-footer.png" />
+        <div className="flex flex-col w-1/2 text-center">
+          <h1 className="text-center">BE A PART OF THE FUTURE</h1>
+          <small className="mt-4">
+            Secure your place in this exceptional township today; experience the
+            best
+          </small>
+          <small className="mb-4">
+            of urban living, retail, and lifestyle.
+          </small>
+          <div className="flex mx-auto gap-x-4">
+            <button className="border-2 flex border-[#513335] rounded-full px-4 py-2 uppercase text-sm">
+              Send Enquiry
+            </button>
+            <button className="border-2 flex border-[#513335] rounded-full px-4 py-2 uppercase text-sm">
+              Book a visit
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div className=" bg-[url('/images/Hero-2.png')] bg-cover bg-center bg-no-repeat w-full min-h-screen flex flex-col items-center justify-center max-[768px]:bg-[length:auto_100%] max-[768px]:px-6">
-  <h1 className="text-center circula text-[#513335] text-4xl max-[768px]:text-2xl">
-    be a part of the future.
-    <br /> dont miss out on yuu by nahar
-  </h1>
-  <p className="text-[#513335] text-sm w-1/3 text-center mt-4 max-[768px]:w-full">
-    We pride ourselves on offering personalized services that cater to
-    your unique needs. With years of experience in the real estate
-    market, we understand what it takes to find the perfect match.
-  </p>
-  <div className="flex gap-x-7 max-[768px]:flex-col max-[768px]:items-center max-[768px]:gap-y-4">
-    <button className="border-2 border-[#513335] rounded-full text-xs px-6 py-2 mt-5">
-      Send Enquiry
-    </button>
-    <button className="border-2 border-[#513335] rounded-full text-xs px-6 py-2 mt-5">
-      Book a Visit
-    </button>
-  </div>
-</div>
-</div>
-
-    </>
   );
 };
 
-export default Home;
+export default index;

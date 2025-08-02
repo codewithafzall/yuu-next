@@ -16,6 +16,7 @@
     "circletype": "^2.3.0",
     "firebase": "^7.15.4",
     "formik": "^2.4.3",
+    "gsap": "^3.13.0",
     "html-react-parser": "^1.2.4",
     "html-to-text": "^9.0.5",
     "jquery": "^3.7.0",
