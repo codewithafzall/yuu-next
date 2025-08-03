@@ -43,7 +43,20 @@ const Footer = () => {
           {/* Stay Connected Section */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold text-[#333333]">Stay Connected</h2>
-            <input type="email" className="py-4 px-3 rounded-full" placeholder="Email"/>
+            <div className="flex items-center">
+              <input 
+                type="email" 
+                className="flex-1 py-2 px-6 rounded-l-full rounded-r-full border-0 focus:outline-none focus:ring-2 focus:ring-[#a97c6d] placeholder-gray-400"
+                placeholder="Email"
+                style={{ backgroundColor: '#ffffff' }}
+              />
+              <button 
+                className="py-2 px-8 rounded-r-full rounded-l-full text-white font-semibold transition-colors duration-200 hover:bg-[#8b5a3d] border-l-0"
+                style={{ backgroundColor: '#c46c4a',position:"relative",right:"10%" }}
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>
