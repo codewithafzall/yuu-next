@@ -145,7 +145,7 @@ const AboutSection = () => {
 
   return (
     <section className="about-section relative w-full bg-[#fdf7f0] flex flex-col items-center justify-center py-24 max-[768px]:py-10 px-4 overflow-visible">
-      <h1 className="about-title">A Lifestyle crafted Around YUU</h1>
+      <img className="about-title" src="/images/Asset 29.png"/>
       {/* Main Content Row */}
       <div className="w-full flex flex-row max-[900px]:flex-col items-center justify-center gap-8 relative">
         {/* Left Text Block */}

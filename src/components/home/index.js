@@ -1,6 +1,8 @@
 import Tablet from "./Tablet";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Testimonials from "../Testimonials";
+import ImageHoverSection from "../ImageHover";
 
 const index = () => {
   const containerRef = useRef(null); // Container for the whole section
@@ -147,11 +149,11 @@ const index = () => {
           </p>
         </div>
 
-          <img
-            className="w-2/4 pt-6 pb-10 h-screen object-contain" // Image will fill the container
-            src="/images/Yuu-Nova.png"
-            ref={imageRef} // Reference to apply animations
-          />
+        <img
+          className="w-2/4 pt-6 pb-10 h-screen object-contain" // Image will fill the container
+          src="/images/Yuu-Nova.png"
+          ref={imageRef} // Reference to apply animations
+        />
 
         <div
           className="w-1/4 space-y-12 mt-52 px-3"
@@ -173,41 +175,7 @@ const index = () => {
 
       {/* Fourth Section of Homepage */}
 
-      <div className="flex bg-[#fef9f3] gap-x-10">
-        <div className="w-2/6 flex flex-col items-end justify-center">
-          <h1>SEE IT,</h1>
-          <h1>ENVISION IT,</h1>
-          <h1>LIVE IT</h1>
-
-          <p className="text-end my-10">
-            Explore the stunning details <br /> and features of YUU by Nahar
-          </p>
-
-          <button className="border-2 ml-auto flex border-[#513335] rounded-full px-4 py-2 uppercase text-sm">
-            Know More
-          </button>
-        </div>
-        <div className="w-4/6 relative flex justify-between items-center pr-10 pb-16 pt-8">
-          <img
-            src="/images/Asset 11.png"
-            className="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
-          />
-          <div className="flex flex-col">
-            <img
-              src="/images/Asset 10.png"
-              className="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            />
-            <img
-              src="/images/Asset 8.png"
-              className="mt-12 mr-12 grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
-            />
-          </div>
-          <img
-            src="/images/Asset 9.png"
-            className="mt-12 grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
-          />
-        </div>
-      </div>
+      <ImageHoverSection/>
 
       <img className="w-full h-screen object-fill" src="/images/Yuu-luna.png" />
 
@@ -238,41 +206,19 @@ const index = () => {
       </div>
       {/* Testimonials */}
 
-      <div className="flex items-center justify-center rounded-bl-full px-10 bg-[#fcf8f0] py-12">
-        <h1>TESTIMONIALS</h1>
-        <div className="flex items-center gap-x-10 mx-16">
-          <div className="p-4 w-96 rounded-2xl border border-[#d06d52]">
-            <small>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat.
-            </small>
-          </div>
-          <div className="bg-[#d06d52] w-60 rounded-full p-10 flex items-center justify-center text-center whitespace-normal break-words">
-            <small className="text-xs">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-            </small>
-          </div>
-          <div className="bg-[#d06d52] w-60 rounded-full p-10 flex items-center justify-center text-center whitespace-normal break-words">
-            <small className="text-xs">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-            </small>
-          </div>
-        </div>
-      </div>
+      <Testimonials />
 
       {/* Sixth Section of Homepage */}
 
-      <div className="flex items-center">
+      <div className="flex items-center pt-24">
         <img className="w-1/2" src="/images/Above-footer.png" />
         <div className="flex flex-col w-1/2 text-center">
           <h1 className="text-center">BE A PART OF THE FUTURE</h1>
-          <small className="mt-4">
+          <small className="mt-6">
             Secure your place in this exceptional township today; experience the
             best
           </small>
-          <small className="mb-4">
+          <small className="mb-6">
             of urban living, retail, and lifestyle.
           </small>
           <div className="flex mx-auto gap-x-4">

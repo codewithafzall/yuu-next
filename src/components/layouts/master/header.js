@@ -31,8 +31,8 @@ const Header = () => {
 
   return (
     <>
-      <header>
-      <div className="absolute w-full z-50">
+      <header className="">
+       <div className="fixed top-0 left-0 w-full z-50 bg-transparent">
       {/* Navbar */}
       <nav className="flex items-center justify-between py-7 pl-[5%] bg-transparent">
         <div>
