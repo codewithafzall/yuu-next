@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Testimonials from "../Testimonials";
 import ImageHoverSection from "../ImageHover";
+import CardCarousel from "../LatestCarousel";
 
 const index = () => {
   const containerRef = useRef(null); // Container for the whole section
@@ -181,29 +182,7 @@ const index = () => {
 
       {/* Fifth Section of Homepage */}
 
-      <div className="relative pb-20 flex items-start bg-[#fcf8f0]">
-        <div className="mt-16 border-2 border-[#d06d52] rounded-e-full py-3 w-96 flex justify-end">
-          <h1 className="text-[#d78d78] mr-16">LATEST</h1>
-        </div>
-        <div className="w-full">
-          <div className="flex justify-center gap-x-20 mt-16">
-            <div className="bg-[#d06d52] w-1/4 py-16 rounded-3xl">
-              <h1 className="text-center text-[#936153]">UPDATES</h1>
-            </div>
-            <div className="w-2/4 bg-[#726d6c] py-16 rounded-3xl">
-              <h1 className="text-center">SOCIAL</h1>
-            </div>
-          </div>
-          <div className="flex justify-center gap-x-20 mt-16">
-            <div className="w-2/4 bg-[#6b6665] py-16 rounded-3xl">
-              <h1 className="text-center">PHOTOS</h1>
-            </div>
-            <div className="bg-[#d06d52] w-1/4 py-16 rounded-3xl">
-              <h1 className="text-center text-[#936153]">NEWS</h1>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CardCarousel/>
       {/* Testimonials */}
 
       <Testimonials />

@@ -128,7 +128,7 @@ const AboutSection = () => {
       onComplete: () => {
         document.querySelector(".about-text-three").innerHTML = `
           <h3>
-            And every Moment is Built aroud YUU
+            and every moment is built aroud YUU
           </h3>`;
       },
     }).fromTo(
