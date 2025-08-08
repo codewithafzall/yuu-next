@@ -61,9 +61,9 @@ const Tablet = () => {
       if (!trimmed) return "Phone is required.";
       if (trimmed.startsWith("+")) {
         // E.164-ish: +, 8–15 digits
-        return /^\+\d{8,15}$/.test(trimmed) ? "" : "Enter a valid phone in E.164 format.";
+        return /^\+\d{8,15}$/.test(trimmed) ? "" : "Enter a valid phone format.";
       }
-      return /^\d{10}$/.test(trimmed) ? "" : "Enter 10-digit number or +countrycode.";
+      return /^\d{10}$/.test(trimmed) ? "" : "Enter 10-digit number";
     },
     email: (v) =>
       !v.trim()
@@ -234,7 +234,7 @@ const Tablet = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
 
   if (!user) return alert("Please verify your phone number before submitting.");
@@ -258,12 +258,11 @@ const Tablet = () => {
     body.append("message", form.message || "");
     body.append("submittedAt", new Date().toISOString());
 
-    // Post directly to Apps Script deployment URL
     const res = await fetch(
-      "https://script.google.com/macros/s/AKfycbxsR-isu3P1-OPiTEtFIFyPf528e-erwad_f9rQE-8-OXQjKOFLnk0a4u0CzIGINcuv6A/exec",
+      "https://script.google.com/macros/s/AKfycbxqbfU-RKQkxxOiSaW6fJkJPiLG6sX64Gh8XAQ1xR61QfPvQkNn-JJb0RfD-2nViW6OpQ/exec",
       {
         method: "POST",
-        body, // no headers, no 'no-cors'
+        body, 
       }
     );
 
@@ -277,7 +276,6 @@ const Tablet = () => {
 
     alert(`Submitted ${activeForm} form`);
 
-    // Reset form after successful submit
     await forceFreshVerification();
     setActiveForm(null);
     setForm(initialForm);
@@ -290,8 +288,6 @@ const Tablet = () => {
     setLoading(false);
   }
 };
-
-
 
 const errorText = (key) =>
   touched[key] && errors[key] ? (
@@ -436,7 +432,7 @@ return (
                         type="button"
                         onClick={sendOTP}
                         className="rounded-full cursor-pointer bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/3 text-lg disabled:opacity-50"
-                        disabled={loading || !form.phone}
+                        disabled={loading || !form.phone.length === 10}
                       >
                         {loading ? "Sending OTP..." : "Send OTP"}
                       </button>
@@ -453,7 +449,7 @@ return (
                         <button
                           type="button"
                           onClick={verifyOTP}
-                          className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 text-xl disabled:opacity-60"
+                          className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 text-lg disabled:opacity-60"
                           disabled={loading || !form.verificationCode}
                         >
                           {loading ? "Verifying..." : "Verify OTP"}
@@ -467,7 +463,7 @@ return (
                   </div>
                 ) : (
                   <button
-                    className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/3 mt-6 text-xl"
+                    className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/3 mt-6 text-lg"
                     type="submit"
                   >
                     SUBMIT
