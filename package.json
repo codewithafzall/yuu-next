@@ -12,7 +12,7 @@
     "@react-google-maps/api": "^2.19.2",
     "@types/jquery": "^3.5.16",
     "aos": "^2.3.4",
-    "axios": "^1.4.0",
+    "axios": "^1.11.0",
     "circletype": "^2.3.0",
     "firebase": "^7.24.0",
     "formik": "^2.4.3",

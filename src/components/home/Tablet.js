@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
+import axios from "axios";
 
 // ── Firebase config (unchanged) ──────────────────────────────────────────────
 const firebaseConfig = {
@@ -18,71 +19,116 @@ if (typeof window !== "undefined" && !firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-const Tablet = () => {
-  const [activeForm, setActiveForm] = useState(null);
+const initialForm = {
+  name: "",
+  occupation: "",
+  phone: "",
+  email: "",
+  interestedIn: "",
+  message: "",
+  verificationCode: "",
+};
 
-  // Auth state
+const Tablet = () => {
+  const [activeForm, setActiveForm] = useState(null); // "callback" | "visit" | "brochure"
   const [user, setUser] = useState(null);
   const [isOTPSent, setIsOTPSent] = useState(false);
-  const [verificationCode, setVerificationCode] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // reCAPTCHA (keep container mounted at all times)
   const recaptchaRef = useRef(null);
   const [recaptchaVerifier, setRecaptchaVerifier] = useState(null);
 
-  // Form state
-  const [name, setName] = useState("");
-  const [occupation, setOccupation] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [interestedIn, setInterestedIn] = useState("");
-  const [message, setMessage] = useState("");
+  const [form, setForm] = useState(initialForm);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
 
-  // Keep auth state synced
+  // ── Auth state sync & non-persistent sessions ─────────────────────────────
   useEffect(() => {
     const unsub = firebase.auth().onAuthStateChanged((u) => setUser(u));
     return () => unsub();
   }, []);
 
-  // Sessions non-persistent to avoid sticky login
   useEffect(() => {
-    firebase
-      .auth()
-      .setPersistence(firebase.auth.Auth.Persistence.NONE)
-      .catch(console.error);
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).catch(console.error);
   }, []);
 
-  // ── Helpers ────────────────────────────────────────────────────────────────
-  // Fully reset auth + OTP + reCAPTCHA so each attempt is fresh
+  // ── Validation helpers ────────────────────────────────────────────────────
+  const validators = {
+    name: (v) => (!v.trim() ? "Name is required." : v.trim().length < 2 ? "Enter full name." : ""),
+    occupation: (v) => (v && v.trim().length < 2 ? "Too short." : ""),
+    phone: (v) => {
+      const trimmed = v.replace(/\s+/g, "");
+      if (!trimmed) return "Phone is required.";
+      if (trimmed.startsWith("+")) {
+        // E.164-ish: +, 8–15 digits
+        return /^\+\d{8,15}$/.test(trimmed) ? "" : "Enter a valid phone in E.164 format.";
+      }
+      return /^\d{10}$/.test(trimmed) ? "" : "Enter 10-digit number or +countrycode.";
+    },
+    email: (v) =>
+      !v.trim()
+        ? "Email is required."
+        : !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)
+          ? "Enter a valid email."
+          : "",
+    interestedIn: (v) => (!v ? "Please select an option." : ""),
+    message: (v) => (v.length > 1000 ? "Message too long (max 1000 chars)." : ""),
+    verificationCode: (v) =>
+      !v ? "Enter the OTP." : !/^\d{4,8}$/.test(v) ? "OTP should be 4–8 digits." : "",
+  };
+
+  const validateField = (name, value) => {
+    const fn = validators[name];
+    return fn ? fn(value) : "";
+  };
+
+  const validateForm = (fields) => {
+    const nextErrors = {};
+    Object.keys(validators).forEach((k) => {
+      nextErrors[k] = validateField(k, fields[k] ?? "");
+    });
+    // Only enforce OTP if OTP flow is in progress (isOTPSent)
+    if (!isOTPSent) delete nextErrors.verificationCode;
+    return nextErrors;
+  };
+
+  const hasErrors = (errs) => Object.values(errs).some((e) => e);
+
+  // ── State helpers ─────────────────────────────────────────────────────────
+  const updateField = (name, value) => {
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (touched[name]) {
+      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+    }
+  };
+
+  const markTouched = (name) => {
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, form[name]) }));
+  };
+
+  // ── Auth + reCAPTCHA lifecycle ────────────────────────────────────────────
   const forceFreshVerification = async () => {
     try {
-      if (firebase.auth().currentUser) {
-        await firebase.auth().signOut();
-      }
+      if (firebase.auth().currentUser) await firebase.auth().signOut();
     } catch (e) {
       console.warn("signOut warn:", e);
     }
-
     setUser(null);
     setIsOTPSent(false);
-    setVerificationCode("");
+    setForm((f) => ({ ...f, verificationCode: "" }));
 
     if (typeof window !== "undefined" && window.confirmationResult) {
       window.confirmationResult = null;
     }
 
-    // Try to clear existing verifier instance (widget stays mounted)
     try {
-      if (recaptchaVerifier?.clear) {
-        await recaptchaVerifier.clear();
-      }
+      if (recaptchaVerifier?.clear) await recaptchaVerifier.clear();
     } catch (e) {
       console.warn("recaptchaVerifier.clear issue:", e);
     }
     setRecaptchaVerifier(null);
 
-    // Reset widget if present
     try {
       if (window.grecaptcha && typeof window.recaptchaWidgetId !== "undefined") {
         window.grecaptcha.reset(window.recaptchaWidgetId);
@@ -92,9 +138,7 @@ const Tablet = () => {
     }
   };
 
-  // Ensure a fresh/valid RecaptchaVerifier before each OTP
   const ensureRecaptcha = async () => {
-    // If we already have one, try a clean reset of the widget
     if (recaptchaVerifier) {
       try {
         if (window.grecaptcha && typeof window.recaptchaWidgetId !== "undefined") {
@@ -102,15 +146,13 @@ const Tablet = () => {
         }
         return recaptchaVerifier;
       } catch (e) {
-        // If reset fails, fall through to recreate
+        // fall through and recreate
       }
     }
 
     const verifier = new firebase.auth.RecaptchaVerifier("recaptcha-container", {
       size: "invisible",
-      callback: () => {
-        // Auto-solved when signInWithPhoneNumber is called
-      },
+      callback: () => { },
     });
     setRecaptchaVerifier(verifier);
     const widgetId = await verifier.render();
@@ -120,45 +162,49 @@ const Tablet = () => {
 
   // ── Event handlers ─────────────────────────────────────────────────────────
   const openForm = async (type) => {
-    await forceFreshVerification(); // must OTP every time
+    await forceFreshVerification();
     setActiveForm(type);
+    setForm(initialForm);
+    setErrors({});
+    setTouched({});
   };
 
   const closeForm = async () => {
     await forceFreshVerification();
     setActiveForm(null);
+    setForm(initialForm);
+    setErrors({});
+    setTouched({});
   };
 
   const sendOTP = async () => {
-    if (!phone) return alert("Please enter your phone number.");
+    // validate minimal fields needed for OTP (phone + email/name if you want)
+    const phoneError = validators.phone(form.phone);
+    setErrors((prev) => ({ ...prev, phone: phoneError }));
+    setTouched((prev) => ({ ...prev, phone: true }));
+    if (phoneError) return;
 
     setLoading(true);
     try {
       const verifier = await ensureRecaptcha();
 
-      // Simple normalization: 10 digits => assume +91; otherwise pass through
-      const trimmed = phone.replace(/\s+/g, "");
+      const trimmed = form.phone.replace(/\s+/g, "");
       const phoneNumber =
         trimmed.startsWith("+")
           ? trimmed
-          : trimmed.match(/^\d{10}$/)
-          ? `+91${trimmed}`
-          : trimmed;
+          : /^\d{10}$/.test(trimmed)
+            ? `+91${trimmed}`
+            : trimmed;
 
-      const confirmationResult = await firebase
-        .auth()
-        .signInWithPhoneNumber(phoneNumber, verifier);
-
+      const confirmationResult = await firebase.auth().signInWithPhoneNumber(phoneNumber, verifier);
       window.confirmationResult = confirmationResult;
       setIsOTPSent(true);
     } catch (err) {
       console.error("Error sending OTP:", err);
       alert(err?.message || "Failed to send OTP.");
-
-      // Hard reset path if something went wrong with verifier
       try {
         if (recaptchaVerifier?.clear) await recaptchaVerifier.clear();
-      } catch {}
+      } catch { }
       setRecaptchaVerifier(null);
     } finally {
       setLoading(false);
@@ -166,17 +212,20 @@ const Tablet = () => {
   };
 
   const verifyOTP = async () => {
-    if (!verificationCode) return alert("Enter the OTP.");
+    const otpErr = validators.verificationCode(form.verificationCode);
+    setErrors((prev) => ({ ...prev, verificationCode: otpErr }));
+    setTouched((prev) => ({ ...prev, verificationCode: true }));
+    if (otpErr) return;
+
     const confirmationResult = window.confirmationResult;
     if (!confirmationResult) return alert("Please request an OTP first.");
 
     setLoading(true);
     try {
-      const result = await confirmationResult.confirm(verificationCode);
+      const result = await confirmationResult.confirm(form.verificationCode);
       setUser(result.user);
-      // Clear OTP UI after success
       setIsOTPSent(false);
-      setVerificationCode("");
+      setForm((f) => ({ ...f, verificationCode: "" }));
     } catch (err) {
       console.error("Error verifying OTP:", err);
       alert("Invalid OTP. Please try again.");
@@ -186,205 +235,260 @@ const Tablet = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!user) return alert("Please verify your phone number before submitting.");
+  e.preventDefault();
 
-    const payload = {
-      formType: activeForm, // "callback" | "visit" | "brochure"
-      name,
-      occupation,
-      phone,
-      email,
-      interestedIn,
-      message,
-      authUid: user?.uid || null,
-      authPhone: user?.phoneNumber || null,
-      submittedAt: new Date().toISOString(),
-    };
+  if (!user) return alert("Please verify your phone number before submitting.");
 
-    console.log("FORM SUBMISSION →", payload);
+  // Validate before send
+  const nextErrors = validateForm(form);
+  setErrors(nextErrors);
+  setTouched(Object.keys(form).reduce((acc, k) => ((acc[k] = true), acc), {}));
+  if (hasErrors(nextErrors)) return;
+
+  setLoading(true);
+  try {
+    // Build simple FormData body — avoids preflight CORS
+    const body = new FormData();
+    body.append("formType", activeForm || "");
+    body.append("name", form.name || "");
+    body.append("occupation", form.occupation || "");
+    body.append("phone", form.phone || "");
+    body.append("email", form.email || "");
+    body.append("interestedIn", form.interestedIn || "");
+    body.append("message", form.message || "");
+    body.append("submittedAt", new Date().toISOString());
+
+    // Post directly to Apps Script deployment URL
+    const res = await fetch(
+      "https://script.google.com/macros/s/AKfycbxsR-isu3P1-OPiTEtFIFyPf528e-erwad_f9rQE-8-OXQjKOFLnk0a4u0CzIGINcuv6A/exec",
+      {
+        method: "POST",
+        body, // no headers, no 'no-cors'
+      }
+    );
+
+    if (!res.ok) {
+      const txt = await res.text().catch(() => "");
+      throw new Error(`GAS error ${res.status}: ${txt}`);
+    }
+
+    const data = await res.json().catch(() => ({}));
+    if (!data.ok) throw new Error(data.error || "Unknown GAS error");
+
     alert(`Submitted ${activeForm} form`);
 
-    // Clear for next attempt (forces OTP again next time)
+    // Reset form after successful submit
     await forceFreshVerification();
     setActiveForm(null);
+    setForm(initialForm);
+    setErrors({});
+    setTouched({});
+  } catch (err) {
+    console.error("Submit failed:", err);
+    alert(err.message || "Failed to submit. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
-    // Reset fields
-    setName("");
-    setOccupation("");
-    setPhone("");
-    setEmail("");
-    setInterestedIn("");
-    setMessage("");
-  };
 
-  // ── UI ─────────────────────────────────────────────────────────────────────
-  return (
-    <div className="relative w-full">
-      {/* Button Group */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 w-[60%] py-7 shadow-2xl rounded-full bg-[#f7f6f2] flex justify-between items-center mx-auto">
-        <button
-          onClick={() => openForm("callback")}
-          className="text-2xl text-[#595959] mx-auto flex max-[768px]:text-base"
-        >
-          Request Callback
-        </button>
-        <div className="w-[2px] h-12 bg-[#d16f52] max-[768px]:h-8" />
-        <button
-          onClick={() => openForm("visit")}
-          className="text-2xl text-[#595959] mx-auto flex max-[768px]:text-base"
-        >
-          Schedule Visit
-        </button>
-        <div className="w-[2px] h-12 bg-[#d16f52] max-[768px]:h-8" />
-        <button
-          onClick={() => openForm("brochure")}
-          className="text-2xl text-[#595959] mx-auto flex max-[768px]:text-base"
-        >
-          Brochure
-        </button>
-      </div>
 
-      {/* IMPORTANT: Keep this mounted at all times */}
-      <div id="recaptcha-container" ref={recaptchaRef} />
+const errorText = (key) =>
+  touched[key] && errors[key] ? (
+    <small className="text-red-600 text-xs ml-3 block mt-1">{errors[key]}</small>
+  ) : null;
 
-      {/* Form Modal */}
-      {activeForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-[#fef9f3] shadow-lg rounded-lg w-[90%] py-4">
-            <button
-              type="button"
-              onClick={closeForm}
-              className="text-gray-500 hover:text-gray-700 text-4xl ml-4 leading-none"
-            >
-              ×
-            </button>
+return (
+  <div className="relative w-full">
+    {/* Button Group */}
+    <div className="absolute left-1/2 transform -translate-x-1/2 w-[60%] py-7 shadow-2xl rounded-full bg-[#f7f6f2] flex justify-between items-center mx-auto">
+      <button
+        onClick={() => openForm("callback")}
+        className="text-2xl text-[#595959] mx-auto flex max-[768px]:text-base"
+      >
+        Request Callback
+      </button>
+      <div className="w-[2px] h-12 bg-[#d16f52] max-[768px]:h-8" />
+      <button
+        onClick={() => openForm("visit")}
+        className="text-2xl text-[#595959] mx-auto flex max-[768px]:text-base"
+      >
+        Schedule Visit
+      </button>
+      <div className="w-[2px] h-12 bg-[#d16f52] max-[768px]:h-8" />
+      <button
+        onClick={() => openForm("brochure")}
+        className="text-2xl text-[#595959] mx-auto flex max-[768px]:text-base"
+      >
+        Brochure
+      </button>
+    </div>
 
-            <div className="flex items-center text-[#d7b18d]">
-              <div className="w-1/2">
-                <form className="px-16 enquiry-form" onSubmit={handleSubmit}>
-                  <small className="text-sm">
-                    Fill out the form below to get exclusive
-                    <br />
-                    updates and be the first to know about offers
-                    <br />
-                    and availability at YUU by Nahar.
-                  </small>
+    {/* IMPORTANT: Keep this mounted at all times */}
+    <div id="recaptcha-container" ref={recaptchaRef} />
 
-                  <div className="flex justify-between gap-x-6 mt-6">
+    {/* Form Modal */}
+    {activeForm && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-[#fef9f3] shadow-lg rounded-lg w-[90%] py-4">
+          <button
+            type="button"
+            onClick={closeForm}
+            className="text-gray-500 hover:text-gray-700 text-4xl ml-4 leading-none"
+          >
+            ×
+          </button>
+
+          <div className="flex items-center text-[#d7b18d]">
+            <div className="w-1/2">
+              <form className="px-16 enquiry-form" onSubmit={handleSubmit} noValidate>
+                <small className="text-sm">
+                  Fill out the form below to get exclusive
+                  <br />
+                  updates and be the first to know about offers
+                  <br />
+                  and availability at YUU by Nahar.
+                </small>
+
+                <div className="flex justify-between gap-x-6 mt-6">
+                  <div className="w-full">
                     <input
                       type="text"
                       placeholder="NAME"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      value={form.name}
+                      onChange={(e) => updateField("name", e.target.value)}
+                      onBlur={() => markTouched("name")}
                       className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
                     />
+                    {errorText("name")}
+                  </div>
+                  <div className="w-full">
                     <input
                       type="text"
                       placeholder="OCCUPATION"
-                      value={occupation}
-                      onChange={(e) => setOccupation(e.target.value)}
+                      value={form.occupation}
+                      onChange={(e) => updateField("occupation", e.target.value)}
+                      onBlur={() => markTouched("occupation")}
                       className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
                     />
+                    {errorText("occupation")}
                   </div>
+                </div>
 
-                  <div className="flex justify-between gap-x-6 mt-6">
+                <div className="flex justify-between gap-x-6 mt-6">
+                  <div className="w-full">
                     <input
-                      type="text"
-                      placeholder="PHONE NUMBER (include country code or 10 digits)"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      type="tel"
+                      placeholder="PHONE NUMBER"
+                      value={form.phone}
+                      onChange={(e) => updateField("phone", e.target.value)}
+                      onBlur={() => markTouched("phone")}
                       className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
                     />
+                    {errorText("phone")}
+                  </div>
+                  <div className="w-full">
                     <input
                       type="email"
                       placeholder="EMAIL"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={form.email}
+                      onChange={(e) => updateField("email", e.target.value)}
+                      onBlur={() => markTouched("email")}
                       className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
                     />
+                    {errorText("email")}
                   </div>
+                </div>
 
+                <div className="mt-6 w-[55%]">
                   <select
-                    className="text-xl w-[55%] mt-6 rounded-full bg-transparent border border-[#513335] px-4 py-3"
-                    value={interestedIn}
-                    onChange={(e) => setInterestedIn(e.target.value)}
+                    className="text-xl w-full rounded-full bg-transparent border border-[#513335] px-4 py-3"
+                    value={form.interestedIn}
+                    onChange={(e) => updateField("interestedIn", e.target.value)}
+                    onBlur={() => markTouched("interestedIn")}
                   >
                     <option value="" disabled>
                       INTERESTED IN
                     </option>
-                    <option value="studio">Studio Apartments</option>
-                    <option value="retail">Retail Showrooms</option>
-                    <option value="restaurant">Restaurant Space</option>
+                    <option value="studio apartment">Studio Apartments</option>
+                    <option value="retail showroom">Retail Showrooms</option>
+                    <option value="restaurant space">Restaurant Space</option>
                   </select>
+                  {errorText("interestedIn")}
+                </div>
 
+                <div className="mt-6">
                   <textarea
                     placeholder="MESSAGE (OPTIONAL)"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="text-xl w-full placeholder-[#d7b18d] mt-6 rounded-2xl bg-transparent border border-[#513335] px-4 py-3"
+                    value={form.message}
+                    onChange={(e) => updateField("message", e.target.value)}
+                    onBlur={() => markTouched("message")}
+                    className="text-xl w-full placeholder-[#d7b18d] rounded-2xl bg-transparent border border-[#513335] px-4 py-3"
                   />
+                  {errorText("message")}
+                </div>
 
-                  {/* Auth/Submit area — forces OTP each time */}
-                  {!user ? (
-                    <div className="mt-6">
-                      {!isOTPSent ? (
+                {/* Auth/Submit area — forces OTP each time */}
+                {!user ? (
+                  <div className="mt-6">
+                    {!isOTPSent ? (
+                      <button
+                        type="button"
+                        onClick={sendOTP}
+                        className="rounded-full cursor-pointer bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/3 text-lg disabled:opacity-50"
+                        disabled={loading || !form.phone}
+                      >
+                        {loading ? "Sending OTP..." : "Send OTP"}
+                      </button>
+                    ) : (
+                      <div className="flex items-center gap-4">
+                        <input
+                          type="text"
+                          placeholder="Enter OTP"
+                          value={form.verificationCode}
+                          onChange={(e) => updateField("verificationCode", e.target.value)}
+                          onBlur={() => markTouched("verificationCode")}
+                          className="text-xl w-[40%] placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
+                        />
                         <button
                           type="button"
-                          onClick={sendOTP}
-                          className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/3 text-xl disabled:opacity-60"
-                          disabled={loading || !phone}
+                          onClick={verifyOTP}
+                          className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 text-xl disabled:opacity-60"
+                          disabled={loading || !form.verificationCode}
                         >
-                          {loading ? "Sending OTP..." : "Send OTP"}
+                          {loading ? "Verifying..." : "Verify OTP"}
                         </button>
-                      ) : (
-                        <div className="flex items-center gap-4">
-                          <input
-                            type="text"
-                            placeholder="Enter OTP"
-                            value={verificationCode}
-                            onChange={(e) => setVerificationCode(e.target.value)}
-                            className="text-xl w-[40%] placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
-                          />
-                          <button
-                            type="button"
-                            onClick={verifyOTP}
-                            className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 text-xl disabled:opacity-60"
-                            disabled={loading || !verificationCode}
-                          >
-                            {loading ? "Verifying..." : "Verify OTP"}
-                          </button>
-                        </div>
-                      )}
+                      </div>
+                    )}
+                    {isOTPSent && errorText("verificationCode")}
+                    <small className="block text-xs mt-3 text-[#513335]">
+                      Verify your phone number to enable submission.
+                    </small>
+                  </div>
+                ) : (
+                  <button
+                    className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/3 mt-6 text-xl"
+                    type="submit"
+                  >
+                    SUBMIT
+                  </button>
+                )}
+              </form>
 
-                      <small className="block mt-2 text-[#513335]">
-                        Verify your phone number to enable submission.
-                      </small>
-                    </div>
-                  ) : (
-                    <button
-                      className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/3 mt-6 text-xl"
-                      type="submit"
-                    >
-                      SUBMIT
-                    </button>
-                  )}
-                </form>
-
-                <small className="text-xs block mt-6 ml-16">
-                  By submitting this form, you agree to receive updates and
-                  <br />
-                  communications from YUU by Nahar
-                </small>
-              </div>
-
-              <img className="w-1/2" src="/images/Form-Img.png" alt="Form visual" />
+              <small className="text-xs block mt-6 ml-16">
+                By submitting this form, you agree to receive updates and
+                <br />
+                communications from YUU by Nahar
+              </small>
             </div>
+
+            <img className="w-1/2" src="/images/Form-Img.png" alt="Form visual" />
           </div>
         </div>
-      )}
-    </div>
-  );
+      </div>
+    )}
+  </div>
+);
 };
 
 export default Tablet;
