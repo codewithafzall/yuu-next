@@ -324,7 +324,7 @@ return (
     {/* Form Modal */}
     {activeForm && (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className="bg-[#fef9f3] shadow-lg rounded-lg w-[90%] py-4">
+        <div className="bg-[#fef9f3] h-[90vh] desktop:h-auto shadow-lg rounded-lg w-[90%] py-4">
           <button
             type="button"
             onClick={closeForm}
@@ -334,9 +334,9 @@ return (
           </button>
 
           <div className="flex items-center text-[#d7b18d]">
-            <div className="w-1/2">
-              <form className="px-16 enquiry-form" onSubmit={handleSubmit} noValidate>
-                <small className="text-sm">
+            <div className="w-full desktop:w-1/2">
+              <form className="px-4 desktop:px-16 enquiry-form" onSubmit={handleSubmit} noValidate>
+                <small className="text-xs desktop:text-sm">
                   Fill out the form below to get exclusive
                   <br />
                   updates and be the first to know about offers
@@ -344,7 +344,7 @@ return (
                   and availability at YUU by Nahar.
                 </small>
 
-                <div className="flex justify-between gap-x-6 mt-6">
+                <div className="flex justify-between gap-x-3 mt-3 desktop:gap-x-6 desktop:mt-6">
                   <div className="w-full">
                     <input
                       type="text"
@@ -352,7 +352,7 @@ return (
                       value={form.name}
                       onChange={(e) => updateField("name", e.target.value)}
                       onBlur={() => markTouched("name")}
-                      className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
+                      className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                     />
                     {errorText("name")}
                   </div>
@@ -363,7 +363,7 @@ return (
                       value={form.occupation}
                       onChange={(e) => updateField("occupation", e.target.value)}
                       onBlur={() => markTouched("occupation")}
-                      className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
+                      className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                     />
                     {errorText("occupation")}
                   </div>
@@ -377,7 +377,7 @@ return (
                       value={form.phone}
                       onChange={(e) => updateField("phone", e.target.value)}
                       onBlur={() => markTouched("phone")}
-                      className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
+                      className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                     />
                     {errorText("phone")}
                   </div>
@@ -388,7 +388,7 @@ return (
                       value={form.email}
                       onChange={(e) => updateField("email", e.target.value)}
                       onBlur={() => markTouched("email")}
-                      className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
+                      className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                     />
                     {errorText("email")}
                   </div>
@@ -396,7 +396,7 @@ return (
 
                 <div className="mt-6 w-[55%]">
                   <select
-                    className="text-xl w-full rounded-full bg-transparent border border-[#513335] px-4 py-3"
+                    className="text-xl w-full rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                     value={form.interestedIn}
                     onChange={(e) => updateField("interestedIn", e.target.value)}
                     onBlur={() => markTouched("interestedIn")}
@@ -417,7 +417,7 @@ return (
                     value={form.message}
                     onChange={(e) => updateField("message", e.target.value)}
                     onBlur={() => markTouched("message")}
-                    className="text-xl w-full placeholder-[#d7b18d] rounded-2xl bg-transparent border border-[#513335] px-4 py-3"
+                    className="text-xl w-full placeholder-[#d7b18d] rounded-2xl bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                   />
                   {errorText("message")}
                 </div>
@@ -429,7 +429,7 @@ return (
                       <button
                         type="button"
                         onClick={sendOTP}
-                        className="rounded-full cursor-pointer bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/3 text-lg disabled:opacity-50"
+                        className="rounded-full cursor-pointer bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/2 desktop:w-1/3 text-lg disabled:opacity-50"
                         disabled={loading || !form.phone.length === 10}
                       >
                         {loading ? "Sending OTP..." : "Send OTP"}
@@ -442,12 +442,12 @@ return (
                           value={form.verificationCode}
                           onChange={(e) => updateField("verificationCode", e.target.value)}
                           onBlur={() => markTouched("verificationCode")}
-                          className="text-xl w-[40%] placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] px-4 py-3"
+                          className="text-xl w-[40%] placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                         />
                         <button
                           type="button"
                           onClick={verifyOTP}
-                          className="rounded-full bg-[#d06d52] text-[#fef9f3] px-5 py-3 text-lg disabled:opacity-60"
+                          className="rounded-full bg-[#d06d52] text-[#fef9f3] py-2 px-4 desktop:py-3 text-lg disabled:opacity-60"
                           disabled={loading || !form.verificationCode}
                         >
                           {loading ? "Verifying..." : "Verify OTP"}
@@ -469,14 +469,13 @@ return (
                 )}
               </form>
 
-              <small className="text-xs block mt-6 ml-16">
+              <small className="text-xs block mt-3 ml-0 px-4 desktop:px-0 desktop:mt-6 desktop:ml-16">
                 By submitting this form, you agree to receive updates and
-                <br />
                 communications from YUU by Nahar
               </small>
             </div>
 
-            <img className="w-1/2" src="/images/Form-Img.png" alt="Form visual" />
+            <img className="w-1/2 desktop:block hidden" src="/images/Form-Img.png" alt="Form visual" />
           </div>
         </div>
       </div>
