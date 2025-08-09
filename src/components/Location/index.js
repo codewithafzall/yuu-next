@@ -17,7 +17,7 @@ const HeroCarousel = () => {
       <div className="relative z-20 text-center px-4 max-[768px]:px-6 w-full max-w-6xl mt-[200px]">
         {/* Main title */}
         <h1
-          className="text-white text-4xl md:text-6xl lg:text-7xl font-bold mb-4 max-[768px]:text-3xl"
+          className="text-white  mb-4 max-[768px]:text-3xl"
           style={{ letterSpacing: "3px" }}
         >
           YUU BELONG HERE
@@ -25,7 +25,7 @@ const HeroCarousel = () => {
 
         {/* Subtitle */}
         <p
-          className="text-white text-lg md:text-xl lg:text-2xl mb-8 max-[768px]:text-base"
+          className="text-white mb-8 max-[768px]:text-base"
           style={{ letterSpacing: "1px" }}
         >
           Right Where Calm Meets Connection
@@ -33,8 +33,8 @@ const HeroCarousel = () => {
 
         {/* Description box */}
         <div className="max-w-2xl mt-[150px] mx-auto">
-          <div className="bg-transparent  border border-white border-opacity-30 rounded-full p-6 md:p-8 max-[768px]:p-4">
-            <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed max-[768px]:text-[10px]">
+          <div className="bg-transparent text-center border border-white border-opacity-30 rounded-full p-6 md:p-8 max-[768px]:p-4">
+            <p className="text-white leading-relaxed max-[768px]:text-[10px]">
               At YUU, location goes beyond coordinates. It's that quiet sense of
               arriving home. Tucked into the evolving heart of Chandivali, YUU
               is placed just right, close to the action, but far enough to let
@@ -48,24 +48,21 @@ const HeroCarousel = () => {
 };
 
 const LocationAbout = () => (
-  <section className="relative w-full bg-[#fdf7f0] flex flex-row max-[768px]:flex-col items-center justify-between px-8 max-[768px]:px-6 py-16 max-[768px]:py-10">
+  <section className="relative w-full bg-[#eee9d6] flex flex-row max-[768px]:flex-col items-center justify-between px-8 max-[768px]:px-6 py-16 max-[768px]:py-10">
     {/* Text Content - Left Side */}
     <div className="w-1/2 max-[768px]:w-full z-20 pr-8 max-[768px]:pr-0 max-[768px]:mb-8">
-      <div className="max-w-lg">
+      <div className="max-w-lg relative left-[20%] max-[768px]:left-[0%]">
         {/* Main Heading */}
         <h2
-          className="text-[#ff6b35] text-4xl max-[768px]:text-3xl font-bold mb-6 leading-tight"
-          style={{ fontFamily: "Montserrat, sans-serif", letterSpacing: "1px" }}
+          className="mb-6"
         >
           EVERYTHING YOU NEED,
-          <br />
           JUST AROUND YUU
         </h2>
 
         {/* First Paragraph */}
         <p
-          className="text-[#333] text-base max-[768px]:text-sm leading-relaxed mb-6"
-          style={{ fontFamily: "Montserrat, sans-serif" }}
+          className="max-[768px]:text-sm mb-6"
         >
           Life flows easily here, whether it's a quick coffee
           <br />
@@ -80,8 +77,7 @@ const LocationAbout = () => (
 
         {/* Second Paragraph */}
         <p
-          className="text-[#333] text-base max-[768px]:text-sm leading-relaxed"
-          style={{ fontFamily: "Montserrat, sans-serif" }}
+          className="max-[768px]:text-sm"
         >
           You're a short drive from Powai, Andheri, BKC and
           <br />
@@ -94,13 +90,13 @@ const LocationAbout = () => (
 
     {/* 3D Architectural Rendering - Right Side */}
     <div className="w-1/2 max-[768px]:w-full flex justify-center max-[768px]:justify-center ">
-      <div className="w-[600px] max-w-[700px] max-[768px]:w-[90vw] max-[768px]:max-w-[500px] relative">
+      <div className=" max-[768px]:w-[90vw] max-[768px]:max-w-[500px] relative">
         {/* Organic rounded shape container */}
         <div className="">
           <img
             src="/images/location-about.png"
             alt="3D Architectural Rendering of YUU Buildings"
-            className="w-full h-auto object-contain relative left-[90px] max-[768px]:left-[20px]"
+            className="relative left-[30px] max-[768px]:left-[20px]"
           />
         </div>
       </div>
@@ -128,29 +124,29 @@ const DistanceMap = () => (
     {/* Walking Distance Amenities - Left Side */}
     <div className="absolute left-8 bottom-20 max-[768px]:left-4 max-[768px]:bottom-16 z-20">
       <div className="p-4 max-[768px]:p-3 shadow-lg">
-        <h4 className="text-[#fff] text-lg max-[768px]:text-base font-bold mb-3">
+        <h3 className="text-[#fff] text-[25px] max-[768px]:text-base mb-3">
           WALKING DISTANCE FROM
-        </h4>
+        </h3>
         <div className="space-y-2">
           <div
-            className="px-3 py-5 text-white rounded-full bg-transparent border border-white mt-5"
+            className="p-3 text-white rounded-full bg-transparent border border-white mt-5"
             style={{ marginBottom: "30px" }}
           >
-            <p className="text-[#fff] text-sm max-[768px]:text-xs font-semibold">
-              Nahar International School
+            <p className="text-[#fff] text-center text-sm max-[768px]:text-xs font-semibold">
+              Nahar International<br/> School
             </p>
           </div>
           <div
-            className="px-3 py-5 text-white rounded-full bg-transparent border border-white"
+            className="p-3 text-white rounded-full bg-transparent border border-white"
             style={{ marginBottom: "30px" }}
           >
-            <p className="text-[#fff] text-sm max-[768px]:text-xs font-semibold">
-              Nahar Medical Centre
+            <p className="text-[#fff] text-center text-sm max-[768px]:text-xs font-semibold">
+              Nahar Medical<br/> Centre
             </p>
           </div>
-          <div className="px-3 py-5 text-white rounded-full bg-transparent border border-white">
-            <p className="text-[#fff] text-sm max-[768px]:text-xs font-semibold">
-              Nahar Business Centre
+          <div className="p-3 text-white rounded-full bg-transparent border border-white">
+            <p className="text-[#fff] text-center text-sm max-[768px]:text-xs font-semibold">
+              Nahar Business<br/> Centre
             </p>
           </div>
         </div>
@@ -166,18 +162,14 @@ const ConnectYou = () => {
         {/* Text Content */}
         <div className="w-1/2 max-[768px]:w-full z-20 flex  justify-center">
           <div className="max-w-xl">
-            <h3
-              className="max-[768px]:text-xl font-semibold mb-2"
-              style={{
-                fontFamily: "Montserrat, sans-serif",
-                letterSpacing: "1px",
-              }}
+            <h1
+              className=" mb-6"
             >
               Part of a Thoughtfully
               <br />
               Built Community
-            </h3>
-            <p className="text-[#513335] text-base mb-4">
+            </h1>
+            <p className="mb-4">
               YUU is part of a larger story, the one<br/> that the Nahar Group has
               been<br/> shaping for years in Chandivali. Here,<br/> you’re surrounded by
               everything that<br/> makes daily life smoother, warmer,<br/> and more
