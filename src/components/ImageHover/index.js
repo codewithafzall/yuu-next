@@ -33,8 +33,8 @@ export default function ImageHoverSection() {
     }, [headings]);
 
     return (
-        <div className="flex bg-[#fef9f3] gap-x-10">
-            <div className="w-2/6 flex flex-col items-end justify-center">
+        <div className="flex flex-col py-10 desktop:py-0 desktop:flex-row bg-[#fef9f3] gap-x-10">
+            <div className="w-full desktop:w-2/6 flex flex-col pr-3 desktop:pr-0 items-end justify-center">
                 {headings.map((text, idx) => (
                     <h1 ref={(el) => (headingsRefs.current[idx] = el)} className='uppercase' key={idx}>{text}</h1>
                 ))}
@@ -48,7 +48,7 @@ export default function ImageHoverSection() {
                 </button>
             </div>
 
-            <div className="w-4/6 relative flex justify-between items-center pr-10 pb-16 pt-8">
+            <div className="w-full desktop:w-4/6 relative flex flex-col desktop:flex-row justify-between items-center desktop:pr-10 desktop:pb-16 pt-4 desktop:pt-8">
                 <img
                     src="/images/Asset 11.png"
                     alt="Asset 11"
@@ -57,18 +57,18 @@ export default function ImageHoverSection() {
                     onMouseLeave={handleMouseLeave}
                 />
 
-                <div className="flex flex-col">
+                <div className="flex desktop:flex-col gap-x-3 px-3">
                     <img
                         src="/images/Asset 10.png"
                         alt="Asset 10"
-                        className="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                        className="w-1/2 desktop:w-auto grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                         onMouseEnter={() => handleMouseEnter('Asset 10.png')}
                         onMouseLeave={handleMouseLeave}
                     />
                     <img
                         src="/images/Asset 8.png"
                         alt="Asset 8"
-                        className="mt-12 mr-12 grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                        className="w-1/2 desktop:w-auto desktop:mt-12 desktop:mr-12 grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                         onMouseEnter={() => handleMouseEnter('Asset 8.png')}
                         onMouseLeave={handleMouseLeave}
                     />
@@ -77,7 +77,7 @@ export default function ImageHoverSection() {
                 <img
                     src="/images/Asset 9.png"
                     alt="Asset 9"
-                    className="mt-12 grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                    className="desktop:mt-12 grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     onMouseEnter={() => handleMouseEnter('Asset 9.png')}
                     onMouseLeave={handleMouseLeave}
                 />
