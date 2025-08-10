@@ -6,11 +6,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HeroCarousel = () => {
   return (
-    <section className="relative pb-20 w-full flex items-center justify-center pt-32 bg-[#fef9f3]">
+    <section className="relative pb-20 w-full flex items-center justify-center pt-32 bg-[#fef9f3] max-[768px]:flex-col max-[768px]:pt-20">
       {/* Text Content */}
-      <div className="w-2/6 flex items-center">
-        <div className="mx-auto">
-          <h1 className="mb-4 text-start">
+      <div className="w-2/6 flex items-center max-[768px]:w-full max-[768px]:justify-center max-[768px]:mb-6">
+        <div className="mx-auto max-[768px]:text-center">
+          <h1 className="mb-4 text-start max-[768px]:text-center">
             Discover the
             <br />
             World of YUU
@@ -27,7 +27,7 @@ const HeroCarousel = () => {
       <img
         src="/images/about-bg.png"
         alt="Lifestyle Illustration"
-        className="w-4/6"
+        className="w-4/6 max-[768px]:w-full"
       />
     </section>
   );
@@ -235,25 +235,28 @@ const VisionarySection = () => {
 
   const visionaryData = {
     ajay: {
+      topTitle: "FROM THE VISIONARIES OF YUU",
       name: "AJAY NAHAR",
       title: "The Mind Behind YUU by Nahar",
       description:
         "A visionary leader and a pioneer in redefining Mumbai's skyline, Ajay Nahar, MD of Nahar Group, has always believed in creating spaces that enhance the way people live, work, and interact. With a portfolio of award-winning developments such as luxury real estate, theme-based residential towers, modern healthcare infrastructure, Asia's 1st International School and philanthropic developments for the Jain community, he continues to push boundaries in real estate innovation. With YUU by Nahar, his vision is to introduce a dynamic and immersive lifestyle hub—one that blends urban convenience with timeless elegance, setting a new benchmark for Mumbai's modern living experience.",
-      image: "/images/p1.png",
+      image: "/images/Asset7.png",
     },
     awards: {
+      topTitle:"AWARDS & RECOGNITION",
       name: "AWARDS & RECOGNITION",
       title: "Team Excellence",
       description:
         "The Nahar Group's commitment to excellence has been recognized time and again with prestigious awards and media features that celebrate innovation, sustainability, and architectural brilliance.",
-      image: "/images/award.png",
+      image: "/images/Asset5.png",
     },
     legacy: {
+      topTitle:"THE LEGACY OF NAHAR AMRIT SHAKTI",
       name: "THE LEGACY OF NAHAR AMRIT SHAKTI",
       title: "A landmark township loped by Nahar Group",
       description:
         "This self-sufficient community has set new standards for integrated living with world-class education, healthcare, business, and green spaces.<br/><br/> <span style={{color:'#d16f52'}}>Nahar International School –</span> Aleading institution shaping young minds for a global future. Awarded as Asia's top international school 2025. Nahar Medical Centre – Offering state-of-the-art healthcare services to the community.<br/><br/> Nahar Business Centre – A premium commercial hub designed for modern professionals.<br/><br/> Miyawaki Forest by Nahar Group – A lush, dense green space developed using the Japanese afforestation technique, bringing sustainability and nature closer to urban life.<br/><br/> At YUU by Nahar, the legacy continues, elevating the concept of holistic living to the next level.",
-      image: "/images/nahar-amrit-shakti.png",
+      image: "/images/Asset21.png",
     },
   };
 
@@ -264,105 +267,77 @@ const VisionarySection = () => {
   const getPersonData = (key) => visionaryData[key];
 
   return (
-    <section className="relative w-full bg-[#fdf7f0] py-20 px-4 max-[768px]:px-6 max-[768px]:py-12">
+    <section className="relative w-full bg-[#fdf7f0] py-16 px-4 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Main Title */}
-        <div className="text-center mb-16 max-[768px]:mb-8">
-          <h2
-            className="text-[#d16f52] text-2xl font-bold mb-1 max-[768px]:text-xl"
-            style={{ fontFamily: "Montserrat, sans-serif" }}
-          >
+        {/* Title */}
+        {/* <div className="text-center mb-16">
+          <h2 className="text-[#d16f52] text-2xl font-bold tracking-widest">
             FROM THE
           </h2>
-          <h2
-            className="text-[#a97c6d] text-4xl font-bold max-[768px]:text-2xl"
-            style={{ fontFamily: "Montserrat, sans-serif" }}
-          >
+          <h2 className="text-[#a97c6d] text-4xl font-bold mt-1">
             VISIONARIES OF YUU
           </h2>
-        </div>
+        </div> */}
 
-        {/* Two Column Layout */}
-        <div className="flex flex-row max-[1024px]:flex-col gap-[10%] max-[1024px]:gap-8">
-          {/* Left Column - Images */}
-          <div className="w-3/5 max-[1024px]:w-full">
-            <div className="flex flex-col gap-6 max-[768px]:gap-4">
-              {/* All Images in One Line */}
-              <div className="flex flex-row gap-4 max-[768px]:flex-col max-[768px]:gap-6">
-                {/* Two Smaller Images with Same Design (excluding selected one) */}
-                {Object.keys(visionaryData)
-                  .filter((key) => key !== selectedPerson)
-                  .map((key) => {
-                    const person = getPersonData(key);
-
-                    return (
-                      <div
-                        key={key}
-                        onClick={() => handlePersonSelect(key)}
-                        className="cursor-pointer transition-all duration-300 flex-1 relative top-40 hover:opacity-80 max-[768px]:top-0 max-[768px]:flex-none max-[768px]:w-full"
-                      >
-                        <div className="relative flex justify-center items-center z-20">
-                          {/* Smaller Portrait */}
-                          <img
-                            src={person.image}
-                            alt={person.name}
-                            className="z-10 w-[60%] h-40 relative top-4 rounded-t-full g grayscale max-[768px]:w-48 max-[768px]:h-48 max-[768px]:rounded-full"
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-
-                {/* Main Colored Image */}
-                <div className="flex-1 relative max-[768px]:flex-none max-[768px]:w-full">
-                  <div className="relative flex justify-center items-center z-20">
-                    {/* Circular Background */}
-                    <div className="absolute w-80 h-96 bg-[#d16f52] rounded-t-full max-[768px]:w-64 max-[768px]:h-80"></div>
-
-                    {/* Main Portrait */}
+        <div className="flex flex-row items-start lg:gap-10 md:flex-col md:items-center relative max-[768px]:flex-col max-[768px]:items-center">
+          {/* Left smaller images */}
+          <div className="flex flex-row justify-start gap-12 mt-[18%] md:mt-0 md:gap-6 max-[768px]:mt-6 max-[768px]:gap-4 max-[768px]:overflow-x-auto max-[768px]:w-full max-[768px]:px-2">
+            {Object.keys(visionaryData)
+              .filter((key) => key !== selectedPerson)
+              .map((key) => {
+                const person = getPersonData(key);
+                return (
+                  <div
+                    key={key}
+                    onClick={() => handlePersonSelect(key)}
+                    className="cursor-pointer flex flex-col items-center hover:opacity-80 transition-all max-[768px]:flex-none max-[768px]:w-36"
+                  >
+                    <h3 className="text-xs mb-5 text-gray-500 mt-3 text-center uppercase tracking-wide w-full leading-tight max-[768px]:mb-2">
+                      {person.name}
+                    </h3>
                     <img
-                      src={getPersonData(selectedPerson).image}
-                      alt={getPersonData(selectedPerson).name}
-                      className="z-10 w-80 h-80 relative top-8 rounded-lg max-[768px]:w-64 max-[768px]:h-64 max-[768px]:top-4"
+                      src={person.image}
+                      alt={person.name}
+                      className="w-48 h-60 object-cover rounded-t-full grayscale max-[768px]:w-36 max-[768px]:h-48"
                     />
+                    
                   </div>
-                </div>
-              </div>
+                );
+              })}
+          </div>
+
+          {/* Main person image with background */}
+          <div className="relative flex flex-col items-center mx-12 max-[768px]:mx-0 max-[768px]:mt-6">
+            <h2 className="text-4xl text-center mb-6 uppercase max-[768px]:text-2xl max-[768px]:px-4">
+              {getPersonData(selectedPerson).topTitle}
+            </h2>
+            <div className="relative flex justify-center items-center">
+              <div className="absolute w-[380px] h-[500px]"></div>
+              <img
+                src={getPersonData(selectedPerson).image}
+                alt={getPersonData(selectedPerson).name}
+                className="w-[300px] h-[400px]  relative top-4 max-[768px]:w-[240px] max-[768px]:h-[320px]"
+              />
             </div>
           </div>
 
-          {/* Right Column - Text Details */}
-          <div className="w-2/5 max-[1024px]:w-full max-[1024px]:mt-8">
-            <div className="space-y-6 max-[768px]:space-y-4">
-              <div>
-                <h3
-                  className="text-[#d16f52] text-2xl font-bold mb-2 max-[768px]:text-xl"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}
-                >
-                  {getPersonData(selectedPerson).name}
-                </h3>
-                <p
-                  className="text-[#a97c6d] text-lg mb-6 max-[768px]:text-base max-[768px]:mb-4"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}
-                >
-                  {getPersonData(selectedPerson).title}
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <p
-                  className="text-[#513335] text-sm leading-relaxed max-[768px]:text-xs"
-                  style={{ fontFamily: "Montserrat, sans-serif" }}
-                  dangerouslySetInnerHTML={{
-                    __html: getPersonData(selectedPerson).description,
-                  }}
-                ></p>
-              </div>
-
-              <button className="py-3 px-8 border border-[#d16f52] text-[#d16f52] rounded-full font-semibold hover:bg-[#d16f52] hover:text-white transition-colors max-[768px]:py-2 max-[768px]:px-6 max-[768px]:text-sm">
-                KNOW MORE
-              </button>
-            </div>
+          {/* Right text */}
+          <div className="max-w-md space-y-4 mt-20 md:mt-8 max-[768px]:max-w-full max-[768px]:mt-8 max-[768px]:text-center">
+            <h3 className="">
+              {getPersonData(selectedPerson).name}
+            </h3>
+            <p className="text-[#fca286] max-[768px]:text-sm">
+              {getPersonData(selectedPerson).title}
+            </p>
+            <p
+              className="text-[15px] leading-relaxed text-gray-700 max-[768px]:text-[14px]"
+              dangerouslySetInnerHTML={{
+                __html: getPersonData(selectedPerson).description,
+              }}
+            ></p>
+            {/* <button className="mt-6 py-3 px-8 border border-[#d16f52] text-[#d16f52] rounded-full font-semibold hover:bg-[#d16f52] hover:text-white transition-colors">
+              KNOW MORE
+            </button> */}
           </div>
         </div>
       </div>
@@ -375,22 +350,22 @@ const AwardsSection = () => {
     {
       name: "Ar. Shitesh Agarwal",
       role: "Sankalp Architects",
-      image: "/images/Sankalp.png",
+      image: "/images/Asset27.png",
     },
     {
       name: "Ar. Ketan Vaidya",
       role: "KV Associates",
-      image: "/images/KV.png",
+      image: "/images/Asset26.png",
     },
     {
       name: "Mr. Birju Patel",
       role: "MEP Consulting",
-      image: "/images/Birju.png",
+      image: "/images/Asset25.png",
     },
     {
       name: "Mr. Nikhil J Inamdar",
       role: "Stardum Consultants",
-      image: "/images/Nikhil.png",
+      image: "/images/Asset24.png",
     },
   ];
 
@@ -402,19 +377,17 @@ const AwardsSection = () => {
           {/* Left Column */}
           <div className="w-1/2 max-[1024px]:w-full">
             {/* Title Block */}
-            <div className="inline-block bg-[#d16f52] bg-opacity-10 border border-[#d16f52] rounded-full px-8 py-3 mb-6">
+            <div className="inline-block border border-[#cd8467] relative right-[20%] rounded-r-full w-96 px-10 py-3 mb-6">
               <h2
-                className="text-[#513335] text-2xl font-bold"
-                style={{ fontFamily: "Montserrat, sans-serif" }}
+                className="text-black text-center"
               >
-                THE EXPERTS BEHIND YUU
+                THE EXPERTS<br/> BEHIND YUU
               </h2>
             </div>
 
             {/* Description */}
             <p
-              className="text-[#513335] text-base leading-relaxed"
-              style={{ fontFamily: "Montserrat, sans-serif" }}
+              className=""
             >
               Great architecture is a collaboration of vision, expertise, and
               craftsmanship. YUU by Nahar is brought to life by some of the
@@ -427,8 +400,7 @@ const AwardsSection = () => {
           <div className="w-1/2 max-[1024px]:w-full max-[1024px]:mt-8">
             <div className="text-center max-[1024px]:text-left">
               <h3
-                className="text-[#d16f52] text-2xl font-bold leading-tight"
-                style={{ fontFamily: "Montserrat, sans-serif" }}
+                className="mt-20 max-[768px]:mt-0"
               >
                 TOGETHER, THEY SHAPE YUU
                 <br /> INTO A SPACE THAT IS MODERN,
@@ -445,34 +417,34 @@ const AwardsSection = () => {
               {/* Arched Background with Portrait */}
               <div className="relative mb-4">
                 {/* Arched Background */}
-                <div className="w-32 h-40 bg-[#d16f52] bg-opacity-20 rounded-t-full"></div>
+                <div className="w-32 h-48"></div>
 
                 {/* Circular Portrait */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-40 rounded-t-full rounded-b-full overflow-hidden bg-[#d16f52] border-4 border-[#d16f52] shadow-lg">
+                  <div className="w-32 h-48">
                     <img
                       src={expert.image}
                       alt={expert.name}
-                      className="w-full h-full object-cover grayscale"
+                      className="w-full h-full "
                     />
                   </div>
                 </div>
               </div>
 
               {/* Name and Role Label */}
-              <div className="relative w-32">
-                <div className="bg-[#513335] w-full text-white px-4 py-2 rounded-full text-center absolute bottom-10 left-20">
+              <div className="relative w-40">
+                <div className="bg-[#353434] w-full text-white py-4 rounded-full text-center absolute bottom-8 left-20">
                   <p
-                    className="text-[10px] font-semibold"
+                    className="text-[12px] text-white font-semibold"
                     style={{ fontFamily: "Montserrat, sans-serif" }}
                   >
                     {expert.name}
                   </p>
                   <p
-                    className="text-[10px] opacity-90"
+                    className="text-[10px] text-white opacity-90"
                     style={{ fontFamily: "Montserrat, sans-serif" }}
                   >
-                    {expert.role}
+                    ({expert.role})
                   </p>
                 </div>
               </div>
