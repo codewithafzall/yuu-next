@@ -70,7 +70,7 @@ const Header = () => {
           <li><a href="#home" className="uppercase">latest</a></li>
           <li><a href="#home" className="uppercase">virtual tour</a></li>
           <li><a href="#home" className="uppercase">contact us</a></li>
-          <li><a href="#home" className="uppercase">floor plan</a></li>
+          <li><a href="/floorplan" className="uppercase">floor plan</a></li>
         </ul>
       </nav>
 
@@ -87,7 +87,7 @@ const Header = () => {
           <li><a href="#home" className="uppercase">latest</a></li>
           <li><a href="#home" className="uppercase">virtual tour</a></li>
           <li><a href="#home" className="uppercase">contact us</a></li>
-          <li><a href="#home" className="uppercase">floor plan</a></li>
+          <li><a href="/floorplan" className="uppercase">floor plan</a></li>
         </ul>
       </div>
 
