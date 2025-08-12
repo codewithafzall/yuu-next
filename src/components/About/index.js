@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -233,6 +236,14 @@ const AboutSection = () => {
 const VisionarySection = () => {
   const [selectedPerson, setSelectedPerson] = useState("ajay");
 
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const visionaryData = {
     ajay: {
       topTitle: "FROM THE VISIONARIES OF YUU",
@@ -260,84 +271,159 @@ const VisionarySection = () => {
     },
   };
 
+  const keys = Object.keys(visionaryData);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const sliderRef = useRef(null);
+
+  const initialIndex = Math.max(0, keys.indexOf(selectedPerson));
+
+  const [currentSlide, setCurrentSlide] = useState(initialIndex);
+
+  useEffect(() => {
+    // keep slider and state synced if selectedPerson changes programmatically
+    const idx = keys.indexOf(selectedPerson);
+    if (idx >= 0) {
+      setCurrentSlide(idx);
+      sliderRef.current?.slickGoTo(idx);
+    }
+  }, [selectedPerson, keys]);
+
   const handlePersonSelect = (personKey) => {
+    const idx = keys.indexOf(personKey);
     setSelectedPerson(personKey);
+    setCurrentSlide(idx);
+    sliderRef.current?.slickGoTo(idx);
   };
 
   const getPersonData = (key) => visionaryData[key];
 
+  // Slider settings for mobile
+  const sliderSettings = {
+    dots: false,
+    infinite: false,
+    speed: 350,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    arrows: false,
+    centerMode: true,
+    centerPadding: "18px", // shows a peek of adjacent slides
+    initialSlide: initialIndex,
+    afterChange: (index) => {
+      setCurrentSlide(index);
+      setSelectedPerson(keys[index]);
+    },
+  };
+
+  // progress percent for the small scroll indicator dot (0..100)
+  const progressPercent =
+    keys.length > 1 ? (currentSlide / (keys.length - 1)) * 100 : 0;
+
   return (
     <section className="relative w-full bg-[#fdf7f0] py-16 px-4 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Title */}
-        {/* <div className="text-center mb-16">
-          <h2 className="text-[#d16f52] text-2xl font-bold tracking-widest">
-            FROM THE
-          </h2>
-          <h2 className="text-[#a97c6d] text-4xl font-bold mt-1">
-            VISIONARIES OF YUU
-          </h2>
-        </div> */}
-
         <div className="flex flex-row items-start lg:gap-10 md:flex-col md:items-center relative max-[768px]:flex-col max-[768px]:items-center">
-          {/* Left smaller images */}
-          <div className="flex flex-row justify-start gap-12 mt-[18%] md:mt-0 md:gap-6 max-[768px]:mt-6 max-[768px]:gap-4 max-[768px]:overflow-x-auto max-[768px]:w-full max-[768px]:px-2">
-            {Object.keys(visionaryData)
-              .filter((key) => key !== selectedPerson)
-              .map((key) => {
+          {/* Mobile: Slider */}
+          {isMobile ? (
+            <div className="w-full mb-6">
+            <Slider ref={sliderRef} {...sliderSettings}>
+              {keys.map((key, index) => {
                 const person = getPersonData(key);
+                const isSelected = key === selectedPerson; // <-- defined here
                 return (
                   <div
                     key={key}
                     onClick={() => handlePersonSelect(key)}
-                    className="cursor-pointer flex flex-col items-center hover:opacity-80 transition-all max-[768px]:flex-none max-[768px]:w-36"
+                    className="cursor-pointer flex flex-col items-center px-2"
                   >
-                    <h3 className="text-xs mb-5 text-gray-500 mt-3 text-center uppercase tracking-wide w-full leading-tight max-[768px]:mb-2">
+                    <h3 className="text-xs mb-2 text-gray-500 text-center uppercase tracking-wide w-full leading-tight">
                       {person.name}
                     </h3>
                     <img
                       src={person.image}
                       alt={person.name}
-                      className="w-48 h-60 object-cover rounded-t-full grayscale max-[768px]:w-36 max-[768px]:h-48"
+                      className={`w-36 h-48 object-cover rounded-t-full mx-auto transition-all duration-300 ${
+                        isSelected ? "" : "grayscale"
+                      }`}
                     />
-                    
                   </div>
                 );
               })}
-          </div>
+            </Slider>
 
-          {/* Main person image with background */}
-          <div className="relative flex flex-col items-center mx-12 max-[768px]:mx-0 max-[768px]:mt-6">
-            <h2 className="text-4xl text-center mb-6 uppercase max-[768px]:text-2xl max-[768px]:px-4">
-              {getPersonData(selectedPerson).topTitle}
-            </h2>
-            <div className="relative flex justify-center items-center">
-              <div className="absolute w-[380px] h-[500px]"></div>
-              <img
-                src={getPersonData(selectedPerson).image}
-                alt={getPersonData(selectedPerson).name}
-                className="w-[300px] h-[400px]  relative top-4 max-[768px]:w-[240px] max-[768px]:h-[320px]"
-              />
+            {/* Scroll indicator (small moving dot) */}
+            <div className="mt-3 flex justify-center">
+              <div className="relative w-40 h-2 bg-[#e2d2b7] rounded-full">
+                <div
+                  className="absolute top-1/2 bg-[#c46c4a] w-3 h-3 rounded-full"
+                  style={{
+                    left: `${progressPercent}%`,
+                    transform: "translate(-50%, -50%)",
+                    transition: "left 0.28s ease",
+                  }}
+                />
+              </div>
             </div>
           </div>
+          ) : (
+            // Desktop: original left-side images
+            <div className="flex flex-row justify-start gap-12 mt-[18%] md:mt-0 md:gap-6">
+              {Object.keys(visionaryData)
+                .filter((key) => key !== selectedPerson)
+                .map((key) => {
+                  const person = getPersonData(key);
+                  return (
+                    <div
+                      key={key}
+                      onClick={() => handlePersonSelect(key)}
+                      className="cursor-pointer flex flex-col items-center hover:opacity-80 transition-all"
+                    >
+                      <h3 className="text-xs mb-5 text-gray-500 mt-3 text-center uppercase tracking-wide w-full leading-tight">
+                        {person.name}
+                      </h3>
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        className="w-48 h-60 object-cover rounded-t-full grayscale"
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+          )}
 
-          {/* Right text */}
-          <div className="max-w-md space-y-4 mt-20 md:mt-8 max-[768px]:max-w-full max-[768px]:mt-8 max-[768px]:text-center">
-            <h3 className="">
-              {getPersonData(selectedPerson).name}
-            </h3>
-            <p className="text-[#fca286] max-[768px]:text-sm">
-              {getPersonData(selectedPerson).title}
-            </p>
+          {/* Main image */}
+          {!isMobile && (
+            <div className="relative flex flex-col items-center mx-12">
+              <h2 className="text-4xl text-center mb-6 uppercase">
+                {getPersonData(selectedPerson).topTitle}
+              </h2>
+              <div className="relative flex justify-center items-center">
+                <img
+                  src={getPersonData(selectedPerson).image}
+                  alt={getPersonData(selectedPerson).name}
+                  className="w-[300px] h-[400px] relative top-4"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Text section */}
+          <div className={`max-w-md space-y-4 ${isMobile ? "" : "mt-20"}`}>
+            {isMobile && (
+              <h2 className="text-2xl text-center uppercase">
+                {getPersonData(selectedPerson).topTitle}
+              </h2>
+            )}
+            <h3>{getPersonData(selectedPerson).name}</h3>
+            <p className="text-[#fca286]">{getPersonData(selectedPerson).title}</p>
             <p
-              className="text-[15px] leading-relaxed text-gray-700 max-[768px]:text-[14px]"
+              className="text-[15px] leading-relaxed text-gray-700"
               dangerouslySetInnerHTML={{
                 __html: getPersonData(selectedPerson).description,
               }}
             ></p>
-            {/* <button className="mt-6 py-3 px-8 border border-[#d16f52] text-[#d16f52] rounded-full font-semibold hover:bg-[#d16f52] hover:text-white transition-colors">
-              KNOW MORE
-            </button> */}
           </div>
         </div>
       </div>
@@ -411,7 +497,7 @@ const AwardsSection = () => {
         </div>
 
         {/* Profile Images */}
-        <div className="grid grid-cols-4 max-[1024px]:grid-cols-2 max-[768px]:grid-cols-1 gap-8">
+        <div className="grid grid-cols-4 max-[1024px]:grid-cols-2 max-[768px]:grid-cols-2 max-[768px]:gap-2 gap-8">
           {expertsData.map((expert, index) => (
             <div key={index} className="flex flex-col items-center">
               {/* Arched Background with Portrait */}
@@ -433,16 +519,14 @@ const AwardsSection = () => {
 
               {/* Name and Role Label */}
               <div className="relative w-40">
-                <div className="bg-[#353434] w-full text-white py-4 rounded-full text-center absolute bottom-8 left-20">
+                <div className="bg-[#353434] w-full text-white py-4 rounded-full text-center absolute bottom-8 left-20 max-[768px]:w-32 max-[768px]:left-10">
                   <p
-                    className="text-[12px] text-white font-semibold"
-                    style={{ fontFamily: "Montserrat, sans-serif" }}
+                    className="text-[12px] text-white font-semibold max-[768px]:text-[10px]"
                   >
                     {expert.name}
                   </p>
                   <p
-                    className="text-[10px] text-white opacity-90"
-                    style={{ fontFamily: "Montserrat, sans-serif" }}
+                    className="text-[10px] text-white opacity-90 max-[768px]:text-[8px]"
                   >
                     ({expert.role})
                   </p>
