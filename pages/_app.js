@@ -1,4 +1,3 @@
-// pages/_app.js (or in your root client layout)
 'use client';
 
 import { useEffect, useRef } from 'react';
@@ -24,10 +23,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <MasterLayout>
-      {/* 
-        Locomotive looks for either data-scroll-container 
-        or the raw DOM node you passed in `el`.
-      */}
       <div data-scroll-container ref={scrollRef}>
         <Component {...pageProps} />
       </div>
