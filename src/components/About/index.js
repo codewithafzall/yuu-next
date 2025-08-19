@@ -9,30 +9,41 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HeroCarousel = () => {
   return (
-    <section className="relative pb-20 w-full flex items-center justify-center pt-32 bg-[#fef9f3] max-[768px]:flex-col max-[768px]:pt-20">
-      {/* Text Content */}
-      <div className="w-2/6 flex items-center max-[768px]:w-full max-[768px]:justify-center max-[768px]:mb-6">
-        <div className="mx-auto max-[768px]:text-center">
-          <h1 className="mb-4 text-start max-[768px]:text-center">
-            Discover the
-            <br />
-            World of YUU
-          </h1>
-          <p className="text-[#7c6565] mb-4">
-            Welcome to YUU by Nahar, a place
-            <br /> where calm, culture, and community
-            <br />
-            come together. A new way to live,
-            <br /> right in the heart of Chandivali
-          </p>
-        </div>
-      </div>
+    // <section className="relative pb-20 w-full flex items-center justify-center pt-32 bg-[#fef9f3] max-[768px]:flex-col max-[768px]:pt-20">
+    //   {/* Text Content */}
+    //   <div className="w-2/6 flex items-center max-[768px]:w-full max-[768px]:justify-center max-[768px]:mb-6">
+    //     <div className="mx-auto max-[768px]:text-center">
+    //       <h1 className="mb-4 text-start max-[768px]:text-center">
+    //         Discover the
+    //         <br />
+    //         World of YUU
+    //       </h1>
+    //       <p className="text-[#7c6565] mb-4">
+    //         Welcome to YUU by Nahar, a place
+    //         <br /> where calm, culture, and community
+    //         <br />
+    //         come together. A new way to live,
+    //         <br /> right in the heart of Chandivali
+    //       </p>
+    //     </div>
+    //   </div>
+    //   <img
+    //     src="/images/about-bg.png"
+    //     alt="Lifestyle Illustration"
+    //     className="w-4/6 max-[768px]:w-full"
+    //   />
+    // </section>
+    <div>
       <img
-        src="/images/about-bg.png"
-        alt="Lifestyle Illustration"
-        className="w-4/6 max-[768px]:w-full"
+        className="w-full h-screen hidden desktop:block"
+        src="/images/about-banner.png"
       />
-    </section>
+      <img
+        className="w-full h-screen block desktop:hidden"
+        src="/images/about-mobile-banner.png"
+      />
+    </div>
+
   );
 };
 
@@ -634,7 +645,7 @@ const AwardsSection = () => {
           {/* Left Column */}
           <div className="w-1/2 max-[1024px]:w-full">
             {/* Title Block */}
-            <div className="inline-block border border-[#cd8467] relative right-[20%] rounded-r-full w-96 px-10 py-3 mb-6">
+            <div className="inline-block drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] relative right-[20%] rounded-r-full w-96 px-10 py-3 mb-6">
               <h2
                 className="text-black text-center"
               >
@@ -644,7 +655,7 @@ const AwardsSection = () => {
 
             {/* Description */}
             <p
-              className=""
+              className="mt-2"
             >
               Great architecture is a collaboration of vision, expertise, and
               craftsmanship. YUU by Nahar is brought to life by some of the

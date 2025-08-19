@@ -14,10 +14,10 @@ const HeroCarousel = () => {
       <div className="absolute inset-0 bg-black bg-opacity-20 z-10" />
 
       {/* Main content container */}
-      <div className="relative z-20 max-[768px]:px-6 w-full px-20 mt-[200px]">
+      <div className="relative z-20 max-[768px]:px-6 w-full px-20 mt-[200px] desktop:mt-[400px]">
         {/* Main title */}
         <h1
-          className="text-white  mb-4 max-[768px]:text-3xl"
+          className="text-white text-center tablet:text-start  mb-4 max-[768px]:text-3xl"
           style={{ letterSpacing: "3px" }}
         >
           YUU BELONG HERE
@@ -25,7 +25,7 @@ const HeroCarousel = () => {
 
         {/* Subtitle */}
         <p
-          className="text-white mb-8 max-[768px]:text-base"
+          className="text-white text-center tablet:text-start mb-8 max-[768px]:text-base"
           style={{ letterSpacing: "1px" }}
         >
           Right Where Calm Meets Connection
@@ -105,10 +105,11 @@ const LocationAbout = () => (
 );
 
 const DistanceMap = () => (
-  <section className="relative w-[100%] h-[100vh] max-[768px]:h-[60vh]">
+  <>
+  <section className="relative hidden desktop:block w-[100%] h-[835px] max-[768px]:h-[60vh]">
     {/* Background Image */}
     <div
-      className="  w-full h-[100vh]"
+      className="  w-full h-[835px]"
       style={{
         backgroundImage: `url(/images/distance-about.png)`,
         backgroundSize: "cover",
@@ -123,7 +124,7 @@ const DistanceMap = () => (
 
     {/* Walking Distance Amenities - Left Side */}
     <div className="absolute left-0 bottom-0  max-[768px]:left-0 max-[768px]:bottom-0 z-20">
-      <div className="py-14 ps-10 pr-20 max-[768px]:py-10 bg-[#fcf9f2] rounded-tr-[50%]">
+      <div className="py-14 ps-10 pr-20 max-[768px]:py-10 bg-[#fcf9f2] rounded-tr-[30%]">
         <h3 className="text-[25px] max-[768px]:text-base mb-5">
           WALKING DISTANCE FROM
         </h3>
@@ -153,12 +154,16 @@ const DistanceMap = () => (
       </div>
     </div>
   </section>
+  <div className="w-full block desktop:hidden">
+  <img src="/images/distance-mobile.png"/>
+  </div>
+  </>
 );
 
 const ConnectYou = () => {
   return (
     <>
-      <section className="relative w-full bg-[#eee9d6] flex flex-row max-[768px]:flex-col items-center py-4 px-4 max-[768px]:px-6  max-[768px]:pt-10 pb-10 overflow-visible mt-0">
+      <section className="relative w-full bg-[#eee9d6] flex flex-row max-[768px]:flex-col items-center py-4 desktop:py-0 px-4 max-[768px]:px-6  max-[768px]:pt-10 pb-10 desktop:pb-0 overflow-visible mt-0">
         {/* Text Content */}
         <div className="w-1/2 max-[768px]:w-full z-20 flex  justify-center">
           <div className="max-w-xl">
@@ -195,11 +200,16 @@ const ConnectYou = () => {
 const YuuBelongs = () => {
   return (
     <>
-      <section className="relative w-full h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full">
         <img
-          src="/images/location-2.png"
+          src="/images/bridge.png"
           alt="location-image"
-          className="relative w-full h-[70vh] md:h-[80vh]"
+          className="relative w-full hidden desktop:block"
+        />
+        <img
+          src="/images/bridge-mobile.png"
+          alt="location-image"
+          className="relative w-full block desktop:hidden"
         />
       </section>
     </>

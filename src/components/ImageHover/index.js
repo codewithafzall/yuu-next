@@ -43,7 +43,7 @@ export default function ImageHoverSection() {
                     Explore the stunning details <br /> and features of YUU by Nahar
                 </p>
 
-                <button className="border-2 ml-auto flex border-[#513335] rounded-full px-4 py-2 uppercase text-sm">
+                <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-2 uppercase text-sm">
                     Know More
                 </button>
             </div>

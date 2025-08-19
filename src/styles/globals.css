@@ -18,7 +18,7 @@
 }
 
 body{
-  background-color: #fff5e9;
+  background-color: #f7f4ec;
 }
 .enquiry-form{
  font-family: "Heading-Font", sans-serif;
@@ -48,4 +48,9 @@ p{
 }
 small{
     font-size: 16px;
+}
+.footer{
+  background: url(/images/footer-bg.png);
+  background-size: cover;
+  background-position: center;
 }

@@ -51,7 +51,7 @@ const CardCarousel = () => {
   return (
     <div className="w-full py-20 bg-[#fef9f3]">
       {/* Heading stays outside carousel */}
-      <div className="border-2 border-[#d06d52] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
+      <div className="drop-shadow-2xl shadow-xl shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
         <h1 className="mr-10 desktop:mr-16">LATEST</h1>
       </div>
 

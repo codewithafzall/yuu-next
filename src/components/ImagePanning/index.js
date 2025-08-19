@@ -13,7 +13,7 @@ function ZoomHoverImage({ src, alt = "", className = "" }) {
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
-    const originX = (mouseX / rect.width) * 150;
+    const originX = (mouseX / rect.width) * 100;
     const originY = (mouseY / rect.height) * 100;
 
     img.style.transformOrigin = `${originX}% ${originY}%`;

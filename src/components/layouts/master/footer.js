@@ -4,7 +4,7 @@ import ScrollToTop from "react-scroll-to-top";
 const Footer = () => {
   return (
     <>
-     <footer className="bg-[#E2D2B7] px-6 py-12 overflow-hidden relative bottom-1 md:px-12 lg:px-24 font-['Poppins',sans-serif]">
+     <footer className="footer px-6 py-12 overflow-hidden relative bottom-1 md:px-12 lg:px-24 font-['Poppins',sans-serif]">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 tablet:grid-cols-4 desktop:grid-cols-4">
           {/* Nahar Group Section */}

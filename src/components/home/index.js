@@ -75,7 +75,7 @@ const index = () => {
 
       {/* Second Section of Home Page */}
 
-      <div className="relative pb-10 desktop:pb-0 w-full bg-[#fef9f3]">
+      <div className="relative pb-10 desktop:pb-0 w-full bg-[#f7f4ed]">
         <Tablet />
         <div className="flex flex-col desktop:flex-row items-center w-full gap-x-16">
           <img
@@ -101,7 +101,7 @@ const index = () => {
               class amenities, it’s destined to be the centerpiece of
               conversation.
             </p>
-            <button className="border-2 ml-auto flex border-[#513335] rounded-full px-4 py-1 uppercase text-sm">
+            <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
               Know More
             </button>
           </div>
@@ -115,7 +115,7 @@ const index = () => {
               class amenities, it’s destined to be the centerpiece of
               conversation.
             </small>
-            <button className="border-2 ml-auto flex border-[#513335] rounded-full px-4 py-1 uppercase text-sm">
+            <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
               Know More
             </button>
           </div>
@@ -123,8 +123,8 @@ const index = () => {
       </div>
 
       {/* Third Section of Home Page */}
-      <div className="flex flex-col desktop:flex-row pb-10 desktop:pt-10 relative px-4 desktop:px-28 justify-center items-center">
-        <div className="absolute top-0 left-0 border-2 border-[#d06d52] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
+      <div className="flex flex-col bg-[#f7f4ed] desktop:flex-row pb-10 desktop:pt-20 relative px-4 desktop:px-28 justify-center items-center">
+        <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
           <h1 className="text-black mr-16">
             YUU
             <br /> NOVA
@@ -158,7 +158,7 @@ const index = () => {
             Designed with the contemporary lifestyle in mind, the apartments in
             YUU Nova are an excellent example of modern comfort.
           </p>
-          <button className="border-2 ml-auto flex border-[#513335] rounded-full px-4 py-1 uppercase text-sm">
+          <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
             Know More
           </button>
         </div>
@@ -169,7 +169,7 @@ const index = () => {
       <ImageHoverSection />
 
       <img
-        className="w-full desktop:h-screen object-fill"
+        className="w-full object-fill"
         src="/images/Yuu-luna.png"
       />
 
@@ -182,7 +182,8 @@ const index = () => {
 
       {/* Sixth Section of Homepage */}
 
-      <div className="flex flex-col-reverse px-2 gap-y-4 desktop:px-0 desktop:flex-row items-center pt-6 desktop:pt-24">
+      <div className="relative bg-[#fdf9f1] overflow-hidden flex flex-col-reverse px-2 gap-y-4 desktop:px-0 desktop:flex-row items-center pt-6 desktop:pt-24">
+        <img src="/images/Design-1.png" className="hidden desktop:block absolute left-[20%] top-[10%] w-1/2"/>
         <img className="w-full desktop:w-1/2" src="/images/Above-footer.png" />
         <div className="flex flex-col w-full desktop:w-1/2 text-center">
           <h1 className="text-center text-[40px] desktop:text-[60px]">
@@ -196,10 +197,10 @@ const index = () => {
             of urban living, retail, and lifestyle.
           </small>
           <div className="flex mx-auto gap-x-4">
-            <button className="border-2 flex border-[#513335] rounded-full px-4 py-2 uppercase text-sm">
+            <button className="drop-shadow-xl shadow-sm shadow-white bg-[#f7f4ec] flex rounded-full px-4 py-2 uppercase text-sm">
               Send Enquiry
             </button>
-            <button className="border-2 flex border-[#513335] rounded-full px-4 py-2 uppercase text-sm">
+            <button className="drop-shadow-xl shadow-sm shadow-white bg-[#f7f4ed] flex rounded-full px-4 py-2 uppercase text-sm">
               Book a visit
             </button>
           </div>

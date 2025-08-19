@@ -475,7 +475,7 @@ return (
               </small>
             </div>
 
-            <img className="w-1/2 desktop:block hidden" src="/images/Form-Img.png" alt="Form visual" />
+            <img className="w-1/2 desktop:block hidden" src="/images/Enquiry-img.png" alt="Form visual" />
           </div>
         </div>
       </div>
