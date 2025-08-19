@@ -14,7 +14,7 @@ const HeroCarousel = () => {
       <div className="absolute inset-0 bg-black bg-opacity-20 z-10" />
 
       {/* Main content container */}
-      <div className="relative z-20 text-center px-4 max-[768px]:px-6 w-full max-w-6xl mt-[200px]">
+      <div className="relative z-20 max-[768px]:px-6 w-full px-20 mt-[200px]">
         {/* Main title */}
         <h1
           className="text-white  mb-4 max-[768px]:text-3xl"
@@ -32,7 +32,7 @@ const HeroCarousel = () => {
         </p>
 
         {/* Description box */}
-        <div className="max-w-2xl mt-[150px] mx-auto">
+        {/* <div className="max-w-2xl mt-[150px] mx-auto">
           <div className="bg-transparent text-center border border-white border-opacity-30 rounded-full p-6 md:p-8 max-[768px]:p-4">
             <p className="text-white leading-relaxed max-[768px]:text-[10px]">
               At YUU, location goes beyond coordinates. It's that quiet sense of
@@ -41,7 +41,7 @@ const HeroCarousel = () => {
               you breathe.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -122,30 +122,30 @@ const DistanceMap = () => (
     {/* Proximity Markers */}
 
     {/* Walking Distance Amenities - Left Side */}
-    <div className="absolute left-8 bottom-20 max-[768px]:left-4 max-[768px]:bottom-16 z-20">
-      <div className="p-4 max-[768px]:p-3 shadow-lg">
-        <h3 className="text-[#fff] text-[25px] max-[768px]:text-base mb-3">
+    <div className="absolute left-0 bottom-0  max-[768px]:left-0 max-[768px]:bottom-0 z-20">
+      <div className="py-14 ps-10 pr-20 max-[768px]:py-10 bg-[#fcf9f2] rounded-tr-[50%]">
+        <h3 className="text-[25px] max-[768px]:text-base mb-5">
           WALKING DISTANCE FROM
         </h3>
         <div className="space-y-2">
           <div
-            className="p-3 text-white rounded-full bg-transparent border border-white mt-5"
+            className="p-3 bg-[#fcf9f2] shadow-xl rounded-full bg-transparent border border-white mt-5"
             style={{ marginBottom: "30px" }}
           >
-            <p className="text-[#fff] text-center text-sm max-[768px]:text-xs font-semibold">
+            <p className="text-center text-sm max-[768px]:text-xs font-semibold">
               Nahar International<br/> School
             </p>
           </div>
           <div
-            className="p-3 text-white rounded-full bg-transparent border border-white"
+            className="p-3 bg-[#fcf9f2] shadow-xl rounded-full bg-transparent border border-white"
             style={{ marginBottom: "30px" }}
           >
-            <p className="text-[#fff] text-center text-sm max-[768px]:text-xs font-semibold">
+            <p className="text-center text-sm max-[768px]:text-xs font-semibold">
               Nahar Medical<br/> Centre
             </p>
           </div>
-          <div className="p-3 text-white rounded-full bg-transparent border border-white">
-            <p className="text-[#fff] text-center text-sm max-[768px]:text-xs font-semibold">
+          <div className="p-3 bg-[#fcf9f2] shadow-xl rounded-full bg-transparent border border-white">
+            <p className="text-center text-sm max-[768px]:text-xs font-semibold">
               Nahar Business<br/> Centre
             </p>
           </div>
