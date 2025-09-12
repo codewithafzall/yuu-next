@@ -43,7 +43,6 @@ const HeroCarousel = () => {
         src="/images/about-mobile-banner.png"
       />
     </div>
-
   );
 };
 
@@ -159,7 +158,7 @@ const AboutSection = () => {
 
   return (
     <section className="about-section relative w-full bg-[#fdf7f0] flex flex-col items-center justify-center py-24 max-[768px]:py-10 px-4 overflow-visible">
-      <img className="about-title" src="/images/Asset 29.png"/>
+      <img className="about-title" src="/images/Asset 29.png" />
       {/* Main Content Row */}
       <div className="w-full flex flex-row max-[900px]:flex-col items-center justify-center gap-8 relative">
         {/* Left Text Block */}
@@ -306,7 +305,6 @@ const FloorPlanIntro = () => {
 const FloorPlanCulinary = () => {
   return (
     <section className="w-full bg-[#eee9d6] py-16 px-6">
-
       {/* Flavours part */}
       <div className="max-w-7xl mx-auto grid grid-cols-2 gap-12 items-center max-[768px]:grid-cols-1">
         {/* Left large image */}
@@ -382,22 +380,23 @@ const FloorPlanCulinary = () => {
           <p className="uppercase font-bold mb-4">HIGHLIGHTS</p>
           <div className="flex flex-wrap gap-4">
             <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-            Street-facing retail frontage
+              Street-facing retail frontage
               <br /> with glass facades
             </span>
             <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-            Double-height
+              Double-height
               <br /> showrooms available
             </span>
             <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-            Footfall from in-house residents
+              Footfall from in-house residents
               <br /> and Chandivali catchment
             </span>
             <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-            Ideal for lifestyle stores, salons,<br /> wellness & concept brands
+              Ideal for lifestyle stores, salons,
+              <br /> wellness & concept brands
             </span>
             <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-            Smart-sized units for
+              Smart-sized units for
               <br /> curated brand experiences
             </span>
           </div>
@@ -418,7 +417,6 @@ const FloorPlanCulinary = () => {
 const VisionarySection = () => {
   const [selectedPerson, setSelectedPerson] = useState("ajay");
 
-
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
@@ -436,15 +434,15 @@ const VisionarySection = () => {
       image: "/images/Asset7.png",
     },
     awards: {
-      topTitle:"AWARDS & RECOGNITION",
-      name: "AWARDS & RECOGNITION",
-      title: "Team Excellence",
+      topTitle: "Ar.Shitesh Agarwal",
+      name: "Ar.Shitesh Agarwal",
+      title: "(Sankalp Architects)",
       description:
         "The Nahar Group's commitment to excellence has been recognized time and again with prestigious awards and media features that celebrate innovation, sustainability, and architectural brilliance.",
-      image: "/images/Asset5.png",
+      image: "/images/Asset27.png",
     },
     legacy: {
-      topTitle:"THE LEGACY OF NAHAR AMRIT SHAKTI",
+      topTitle: "THE LEGACY OF NAHAR AMRIT SHAKTI",
       name: "THE LEGACY OF NAHAR AMRIT SHAKTI",
       title: "A landmark township loped by Nahar Group",
       description:
@@ -509,45 +507,45 @@ const VisionarySection = () => {
           {/* Mobile: Slider */}
           {isMobile ? (
             <div className="w-full mb-6">
-            <Slider ref={sliderRef} {...sliderSettings}>
-              {keys.map((key, index) => {
-                const person = getPersonData(key);
-                const isSelected = key === selectedPerson; // <-- defined here
-                return (
-                  <div
-                    key={key}
-                    onClick={() => handlePersonSelect(key)}
-                    className="cursor-pointer flex flex-col items-center px-2"
-                  >
-                    <h3 className="text-xs mb-2 text-gray-500 text-center uppercase tracking-wide w-full leading-tight">
-                      {person.name}
-                    </h3>
-                    <img
-                      src={person.image}
-                      alt={person.name}
-                      className={`w-36 h-48 object-cover rounded-t-full mx-auto transition-all duration-300 ${
-                        isSelected ? "" : "grayscale"
-                      }`}
-                    />
-                  </div>
-                );
-              })}
-            </Slider>
+              <Slider ref={sliderRef} {...sliderSettings}>
+                {keys.map((key, index) => {
+                  const person = getPersonData(key);
+                  const isSelected = key === selectedPerson; // <-- defined here
+                  return (
+                    <div
+                      key={key}
+                      onClick={() => handlePersonSelect(key)}
+                      className="cursor-pointer flex flex-col items-center px-2"
+                    >
+                      <h3 className="text-xs mb-2 text-gray-500 text-center uppercase tracking-wide w-full leading-tight">
+                        {person.name}
+                      </h3>
+                      <img
+                        src={person.image}
+                        alt={person.name}
+                        className={`w-36 h-48 object-cover rounded-t-full mx-auto transition-all duration-300 ${
+                          isSelected ? "" : "grayscale"
+                        }`}
+                      />
+                    </div>
+                  );
+                })}
+              </Slider>
 
-            {/* Scroll indicator (small moving dot) */}
-            <div className="mt-3 flex justify-center">
-              <div className="relative w-40 h-2 bg-[#e2d2b7] rounded-full">
-                <div
-                  className="absolute top-1/2 bg-[#c46c4a] w-3 h-3 rounded-full"
-                  style={{
-                    left: `${progressPercent}%`,
-                    transform: "translate(-50%, -50%)",
-                    transition: "left 0.28s ease",
-                  }}
-                />
+              {/* Scroll indicator (small moving dot) */}
+              <div className="mt-3 flex justify-center">
+                <div className="relative w-40 h-2 bg-[#e2d2b7] rounded-full">
+                  <div
+                    className="absolute top-1/2 bg-[#c46c4a] w-3 h-3 rounded-full"
+                    style={{
+                      left: `${progressPercent}%`,
+                      transform: "translate(-50%, -50%)",
+                      transition: "left 0.28s ease",
+                    }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
           ) : (
             // Desktop: original left-side images
             <div className="flex flex-row justify-start gap-12 mt-[18%] md:mt-0 md:gap-6">
@@ -599,7 +597,9 @@ const VisionarySection = () => {
               </h2>
             )}
             <h3>{getPersonData(selectedPerson).name}</h3>
-            <p className="text-[#fca286]">{getPersonData(selectedPerson).title}</p>
+            <p className="text-[#fca286]">
+              {getPersonData(selectedPerson).title}
+            </p>
             <p
               className="text-[15px] leading-relaxed text-gray-700"
               dangerouslySetInnerHTML={{
@@ -643,51 +643,36 @@ const AwardsSection = () => {
         {/* Main Content */}
         <div className="flex flex-row max-[1024px]:flex-col gap-12 mb-16">
           {/* Left Column */}
-          <div className="w-1/2 max-[1024px]:w-full">
+          <div className="w-2/3 max-[1024px]:w-full">
             {/* Title Block */}
             <div className="inline-block drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] relative right-[20%] rounded-r-full w-96 px-10 py-3 mb-6">
-              <h2
-                className="text-black text-center"
-              >
-                THE EXPERTS<br/> BEHIND YUU
-              </h2>
+              <h2 className="text-black text-center">AWARDS & RECOGNITION</h2>
             </div>
 
             {/* Description */}
-            <p
-              className="mt-2"
-            >
-              Great architecture is a collaboration of vision, expertise, and
-              craftsmanship. YUU by Nahar is brought to life by some of the
-              finest minds in the industry, ensuring excellence in design,
-              execution, and innovation.
+            <p className="mt-2">
+              The Nahar Group's commitment to excellence has been recognized
+              time and again with prestigious awards and media features that
+              celebrate innovation, sustainability, and architectural
+              brilliance.
             </p>
           </div>
 
           {/* Right Column */}
-          <div className="w-1/2 max-[1024px]:w-full max-[1024px]:mt-8">
-            <div className="text-center max-[1024px]:text-left">
-              <h3
-                className="mt-20 max-[768px]:mt-0"
-              >
-                TOGETHER, THEY SHAPE YUU
-                <br /> INTO A SPACE THAT IS MODERN,
-                <br /> EFFICIENT, AND BUILT TO INSPIRE.
-              </h3>
+          <div className="w-1/3 max-[1024px]:w-full max-[1024px]:mt-8">
+            <div className="max-[1024px]:text-left">
+              <img src="/images/Asset5.png" alt="Awards" className="w-80"/>
             </div>
           </div>
         </div>
 
         {/* Profile Images */}
-        <div className="grid grid-cols-4 max-[1024px]:grid-cols-2 max-[768px]:grid-cols-2 max-[768px]:gap-2 gap-8">
+        {/* <div className="grid grid-cols-4 max-[1024px]:grid-cols-2 max-[768px]:grid-cols-2 max-[768px]:gap-2 gap-8">
           {expertsData.map((expert, index) => (
             <div key={index} className="flex flex-col items-center">
-              {/* Arched Background with Portrait */}
               <div className="relative mb-4">
-                {/* Arched Background */}
                 <div className="w-32 h-48"></div>
 
-                {/* Circular Portrait */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-32 h-48">
                     <img
@@ -699,24 +684,19 @@ const AwardsSection = () => {
                 </div>
               </div>
 
-              {/* Name and Role Label */}
               <div className="relative w-40">
                 <div className="bg-[#353434] w-full text-white py-4 rounded-full text-center absolute bottom-8 left-20 max-[768px]:w-32 max-[768px]:left-10">
-                  <p
-                    className="text-[12px] text-white font-semibold max-[768px]:text-[10px]"
-                  >
+                  <p className="text-[12px] text-white font-semibold max-[768px]:text-[10px]">
                     {expert.name}
                   </p>
-                  <p
-                    className="text-[10px] text-white opacity-90 max-[768px]:text-[8px]"
-                  >
+                  <p className="text-[10px] text-white opacity-90 max-[768px]:text-[8px]">
                     ({expert.role})
                   </p>
                 </div>
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );
