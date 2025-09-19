@@ -5,7 +5,7 @@ require("firebase/storage")
 
 const config = {
 
-    apiKey: "AIzaSyBCBBulMGmii7ObAPmPF0khTfWe4hl9k3I",
+  apiKey: "AIzaSyBCBBulMGmii7ObAPmPF0khTfWe4hl9k3I",
   authDomain: "az-sys-dashboard.firebaseapp.com",
   databaseURL: "https://az-sys-dashboard-default-rtdb.firebaseio.com",
   projectId: "az-sys-dashboard",

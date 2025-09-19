@@ -53,7 +53,7 @@ const index = () => {
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
-          src="/images/Banner-video.mp4"
+          src="/images/desktop-banner.mp4"
           autoPlay
           loop
           muted
@@ -79,24 +79,25 @@ const index = () => {
         <Tablet />
         <div className="flex flex-col desktop:flex-row items-center w-full gap-x-16">
           <img
-            className="w-full desktop:w-[60%] pr-3 desktop:pr-0"
+            className="w-full desktop:w-[50%] pr-3 desktop:pr-0"
             src="/images/Home-1.png"
           />
-          <div className="w-full px-4 pt-4 desktop:pt-0 desktop:px-0 desktop:w-1/4">
-            <h3 className="mb-4 leading-10">
+          <div className="w-full px-4 pt-4 desktop:pt-8 desktop:px-20 desktop:w-1/2">
+            <h3 className="mb-4 desktop:mb-8 uppercase leading-10">
               Welcome to YUU by Nahar Where Urban Living Meets Inspired
               Lifestyle
             </h3>
             <small className="">
-              A vibrant, integrated development in the heart of Chandivali,
-              combining fully furnished studio apartments, organised retail,
-              culinary delights, and dynamic community spaces.
+              YUU by Nahar project is spanning 2 lacs sqft. of
+              built up area of organised retail, restaurants,
+              studio apartments and many more.
             </small>
           </div>
         </div>
+
         <div className="flex flex-col desktop:flex-row items-center w-full gap-x-16">
           <div className="hidden desktop:block">
-            <p className="text-end flex w-2/6 ml-auto mb-6">
+            <p className="text-end flex w-[55%] ml-auto mb-10">
               An integration of premium residences, high-street retail and world
               class amenities, it’s destined to be the centerpiece of
               conversation.
@@ -106,7 +107,7 @@ const index = () => {
             </button>
           </div>
           <img
-            className="w-full desktop:w-[60%] pl-3 mt-4 desktop:mt-0 desktop:pl-0"
+            className="w-full desktop:w-[50%] pl-3 mt-4 desktop:mt-0 desktop:pl-0"
             src="/images/Home-2.png"
           />
           <div className="block desktop:hidden">
@@ -120,17 +121,41 @@ const index = () => {
             </button>
           </div>
         </div>
+
+        <div className="flex flex-col desktop:flex-row items-center w-full gap-x-16">
+          <img
+            className="w-full desktop:w-[50%] pr-3 desktop:pr-0"
+            src="/images/Home-1.png"
+          />
+          <div className="w-full px-4 pt-4 desktop:pt-8 desktop:px-20 desktop:w-1/2">
+            <h3 className="mb-4 desktop:mb-8 uppercase leading-10">
+              THE LEGACY OF
+              NAHAR’S GROUP
+            </h3>
+            <small className="">
+              From residential townships and
+              commercial spaces to healthcare,
+              education, and philanthropy. Nahar
+              Group has shaped the skyline and
+              soul of Mumbai for over five decades.
+            </small>
+            <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] mt-10 mr-auto flex rounded-full px-4 py-1 uppercase text-sm">
+              Know More
+            </button>
+          </div>
+        </div>
+
       </div>
 
       {/* Third Section of Home Page */}
-      <div className="flex flex-col bg-[#f7f4ed] desktop:flex-row pb-10 desktop:pt-20 relative px-4 desktop:px-28 justify-center items-center">
+      <div className="flex flex-col bg-[#f7f4ed] desktop:flex-row pb-10 desktop:pt-20 relative px-4 desktop:px-16 justify-center items-center">
         <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
           <h1 className="text-black mr-16">
             YUU
             <br /> NOVA
           </h1>
         </div>
-        <div className="w-full mt-40 mb-7 desktop:mt-40 desktop:w-1/4 desktop:mb-16 space-y-6 desktop:px-6">
+        <div className="w-full mt-40 mb-7 desktop:mt-48 desktop:w-1/4 desktop:mb-16 space-y-6 desktop:px-6">
           <h2>
             Your Dream <br /> Space Awaits
           </h2>
@@ -149,7 +174,7 @@ const index = () => {
           />
         </div>
 
-        <div className="w-full desktop:w-1/4 space-y-6 desktop:space-y-12 mt-5 desktop:mt-52 px-3">
+        <div className="w-full desktop:w-1/4 space-y-6 desktop:space-y-12 mt-5 desktop:mt-52 px-3 desktop:px-0 desktop:pl-8">
           <p>
             At YUU Nova, smart layouts, modern amenities, and thoughtful details
             are a prerequisite.
@@ -168,22 +193,64 @@ const index = () => {
 
       <ImageHoverSection />
 
-      <img
-        className="w-full object-fill"
-        src="/images/Yuu-luna.png"
-      />
+      {/* Fifth Section of Home Page */}
+      <div className="flex flex-col bg-[#fcf8f0] desktop:flex-row pb-10 desktop:pb-16 desktop:pt-20 relative px-4 desktop:px-16 justify-center items-center">
+        <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
+          <h1 className="text-black mr-16">
+            YUU
+            <br /> LUNA
+          </h1>
+        </div>
+        <div className="w-full mt-40 mb-7 desktop:mt-48 desktop:w-1/4 desktop:mb-16 space-y-6 desktop:px-6">
+          <h2>
+            A GATEWAY TO <br />
+            THE FUTURE
+          </h2>
+          <p className="text-orange-950">
+            A shopping destination
+            curated for YUU where luxury,
+            style, and convenience meet.
+            Let’s bring brands that align
+            with your desires.
+          </p>
+        </div>
 
-      {/* Fifth Section of Homepage */}
+        <div className="w-full rounded-t-full h-[400px] desktop:w-[45%] desktop:h-[600px] relative">
+          <ZoomHoverImage
+            src="/images/Yuu-Nova.webp"
+            alt="Yuu Nova"
+            className="w-full h-full rounded-t-full"
+          />
+        </div>
 
-      <CardCarousel />
+        <div className="w-full desktop:w-1/4 space-y-6 desktop:space-y-12 mt-5 desktop:mt-52 px-3 desktop:px-0 desktop:pl-8">
+          <p>
+            Located in a high-footfall,
+            high-visibility pocket of
+            Chandivali, these spaces are
+            ideal for premium retail.
+          </p>
+          <p className="text-end">
+            From designer apparel and gold
+            jewellery to lifestyle and curated
+            concept stores. A prime
+            destination where your brand
+            can truly stand out.
+          </p>
+          <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
+            Know More
+          </button>
+        </div>
+      </div>
+
       {/* Testimonials */}
 
       <Testimonials />
 
       {/* Sixth Section of Homepage */}
 
-      <div className="relative bg-[#fdf9f1] overflow-hidden flex flex-col-reverse px-2 gap-y-4 desktop:px-0 desktop:flex-row items-center pt-6 desktop:pt-24">
-        <img src="/images/Design-1.png" className="hidden desktop:block absolute left-[20%] top-[10%] w-1/2"/>
+      <div className="relative bg-[#f7f4ec] overflow-hidden flex flex-col-reverse px-2 gap-y-4 desktop:px-0 desktop:flex-row items-center pt-6">
+        <img src="/images/Design-1.png" className="hidden desktop:block absolute left-[20%] top-[10%] w-1/2" />
         <img className="w-full desktop:w-1/2" src="/images/Above-footer.png" />
         <div className="flex flex-col w-full desktop:w-1/2 text-center">
           <h1 className="text-center text-[40px] desktop:text-[60px]">

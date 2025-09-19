@@ -27,7 +27,7 @@ h1,h2,h3 {
   font-family: "Heading-Font", sans-serif;
   color:#d06d52;
 }
-p, ul, small, button {
+p, ul, small, button, a {
   font-family: "Para-Font", sans-serif;
   color: #513335;
 }
