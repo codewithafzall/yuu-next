@@ -3,28 +3,6 @@ const Footer = () => {
   return (
     <>
       <footer className="footer pt-12 overflow-hidden relative font-['Poppins',sans-serif]">
-        {/* Top bar: title + email subscribe */}
-        <div className="px-8 max-[768px]:px-5 flex items-center justify-between max-[768px]:flex-col max-[768px]:items-start gap-4">
-          <h3 className="uppercase">
-            Stay Connected
-          </h3>
-          <form className="w-full max-w-[500px] max-[768px]:max-w-full">
-            {/* <div className="relative"> */}
-              <input
-                type="email"
-                placeholder="Email"
-                className=" bg-[#e2d2b7] placeholder:text-black text-black rounded-full pl-6 pr-32 py-3 shadow-sm shadow-white"
-              />
-              
-            {/* </div> */}
-            <button
-                type="submit"
-                className="relative right-20 bg-[#DDCEB6] hover:bg-[#965d34] text-white rounded-full px-6 py-3 shadow-sm shadow-white max-[768px]:left-[70%] max-[768px]:bottom-[50px] "
-              >
-                Submit
-              </button>
-          </form>
-        </div>
 
         <div className="mx-auto mt-6 flex max-[768px]:flex-col">
           {/* Left card */}

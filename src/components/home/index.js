@@ -5,12 +5,14 @@ import Testimonials from "../Testimonials";
 import ImageHoverSection from "../ImageHover";
 import CardCarousel from "../LatestCarousel";
 import ZoomHoverImage from "../ImagePanning";
+import { useRouter } from "next/router";
 
 const index = () => {
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
   const containerRef = useRef(null);
   const imageRef = useRef(null);
+  const router = useRouter();
 
   const onMove = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
@@ -52,8 +54,17 @@ const index = () => {
       <div className="relative w-full h-screen">
         <video
           ref={videoRef}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover hidden desktop:block"
           src="/images/desktop-banner.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+        <video
+          ref={videoRef}
+          className="w-full h-full block desktop:hidden object-cover"
+          src="/images/mob-banner.mp4"
           autoPlay
           loop
           muted
@@ -102,7 +113,7 @@ const index = () => {
               class amenities, it’s destined to be the centerpiece of
               conversation.
             </p>
-            <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
+            <button onClick={() => router.push("/about")} className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
               Know More
             </button>
           </div>
@@ -116,7 +127,7 @@ const index = () => {
               class amenities, it’s destined to be the centerpiece of
               conversation.
             </small>
-            <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
+            <button onClick={() => router.push("/about")} className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
               Know More
             </button>
           </div>
@@ -264,12 +275,12 @@ const index = () => {
             of urban living, retail, and lifestyle.
           </small>
           <div className="flex mx-auto gap-x-4">
-            <button className="drop-shadow-xl shadow-sm shadow-white bg-[#f7f4ec] flex rounded-full px-4 py-2 uppercase text-sm">
+            <a href="#form" className="drop-shadow-xl cursor-pointer shadow-sm shadow-white bg-[#f7f4ec] flex rounded-full px-4 py-2 uppercase text-sm">
               Send Enquiry
-            </button>
-            <button className="drop-shadow-xl shadow-sm shadow-white bg-[#f7f4ed] flex rounded-full px-4 py-2 uppercase text-sm">
+            </a>
+            <a href="#form" className="drop-shadow-xl cursor-pointer shadow-sm shadow-white bg-[#f7f4ed] flex rounded-full px-4 py-2 uppercase text-sm">
               Book a visit
-            </button>
+            </a>
           </div>
         </div>
       </div>

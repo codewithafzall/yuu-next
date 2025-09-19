@@ -304,7 +304,7 @@ const FloorPlanIntro = () => {
 
 const FloorPlanCulinary = () => {
   return (
-    <section className="w-full bg-[#eee9d6] py-16 px-6">
+    <section className="w-full bg-[#eee9d6] py-16">
       {/* Flavours part */}
       <div className="max-w-7xl mx-auto grid grid-cols-2 gap-12 items-center max-[768px]:grid-cols-1">
         {/* Left large image */}
@@ -358,7 +358,7 @@ const FloorPlanCulinary = () => {
       </div>
 
       {/* Retail part */}
-      <div className="pt-10 max-w-7xl mx-auto grid grid-cols-2 gap-12 items-center max-[768px]:grid-cols-1">
+      <div className="pt-10 grid grid-cols-2 desktop:pl-10 overflow-hidden gap-12 items-center max-[768px]:grid-cols-1">
         {/* left text */}
         <div className="w-full">
           <h1 className="mb-10 max-[768px]:text-3xl">
@@ -402,7 +402,7 @@ const FloorPlanCulinary = () => {
           </div>
         </div>
         {/* right large image */}
-        <div className="w-full relative left-[19%] max-[768px]:left-5">
+        <div className="w-full relative">
           <img
             src="images/about4.png"
             alt="Culinary Cove"
@@ -614,40 +614,21 @@ const VisionarySection = () => {
 };
 
 const AwardsSection = () => {
-  const expertsData = [
-    {
-      name: "Ar. Shitesh Agarwal",
-      role: "Sankalp Architects",
-      image: "/images/Asset27.png",
-    },
-    {
-      name: "Ar. Ketan Vaidya",
-      role: "KV Associates",
-      image: "/images/Asset26.png",
-    },
-    {
-      name: "Mr. Birju Patel",
-      role: "MEP Consulting",
-      image: "/images/Asset25.png",
-    },
-    {
-      name: "Mr. Nikhil J Inamdar",
-      role: "Stardum Consultants",
-      image: "/images/Asset24.png",
-    },
-  ];
 
   return (
-    <section className="w-full bg-[#fdf7f0] py-20 px-4 max-[768px]:px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="w-full relative bg-[#fdf7f0] py-20 px-4 max-[768px]:px-6">
+      <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-full desktop:w-96 flex justify-end">
+          <h1 className="text-black mr-16">
+            THE EXPERTS
+            <br /> BEHIND YUU
+          </h1>
+        </div>
+      <div className="max-w-7xl mx-auto mt-36 desktop:mt-20">
         {/* Main Content */}
-        <div className="flex flex-row max-[1024px]:flex-col gap-12 mb-16">
+        <div className="flex flex-row items-center justify-center max-[1024px]:flex-col">
           {/* Left Column */}
-          <div className="w-2/3 max-[1024px]:w-full">
+          <div className="w-1/2  max-[1024px]:w-full">
             {/* Title Block */}
-            <div className="inline-block drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] relative right-[20%] rounded-r-full w-[60%] px-10 py-3 mb-6 max-[768px]:w-[100%]">
-              <h2 className="text-black text-center">THE EXPERTS<br/> BEHIND YUU</h2>
-            </div>
 
             <div>
               <h3 className="mt-5">
@@ -659,7 +640,7 @@ const AwardsSection = () => {
               </h3>
             </div>
             {/* Description */}
-            <p className="mt-10 w-96">
+            <p className="mt-10 desktop:w-96">
               Great architecture is a collaboration of vision, expertise, and
               craftsmanship. YUU by Nahar is brought to life by some of the
               finest minds in the industry, ensuring excellence in design,
@@ -668,7 +649,7 @@ const AwardsSection = () => {
           </div>
 
           {/* Right Column */}
-          <div className="w-1/3 max-[1024px]:w-full max-[1024px]:mt-8">
+          <div className="w-1/2 max-[1024px]:w-full max-[1024px]:mt-8">
             <div className="max-[1024px]:text-left">
               <img src="/images/Asset27.png" alt="Awards" className="w-80" />
             </div>

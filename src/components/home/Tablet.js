@@ -48,6 +48,16 @@ const Tablet = () => {
     return () => unsub();
   }, []);
 
+  const downloadBrochure = () => {
+  const link = document.createElement("a");
+  link.href = "/images/white-logo.png"; // path to your brochure file in public folder
+  link.download = "Yuu-Brochure";    // suggested filename
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+ };
+
+
   useEffect(() => {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).catch(console.error);
   }, []);
@@ -279,6 +289,10 @@ const Tablet = () => {
     setForm(initialForm);
     setErrors({});
     setTouched({});
+    if (activeForm === "brochure") {
+      downloadBrochure();
+    }
+
   } catch (err) {
     console.error("Submit failed:", err);
     alert(err.message || "Failed to submit. Please try again.");
@@ -293,7 +307,7 @@ const errorText = (key) =>
   ) : null;
 
 return (
-  <div className="relative w-full">
+  <div className="relative w-full" id="form">
     {/* Button Group */}
     <div className="absolute left-1/2 transform -translate-x-1/2 w-[90%] desktop:w-[60%] py-3 desktop:py-7 shadow-2xl rounded-full bg-[#f7f6f2] flex justify-between items-center mx-auto">
       <button
@@ -348,7 +362,7 @@ return (
                   <div className="w-full">
                     <input
                       type="text"
-                      placeholder="NAME"
+                      placeholder="NAME*"
                       value={form.name}
                       onChange={(e) => updateField("name", e.target.value)}
                       onBlur={() => markTouched("name")}
@@ -359,7 +373,7 @@ return (
                   <div className="w-full">
                     <input
                       type="text"
-                      placeholder="OCCUPATION"
+                      placeholder="OCCUPATION*"
                       value={form.occupation}
                       onChange={(e) => updateField("occupation", e.target.value)}
                       onBlur={() => markTouched("occupation")}
@@ -373,7 +387,7 @@ return (
                   <div className="w-full">
                     <input
                       type="tel"
-                      placeholder="PHONE NUMBER"
+                      placeholder="PHONE NUMBER*"
                       value={form.phone}
                       onChange={(e) => updateField("phone", e.target.value)}
                       onBlur={() => markTouched("phone")}
@@ -384,7 +398,7 @@ return (
                   <div className="w-full">
                     <input
                       type="email"
-                      placeholder="EMAIL"
+                      placeholder="EMAIL*"
                       value={form.email}
                       onChange={(e) => updateField("email", e.target.value)}
                       onBlur={() => markTouched("email")}
@@ -402,7 +416,7 @@ return (
                     onBlur={() => markTouched("interestedIn")}
                   >
                     <option value="" disabled>
-                      INTERESTED IN
+                      INTERESTED IN*
                     </option>
                     <option value="studio apartment">Studio Apartments</option>
                     <option value="retail showroom">Retail Showrooms</option>
