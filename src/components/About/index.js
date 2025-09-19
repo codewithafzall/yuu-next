@@ -434,12 +434,12 @@ const VisionarySection = () => {
       image: "/images/Asset7.png",
     },
     awards: {
-      topTitle: "Ar.Shitesh Agarwal",
-      name: "Ar.Shitesh Agarwal",
-      title: "(Sankalp Architects)",
+      topTitle: "AWARDS & RECOGNITION",
+      name: "AWARDS & RECOGNITION",
+      title: "",
       description:
         "The Nahar Group's commitment to excellence has been recognized time and again with prestigious awards and media features that celebrate innovation, sustainability, and architectural brilliance.",
-      image: "/images/Asset27.png",
+      image: "/images/Asset5.png",
     },
     legacy: {
       topTitle: "THE LEGACY OF NAHAR AMRIT SHAKTI",
@@ -645,23 +645,32 @@ const AwardsSection = () => {
           {/* Left Column */}
           <div className="w-2/3 max-[1024px]:w-full">
             {/* Title Block */}
-            <div className="inline-block drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] relative right-[20%] rounded-r-full w-96 px-10 py-3 mb-6">
-              <h2 className="text-black text-center">AWARDS & RECOGNITION</h2>
+            <div className="inline-block drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] relative right-[20%] rounded-r-full w-[60%] px-10 py-3 mb-6 max-[768px]:w-[100%]">
+              <h2 className="text-black text-center">THE EXPERTS<br/> BEHIND YUU</h2>
             </div>
 
+            <div>
+              <h3 className="mt-5">
+                TOGETHER, THEY SHAPE YUU
+                <br />
+                INTO A SPACE THAT IS MODERN,
+                <br />
+                EFFICIENT, AND BUILT TO INSPIRE
+              </h3>
+            </div>
             {/* Description */}
-            <p className="mt-2">
-              The Nahar Group's commitment to excellence has been recognized
-              time and again with prestigious awards and media features that
-              celebrate innovation, sustainability, and architectural
-              brilliance.
+            <p className="mt-10 w-96">
+              Great architecture is a collaboration of vision, expertise, and
+              craftsmanship. YUU by Nahar is brought to life by some of the
+              finest minds in the industry, ensuring excellence in design,
+              execution, and innovation.
             </p>
           </div>
 
           {/* Right Column */}
           <div className="w-1/3 max-[1024px]:w-full max-[1024px]:mt-8">
             <div className="max-[1024px]:text-left">
-              <img src="/images/Asset5.png" alt="Awards" className="w-80"/>
+              <img src="/images/Asset27.png" alt="Awards" className="w-80" />
             </div>
           </div>
         </div>
