@@ -48,7 +48,7 @@ const Header = () => {
             <a
               href="/"
             >
-              <img src="/images/Logo.png" className="w-32 h-16" alt="Logo" />
+              <img src="/images/white-logo.png" className="w-32 h-16" alt="Logo" />
             </a>
           </div>
 
@@ -111,7 +111,7 @@ const Header = () => {
             <li>
               <a
                 href="#home"
-                className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/contact")
+                className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/latest")
                     ? "after:w-full"
                     : "after:w-0 hover:after:w-full"
                   }`}
@@ -122,7 +122,7 @@ const Header = () => {
             <li>
               <a
                 href="#virtual"
-                className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/contact")
+                className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/virtual-tour")
                     ? "after:w-full"
                     : "after:w-0 hover:after:w-full"
                   }`}

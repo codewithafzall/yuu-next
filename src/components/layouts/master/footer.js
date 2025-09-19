@@ -4,7 +4,7 @@ const Footer = () => {
     <>
       <footer className="footer pt-12 overflow-hidden relative font-['Poppins',sans-serif]">
 
-        <div className="mx-auto mt-6 flex max-[768px]:flex-col">
+        <div className="mx-auto flex max-[768px]:flex-col">
           {/* Left card */}
           <div className="w-1/2 max-[768px]:w-full border border-white rounded-tr-[3rem] grid grid-cols-3 max-[768px]:grid-cols-1 gap-x-6 gap-y-8 p-16 max-[768px]:p-6">
             <div className="">

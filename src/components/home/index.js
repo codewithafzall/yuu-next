@@ -179,7 +179,11 @@ const index = () => {
 
         <div className="w-full rounded-t-full h-[400px] desktop:w-[45%] desktop:h-[600px] relative">
           <ZoomHoverImage
-            src="/images/Yuu-Nova.webp"
+            images={[
+              "/images/Yuu-Nova.webp",
+              "/images/Yuu-Nova.webp",
+              "/images/Yuu-Nova.webp",
+            ]}
             alt="Yuu Nova"
             className="w-full h-full rounded-t-full"
           />
