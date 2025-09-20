@@ -1,11 +1,14 @@
 import { useRef, useCallback, useState } from "react";
 
-function ZoomHoverImage({ images = [], alt = "", className = "" }) {
+function ZoomHoverImage({ src, images = [], alt = "", className = "" }) {
   const containerRef = useRef(null);
   const imageRef = useRef(null);
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+
+  const isCarousel = images.length > 0;
+  const activeImages = isCarousel ? images : [src]; // normalize
 
   // ---- Zoom Effect ----
   const onMove = useCallback((e) => {
@@ -38,16 +41,19 @@ function ZoomHoverImage({ images = [], alt = "", className = "" }) {
     img.style.transformOrigin = "50% 50%";
   }, []);
 
-  // ---- Swipe Handling ----
+  // ---- Swipe for carousel ----
   const handleTouchStart = (e) => {
+    if (!isCarousel) return;
     touchStartX.current = e.touches[0].clientX;
   };
   const handleTouchMove = (e) => {
+    if (!isCarousel) return;
     touchEndX.current = e.touches[0].clientX;
   };
   const handleTouchEnd = () => {
+    if (!isCarousel) return;
     const distance = touchStartX.current - touchEndX.current;
-    if (distance > 50 && current < images.length - 1) {
+    if (distance > 50 && current < activeImages.length - 1) {
       setCurrent(current + 1);
     }
     if (distance < -50 && current > 0) {
@@ -67,15 +73,19 @@ function ZoomHoverImage({ images = [], alt = "", className = "" }) {
       className={`relative overflow-hidden ${className}`}
       style={{ width: "100%", height: "100%" }}
     >
-      {/* Image Slider */}
+      {/* Image(s) */}
       <div
-        className="flex h-full w-full transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${current * 100}%)` }}
+        className={`flex h-full w-full transition-transform duration-500 ease-in-out ${
+          isCarousel ? "" : "justify-center"
+        }`}
+        style={{
+          transform: isCarousel ? `translateX(-${current * 100}%)` : "none",
+        }}
       >
-        {images.map((img, index) => (
+        {activeImages.map((img, index) => (
           <img
             key={index}
-            ref={index === current ? imageRef : null} // zoom only on active image
+            ref={index === current ? imageRef : null}
             src={img}
             alt={alt}
             className="w-full h-full object-cover cursor-pointer flex-shrink-0"
@@ -90,18 +100,20 @@ function ZoomHoverImage({ images = [], alt = "", className = "" }) {
         ))}
       </div>
 
-      {/* Dots */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full ${
-              current === index ? "bg-[#d06d52]" : "bg-gray-400"
-            }`}
-          />
-        ))}
-      </div>
+      {/* Dots only if multiple images */}
+      {isCarousel && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+          {activeImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`w-3 h-3 rounded-full ${
+                current === index ? "bg-[#d06d52]" : "bg-white"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
