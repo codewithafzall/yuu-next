@@ -8,7 +8,8 @@ import ZoomHoverImage from "../ImagePanning";
 import { useRouter } from "next/router";
 
 const index = () => {
-  const videoRef = useRef(null);
+  const desktopVideoRef = useRef(null);
+  const mobileVideoRef = useRef(null);
   const [muted, setMuted] = useState(true);
   const containerRef = useRef(null);
   const imageRef = useRef(null);
@@ -43,17 +44,17 @@ const index = () => {
   };
 
   const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setMuted(videoRef.current.muted);
-    }
+    setMuted(!muted);
+    if (desktopVideoRef.current) desktopVideoRef.current.muted = !muted;
+    if (mobileVideoRef.current) mobileVideoRef.current.muted = !muted;
   };
+
 
   return (
     <div className="overflow-x-hidden">
       <div className="relative w-full h-screen">
         <video
-          ref={videoRef}
+          ref={desktopVideoRef}
           className="w-full h-full object-cover hidden desktop:block"
           src="/images/desktop-banner.mp4"
           autoPlay
@@ -62,7 +63,7 @@ const index = () => {
           playsInline
         />
         <video
-          ref={videoRef}
+          ref={mobileVideoRef}
           className="w-full h-full block desktop:hidden object-cover"
           src="/images/mob-banner.mp4"
           autoPlay
@@ -91,7 +92,7 @@ const index = () => {
         <div className="flex flex-col desktop:flex-row items-center w-full gap-x-16">
           <img
             className="w-full desktop:w-[50%] pr-3 desktop:pr-0"
-            src="/images/Home-1.png"
+            src="/images/home-1.webp"
           />
           <div className="w-full px-4 pt-4 desktop:pt-8 desktop:px-20 desktop:w-1/2">
             <h3 className="mb-4 desktop:mb-8 uppercase leading-10">
@@ -136,7 +137,7 @@ const index = () => {
         <div className="flex flex-col desktop:flex-row items-center w-full gap-x-16">
           <img
             className="w-full desktop:w-[50%] pr-3 desktop:pr-0"
-            src="/images/Home-1.png"
+            src="/images/home-3.png"
           />
           <div className="w-full px-4 pt-4 desktop:pt-8 desktop:px-20 desktop:w-1/2">
             <h3 className="mb-4 desktop:mb-8 uppercase leading-10">
@@ -150,9 +151,6 @@ const index = () => {
               Group has shaped the skyline and
               soul of Mumbai for over five decades.
             </small>
-            <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] mt-10 mr-auto flex rounded-full px-4 py-1 uppercase text-sm">
-              Know More
-            </button>
           </div>
         </div>
 
@@ -198,9 +196,6 @@ const index = () => {
             Designed with the contemporary lifestyle in mind, the apartments in
             YUU Nova are an excellent example of modern comfort.
           </p>
-          <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
-            Know More
-          </button>
         </div>
       </div>
 
@@ -216,7 +211,7 @@ const index = () => {
             <br /> LUNA
           </h1>
         </div>
-        <div className="w-full mt-40 mb-7 desktop:mt-48 desktop:w-1/4 desktop:mb-16 space-y-6 desktop:px-6">
+        <div className="w-full mt-40 mb-7 desktop:mt-48 desktop:w-1/4 desktop:mb-16 space-y-6 desktop:px-4">
           <h2>
             A GATEWAY TO <br />
             THE FUTURE
@@ -232,7 +227,7 @@ const index = () => {
 
         <div className="w-full rounded-t-full h-[400px] desktop:w-[45%] desktop:h-[600px] relative">
           <ZoomHoverImage
-            src="/images/Yuu-Nova.webp"
+            src="/images/yuu-luna.webp"
             alt="Yuu Nova"
             className="w-full h-full rounded-t-full"
           />
@@ -252,9 +247,6 @@ const index = () => {
             destination where your brand
             can truly stand out.
           </p>
-          <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-1 uppercase text-sm">
-            Know More
-          </button>
         </div>
       </div>
 
@@ -264,21 +256,18 @@ const index = () => {
 
       {/* Sixth Section of Homepage */}
 
-      <div className="relative bg-[#f7f4ec] overflow-hidden flex flex-col-reverse px-2 gap-y-4 desktop:px-0 desktop:flex-row items-center pt-6">
-        <img src="/images/Design-1.png" className="hidden desktop:block absolute left-[20%] top-[10%] w-1/2" />
-        <img className="w-full desktop:w-1/2" src="/images/Above-footer.png" />
+      <div className="relative bg-[#f7f4ec] overflow-hidden flex flex-col-reverse px-2 gap-y-4 desktop:px-0 desktop:flex-row items-center pt-6 desktop:pt-14">
+        {/* <img src="/images/Design-1.png" className="hidden desktop:block absolute left-[20%] top-[10%] w-1/2" /> */}
+        <img className="w-full desktop:w-[60%]" src="/images/home-last.webp" />
         <div className="flex flex-col w-full desktop:w-1/2 text-center">
-          <h1 className="text-center text-[40px] desktop:text-[60px]">
+          <h1 className="text-center text-[40px] desktop:text-[50px]">
             BE A PART OF THE FUTURE
           </h1>
           <small className="mt-6">
-            Secure your place in this exceptional township today; experience the
-            best
+            Secure your place in this exceptional township today;<br/>
+            experience the best of urban living, retail, and lifestyle.
           </small>
-          <small className="mb-6">
-            of urban living, retail, and lifestyle.
-          </small>
-          <div className="flex mx-auto gap-x-4">
+          <div className="flex mx-auto gap-x-4 mt-6">
             <a href="#form" className="drop-shadow-xl cursor-pointer shadow-sm shadow-white bg-[#f7f4ec] flex rounded-full px-4 py-2 uppercase text-sm">
               Send Enquiry
             </a>

@@ -7,10 +7,10 @@ export default function ImageHoverSection() {
 
     // Define hover text for each image
     const hoverMapping = {
-        'Asset 11.png': ['wabi-sabi,', 'themed', ""],
-        'Asset 10.png': ['Fully', 'automated'],
-        'Asset 8.png': ['Open', 'Modular', 'Kitchen'],
-        'Asset 9.png': ['World', 'Class', 'Fittings'],
+        'Asset 11.png': ['Community', 'Centric', "Living"],
+        'Asset 10.png': ['Japanese', 'Theme'],
+        'Asset 8.png': ['Fitness', 'Centre',],
+        'Asset 9.png': ['Restaurants', '(Culinary Cove)',],
     };
 
     const handleMouseEnter = (fileName) => {
@@ -36,23 +36,19 @@ export default function ImageHoverSection() {
         <div className="flex flex-col py-10 desktop:py-0 desktop:flex-row bg-[#fef9f3] gap-x-10">
             <div className="w-full desktop:w-2/6 flex flex-col pr-3 desktop:pr-0 items-end justify-center">
                 {headings.map((text, idx) => (
-                    <h1 ref={(el) => (headingsRefs.current[idx] = el)} className='uppercase' key={idx}>{text}</h1>
+                    <h1 ref={(el) => (headingsRefs.current[idx] = el)} className='uppercase ml-auto' key={idx}>{text}</h1>
                 ))}
 
                 <p className="text-end my-6">
                     Explore the stunning details <br /> and features of YUU by Nahar
                 </p>
-
-                <button className="drop-shadow-xl shadow-lg shadow-white bg-[#fcf9f2] ml-auto flex rounded-full px-4 py-2 uppercase text-sm">
-                    Know More
-                </button>
             </div>
 
             <div className="w-full desktop:w-4/6 relative flex flex-col desktop:flex-row justify-between items-center desktop:pr-10 desktop:pb-16 pt-4 desktop:pt-8">
                 <img
-                    src="/images/Asset 11.png"
+                    src="/images/wabi-sabi.webp"
                     alt="Asset 11"
-                    className="grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                    className="w-[80%] desktop:w-[35%] grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                     onMouseEnter={() => handleMouseEnter('Asset 11.png')}
                     onMouseLeave={handleMouseLeave}
                 />

@@ -109,8 +109,8 @@ const Index = () => {
         If you would like to know more about how we handle your data, you can reach us at:
         </p>
         <p>Nahar Builders Ltd.</p>
-        <p> [Insert Office Address]</p>
-        <p> Email: [Insert Email Address]</p>
+        <p>YUU by Nahar, Chandivali Farm Rd, Chandivali, Powai, Mumbai, Maharashtra 400072</p>
+        <a href="mailto:customersupport@yuubynahar.com">Customersupport@yuubynahar.com</a>
         <p>Phone: [Insert Phone Number]</p>
       </section>
     </>

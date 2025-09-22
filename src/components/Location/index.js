@@ -202,7 +202,7 @@ const YuuBelongs = () => {
     <>
       <section className="relative w-full">
         <img
-          src="/images/bridge.png"
+          src="/images/location-last.png"
           alt="location-image"
           className="relative w-full hidden desktop:block"
         />

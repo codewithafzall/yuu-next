@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
+      className={`fixed top-0 left-0 w-full z-[999] transition-transform duration-300 ${showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
     >
       <div className="bg-transparent">
@@ -48,7 +48,7 @@ const Header = () => {
             <a
               href="/"
             >
-              <img src="/images/white-logo.png" className="w-32 h-16" alt="Logo" />
+              <img src="/images/Logo.png" className="w-32 h-16" alt="Logo" />
             </a>
           </div>
 
@@ -146,7 +146,7 @@ const Header = () => {
 
         {/* Mobile Side Menu */}
         <div
-          className={`fixed top-0 left-0 h-full w-64 bg-[#EFEADC] text-[#432a2b] transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          className={`fixed top-0 left-0 h-screen w-64 bg-[#EFEADC] text-[#432a2b] transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
             } transition-transform duration-300 z-50`}
         >
           <ul className="space-y-6 mt-7 text-xl px-6">

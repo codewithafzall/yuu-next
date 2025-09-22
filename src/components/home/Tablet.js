@@ -50,7 +50,7 @@ const Tablet = () => {
 
   const downloadBrochure = () => {
   const link = document.createElement("a");
-  link.href = "/images/white-logo.png"; // path to your brochure file in public folder
+  link.href = "/images/Yuu-Brochure.pdf"; // path to your brochure file in public folder
   link.download = "Yuu-Brochure";    // suggested filename
   document.body.appendChild(link);
   link.click();

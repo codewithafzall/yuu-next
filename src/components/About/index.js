@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ImageReveal from "../DayNight";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -434,16 +435,16 @@ const VisionarySection = () => {
       image: "/images/Asset7.png",
     },
     awards: {
-      topTitle: "AWARDS & RECOGNITION",
-      name: "AWARDS & RECOGNITION",
-      title: "",
+      topTitle: " From the Architect of YUU",
+      name: " ar. shitesh agarwal",
+      title: " Sankalp Architects",
       description:
-        "The Nahar Group's commitment to excellence has been recognized time and again with prestigious awards and media features that celebrate innovation, sustainability, and architectural brilliance.",
-      image: "/images/Asset5.png",
+        "Great architecture is a collaboration of vision, expertise, and craftsmanship. YUU by Nahar is brought to life by some of the finest minds in the industry, ensuring excellence in design, execution, and innovation.<br/> <br/> TOGETHER, THEY SHAPE YUU INTO A SPACE THAT IS MODERN, EFFICIENT, AND BUILT TO INSPIRE.",
+      image: "/images/sankalp.png",
     },
     legacy: {
       topTitle: "THE LEGACY OF NAHAR AMRIT SHAKTI",
-      name: "THE LEGACY OF NAHAR AMRIT SHAKTI",
+      name: "",
       title: "A landmark township loped by Nahar Group",
       description:
         "This self-sufficient community has set new standards for integrated living with world-class education, healthcare, business, and green spaces.<br/><br/> <span style={{color:'#d16f52'}}>Nahar International School –</span> Aleading institution shaping young minds for a global future. Awarded as Asia's top international school 2025. Nahar Medical Centre – Offering state-of-the-art healthcare services to the community.<br/><br/> Nahar Business Centre – A premium commercial hub designed for modern professionals.<br/><br/> Miyawaki Forest by Nahar Group – A lush, dense green space developed using the Japanese afforestation technique, bringing sustainability and nature closer to urban life.<br/><br/> At YUU by Nahar, the legacy continues, elevating the concept of holistic living to the next level.",
@@ -503,7 +504,7 @@ const VisionarySection = () => {
   return (
     <section className="relative w-full bg-[#fdf7f0] py-16 px-4 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-row items-start lg:gap-10 md:flex-col md:items-center relative max-[768px]:flex-col max-[768px]:items-center">
+        <div className="flex flex-row items-center lg:gap-10 md:flex-col relative max-[768px]:flex-col ">
           {/* Mobile: Slider */}
           {isMobile ? (
             <div className="w-full mb-6">
@@ -523,9 +524,8 @@ const VisionarySection = () => {
                       <img
                         src={person.image}
                         alt={person.name}
-                        className={`w-36 h-48 object-cover rounded-t-full mx-auto transition-all duration-300 ${
-                          isSelected ? "" : "grayscale"
-                        }`}
+                        className={`w-36 h-48 object-cover rounded-t-full mx-auto transition-all duration-300 ${isSelected ? "" : "grayscale"
+                          }`}
                       />
                     </div>
                   );
@@ -617,41 +617,30 @@ const AwardsSection = () => {
 
   return (
     <section className="w-full relative bg-[#fdf7f0] py-20 px-4 max-[768px]:px-6">
-      <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-full desktop:w-96 flex justify-end">
-          <h1 className="text-black mr-16">
-            THE EXPERTS
-            <br /> BEHIND YUU
-          </h1>
-        </div>
-      <div className="max-w-7xl mx-auto mt-36 desktop:mt-20">
+      <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-full desktop:w-[500px] flex justify-end">
+        <h1 className="text-black mr-16">
+          AWARDS
+          <br /> & RECOGNITION
+        </h1>
+      </div>
+      <div className="max-w-7xl mx-auto mt-36">
         {/* Main Content */}
         <div className="flex flex-row items-center justify-center max-[1024px]:flex-col">
           {/* Left Column */}
-          <div className="w-1/2  max-[1024px]:w-full">
-            {/* Title Block */}
+          <div className="w-1/2 flex justify-center  max-[1024px]:w-full">
 
-            <div>
-              <h3 className="mt-5">
-                TOGETHER, THEY SHAPE YUU
-                <br />
-                INTO A SPACE THAT IS MODERN,
-                <br />
-                EFFICIENT, AND BUILT TO INSPIRE
-              </h3>
-            </div>
-            {/* Description */}
             <p className="mt-10 desktop:w-96">
-              Great architecture is a collaboration of vision, expertise, and
-              craftsmanship. YUU by Nahar is brought to life by some of the
-              finest minds in the industry, ensuring excellence in design,
-              execution, and innovation.
+              The Nahar Group’s commitment to excellence has
+              been recognized time and again with <span className="text-[#d06d52]">prestigious
+                awards</span> and media features that celebrate innovation,
+              sustainability, and architectural brilliance.
             </p>
           </div>
 
           {/* Right Column */}
-          <div className="w-1/2 max-[1024px]:w-full max-[1024px]:mt-8">
+          <div className="w-1/2 flex justify-center max-[1024px]:w-full max-[1024px]:mt-8">
             <div className="max-[1024px]:text-left">
-              <img src="/images/Asset27.png" alt="Awards" className="w-80" />
+              <img src="/images/Asset5.png" alt="Awards" className="desktop:w-[300px]" />
             </div>
           </div>
         </div>
@@ -699,6 +688,7 @@ const About = () => {
       <AboutSection />
       <FloorPlanIntro />
       <FloorPlanCulinary />
+      <ImageReveal/>
       <VisionarySection />
       <AwardsSection />
     </>

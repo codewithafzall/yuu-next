@@ -72,7 +72,7 @@ const index = () => {
     <div>
       <img
         className="w-full h-screen hidden desktop:block"
-        src="/images/contact-banner.png"
+        src="/images/contact-desktop.png"
       />
       <img
         className="w-full h-screen block desktop:hidden"
@@ -109,7 +109,17 @@ const index = () => {
             <div className="bg-[#fcf9f2] flex flex-col justify-center items-center rounded-full width-[300px] desktop:w-[650px] drop-shadow-xl h-56 max-[768px]:mb-8">
               <h3 className="max-[768px]:text-[25px]">Life at YUU goes beyond four walls</h3>
               <p className="mt-4 max-[768px]:text-[15px]">Discover how we’re building stories</p>
-              <img className="mt-4" src="/images/sm.png" />
+              <div className="w-36 h-20 z-40 flex items-center justify-between">
+                <a href="https://www.linkedin.com/company/yuu-by-nahar/" target="_blank">
+                  <img width={30} height={30} src="/images/linkendin.png" />
+                </a>
+                <a href="https://youtube.com/@yuubynahar?si=1lc6x8FCjD9CaM6P" target="_blank">
+                  <img width={30} height={30} src="/images/youtube.png" />
+                </a>
+                <a href="https://www.instagram.com/yuu_by_nahar" target="_blank">
+                  <img width={30} height={30} src="/images/insta.png" />
+                </a>
+              </div>
             </div>
             <img
               className="absolute right-0 z-50 hidden desktop:block"
