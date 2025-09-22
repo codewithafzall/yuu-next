@@ -8,10 +8,10 @@ const MasterLayout = ({ children }) => {
 
   return (
     <>
-      <Header />
-      <main className="main-container">{children}</main>
-      <Accordion />
-      <Footer />
+        <Header />
+        <main className="main-container">{children}</main>
+        <Accordion />
+        <Footer />
     </>
   );
 };

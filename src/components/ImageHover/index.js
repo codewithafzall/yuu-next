@@ -8,9 +8,9 @@ export default function ImageHoverSection() {
     // Define hover text for each image
     const hoverMapping = {
         'Asset 11.png': ['Community', 'Centric', "Living"],
-        'Asset 10.png': ['Japanese', 'Theme'],
+        'Asset 9.png': ['Japanese', 'Theme'],
         'Asset 8.png': ['Fitness', 'Centre',],
-        'Asset 9.png': ['Restaurants', '(Culinary Cove)',],
+        'Asset 10.png': ['Restaurants', '(Culinary Cove)',],
     };
 
     const handleMouseEnter = (fileName) => {
@@ -55,7 +55,7 @@ export default function ImageHoverSection() {
 
                 <div className="flex desktop:flex-col gap-x-3 px-3">
                     <img
-                        src="/images/Asset 10.png"
+                        src="/images/fine-dine.png"
                         alt="Asset 10"
                         className="w-1/2 desktop:w-auto grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                         onMouseEnter={() => handleMouseEnter('Asset 10.png')}

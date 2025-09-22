@@ -108,7 +108,7 @@ const Footer = () => {
                 Project by
               </p>
               <div className="flex items-center gap-4 mt-6">
-                <img src="/images/nahar-footer.png" alt="Nahar Group" className="w-20 h-auto object-contain mix-blend-color-burn" />
+                <img src="/images/footer-nahar.png" alt="Nahar Group" className="w-20 h-auto object-contain" />
               </div>
             </div>
             <small className="w-full desktop:col-span-3 text-xs">
