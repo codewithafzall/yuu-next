@@ -33,32 +33,35 @@ const ImageReveal = ({ image1, image2 }) => {
     };
 
     return (
-        <div
-            ref={containerRef}
-            className="relative w-full desktop:max-w-5xl mx-auto overflow-hidden select-none my-16 rounded-3xl"
-        >
-            {/* Bottom image */}
-            <img src="/images/Night.webp" alt="Background" className="w-full h-auto block" />
-
-            {/* Top image */}
+        <section>
             <div
-                className="absolute top-0 left-0 h-full overflow-hidden"
-                style={{ width: `${sliderPos}%` }}
+                ref={containerRef}
+                className="relative w-[95%] desktop:w-full desktop:max-w-5xl mx-auto overflow-hidden select-none mt-8 desktop:mt-16 mb-8 rounded-3xl"
             >
-                <img src="/images/Day.webp" alt="Overlay" className="w-full h-full object-cover" />
-            </div>
+                {/* Bottom image */}
+                <img src="/images/Night.webp" alt="Background" className="w-full h-auto block" />
 
-            {/* Slider */}
-            <div
-                onMouseDown={startDrag}
-                onTouchStart={startDrag}
-                className="absolute top-0 h-full left-1/2 -translate-x-1/2 flex items-center justify-center"
-                style={{ left: `${sliderPos}%` }}
-            >
-                {/* The visible slider button */}
-                <div className="w-6 h-6 bg-white rounded-full border-2 border-gray-400 shadow-lg cursor-ew-resize"></div>
+                {/* Top image */}
+                <div
+                    className="absolute top-0 left-0 h-full overflow-hidden"
+                    style={{ width: `${sliderPos}%` }}
+                >
+                    <img src="/images/Day.webp" alt="Overlay" className="w-full h-full object-cover" />
+                </div>
+
+                {/* Slider */}
+                <div
+                    onMouseDown={startDrag}
+                    onTouchStart={startDrag}
+                    className="absolute top-0 h-full left-1/2 -translate-x-1/2 flex items-center justify-center"
+                    style={{ left: `${sliderPos}%` }}
+                >
+                    {/* The visible slider button */}
+                    <div className="w-6 h-6 bg-white rounded-full border-2 border-gray-400 shadow-lg cursor-ew-resize"></div>
+                </div>
             </div>
-        </div>
+             <h3 className="text-center mt-8 mb-8 desktop:mb-16 max-[768px]:text-2xl">SLIDE TO TURN THE CLOCK</h3>
+        </section>
     );
 };
 

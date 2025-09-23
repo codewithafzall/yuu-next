@@ -5,10 +5,10 @@ import { useState, useRef, useEffect } from "react";
 export default function FAQAccordion() {
     const faqs = [
         {
-            question: "What is Yuu by Nahar?",
+            question: "What is YUU by Nahar?",
             answer: (
                 <p className="text-xs">
-                    Yuu by Nahar is a premium mixed development real estate in Mumbai development located in Chandivali. It features modern studio apartments, retail shops, and commercial spaces with lifestyle amenities, offering a new standard of luxury apartments and urban living.
+                    YUU by Nahar is a premium mixed development real estate in Mumbai development located in Chandivali. It features modern studio apartments, retail shops, and commercial spaces with lifestyle amenities, offering a new standard of luxury apartments and urban living.
                 </p>
             ),
         },
@@ -16,7 +16,7 @@ export default function FAQAccordion() {
             question: "Where is the project located?",
             answer: (
                 <p className="text-xs">
-                    The project is strategically located in Chandivali, Andheri East – a prime hub with excellent connectivity to Powai, SEEPZ, Andheri-Kurla Road, Western & Eastern Express Highways, and the Mumbai Metro. Being in the heart of Mumbai real estate, this location provides convenience for both residential and commercial investments.
+                    The project is strategically located in Chandivali, Andheri East a prime hub with excellent connectivity to Powai, SEEPZ, Andheri-Kurla Road, Western & Eastern Express Highways, and the Mumbai Metro. Being in the heart of Mumbai real estate, this location provides convenience for both residential and commercial investments.
                 </p>
             ),
         },
@@ -25,8 +25,8 @@ export default function FAQAccordion() {
             answer: (
                 <ul className="list-disc pl-6 space-y-1 ">
                     <li className="text-xs">Studio Apartments (affordable yet luxurious options)</li>
-                    <li className="text-xs">Retail Shops</li>
-                    <li className="text-xs">Restaurant Commercial Spaces</li>
+                    <li className="text-xs">Retail Showrooms</li>
+                    <li className="text-xs">Restaurant Spaces</li>
                 </ul>
             ),
         },
@@ -34,7 +34,8 @@ export default function FAQAccordion() {
             question: "What is the possession timeline?",
             answer: (
                 <p className="text-xs">
-                    Possession for Yuu Nova is targeted for December 2028 (as per RERA in real estate guidelines and registration).
+                    Possession for YUU NOVA is targeted for December 2028 (as per RERA in real estate guidelines and registration).
+                    Possession for YUU LUNA is targeted for December 2029 (as per RERA in real estate guidelines and registration).
                 </p>
             ),
         },
@@ -43,8 +44,8 @@ export default function FAQAccordion() {
             answer: (
                 <p className="text-xs">
                     Yes, the project is RERA registered.<br />
-                    For YUU Nova RERA No.: PM1180002500398<br />
-                    For YUU Luna @aarav
+                    For YUU NOVA RERA No: PM1180002500398<br />
+                    For YUU LUNA RERA No: PC1180002500839
                 </p>
             ),
         },
@@ -89,12 +90,12 @@ export default function FAQAccordion() {
             question: "Who is the developer?",
             answer: (
                 <p className="text-xs">
-                    Yuu by Nahar is developed by Nahar Group, a reputed builder with 50+ years of legacy and over 20 million sq. ft. delivered across Mumbai. The group is well-known for its high-quality residential and commercial developments in the real estate in Mumbai market.
+                    YUU by Nahar is developed by Nahar Group, a reputed builder with 50+ years of legacy and over 20 million sq. ft. delivered across Mumbai. The group is well-known for its high-quality residential and commercial developments in the real estate in Mumbai market.
                 </p>
             ),
         },
         {
-            question: "What makes Yuu by Nahar unique?",
+            question: "What makes YUU by Nahar unique?",
             answer: (
                 <ul className="list-disc pl-6 space-y-1">
                     <li className="text-xs">Central Chandivali location</li>
@@ -110,7 +111,8 @@ export default function FAQAccordion() {
                 <p className="text-xs">
                     Sales Team – Nahar Group<br />
                     Call: +91 97694 46633<br />
-                    Instagram: @yuu_by_nahar
+                    Instagram: @YUU_by_nahar<br/>
+                    Email: execsales1@yuubynahar.com
                 </p>
             ),
         },
@@ -143,7 +145,7 @@ export default function FAQAccordion() {
     const visibleFaqs = showAll ? faqs : faqs.slice(0, 3);
 
     return (
-        <section className="relative py-20 px-4">
+        <section id="faqs" className="relative py-20 px-4">
             <div className="absolute top-[30px] tablet:top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
                 <h1 className="text-black mr-16">
                     FAQS

@@ -95,12 +95,13 @@ const index = () => {
             src="/images/home-1.webp"
           />
           <div className="w-full px-4 pt-4 desktop:pt-8 desktop:px-20 desktop:w-1/2">
-            <h3 className="mb-4 desktop:mb-8 uppercase leading-10">
-              Welcome to YUU by Nahar Where Urban Living Meets Inspired
-              Lifestyle
+            <h3 className="  uppercase leading-10">
+              Welcome to YUU by Nahar
             </h3>
+            <p className="italic mb-4 mt-2 desktop:mb-8 text-xl text-[#d06d52]">Where Urban Living Meets Inspired
+              Lifestyle</p>
             <small className="">
-              YUU by Nahar project is spanning 2 lacs sqft. of
+              YUU by Nahar project is spanning over 2 lacs sqft. of
               built up area of organised retail, restaurants,
               studio apartments and many more.
             </small>
@@ -146,8 +147,8 @@ const index = () => {
             </h3>
             <small className="">
               From residential townships and
-              commercial spaces to healthcare,
-              education, and philanthropy. Nahar
+              commercial<br/> spaces to healthcare,
+              education, and philanthropy.<br/> Nahar
               Group has shaped the skyline and
               soul of Mumbai for over five decades.
             </small>
@@ -179,8 +180,8 @@ const index = () => {
           <ZoomHoverImage
             images={[
               "/images/Yuu-Nova.webp",
-              "/images/Yuu-Nova.webp",
-              "/images/Yuu-Nova.webp",
+              "/images/yuu-nova-2.webp",
+              "/images/yuu-nova-3.webp",
             ]}
             alt="Yuu Nova"
             className="w-full h-full rounded-t-full"

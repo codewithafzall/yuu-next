@@ -10,15 +10,8 @@ class MyDocument extends Document {
         <Head>
           <meta charset="utf-8" />
           <link rel="icon" href="/images/favicon.png" />
-          <title>yuu by nahar</title>
-          {/* 
-        <meta property="og:title" content="Best Tech Courses with Certification - Heuristic Academy | Admission Open" />
-        <meta property="og:description" content="Job Placement Opportunities with Internship Certificate & Mock Interview Assistance. Join Now!" />
-        <meta property="og:image" content="/images/meta-img-main.jpeg" />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="600" />
-        <meta property="og:image:alt" content="Heuristic Academy, Mumbai" /> */}
-
+          <title>YUU by Nahar</title>
+          <meta name="google-site-verification" content="gsE3PGimny4Id_zd42wblw_WpkZDrpVFCsG9tQY71QU" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -111,10 +111,10 @@ const index = () => {
               <p className="mt-4 max-[768px]:text-[15px]">Discover how we’re building stories</p>
               <div className="w-36 h-20 z-40 flex items-center justify-between">
                 <a href="https://www.linkedin.com/company/yuu-by-nahar/" target="_blank">
-                  <img width={30} height={30} src="/images/linkendin.png" />
+                  <img width={30} height={30} src="/images/linkedin.png" />
                 </a>
                 <a href="https://youtube.com/@yuubynahar?si=1lc6x8FCjD9CaM6P" target="_blank">
-                  <img width={30} height={30} src="/images/youtube.png" />
+                  <img width={30} height={30} src="/images/yt.png" />
                 </a>
                 <a href="https://www.instagram.com/yuu_by_nahar" target="_blank">
                   <img width={30} height={30} src="/images/insta.png" />

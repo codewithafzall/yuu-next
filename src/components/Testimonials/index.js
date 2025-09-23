@@ -5,23 +5,23 @@ const Testimonials = () => {
     {
       id: 1,
       icon: '/images/Asset 30.png',
-      text: `From first search to final signing, the team at YUU guided us every step of the way. Their market insights helped us snag a beautiful 3BHK in Bandra at an incredible price—something we never thought possible in today’s market!`,
-      name: 'Afzal',
-      role: 'Developer',
+      text: `As an architect, I was impressed by the precision and finish of the YUU by Nahar sales office. If this attention to detail carries into the whole project, it’s going to be a landmark project.`,
+      name: 'Arjun Mehta',
+      role: 'Architect',
     },
     {
       id: 2,
       icon: '/images/Asset 32.png',
-      text: `I was skeptical about how quickly my flat would go, but within a week of listing with [YourBrand], we had three solid offers and closed at 102% of the asking price. Their staging advice and targeted marketing really made the difference.`,
-      name: 'Deep Ajmera',
-      role: 'Project Manager',
+      text: `The professionalism at YUU by Nahar gave me real confidence. Even though construction is on, the sales office reflects the quality and care that makes it feel like a safe investment.`,
+      name: 'Priya Rao',
+      role: 'Bank Employee',
     },
     {
       id: 3,
       icon: '/images/Asset 32.png',
-      text: `As first-time homebuyers, the process seemed daunting—but [YourBrand]’s agents made it simple. They answered every question, arranged viewings on weekends, and helped negotiate a great deal on our new townhouse`,
-      name: 'Parshva Doshi',
-      role: 'Designer',
+      text: `Buying my first home felt overwhelming, but the YUU by Nahar3 team made it simple. The sales office quality gave me the reassurance I needed to take the next step.`,
+      name: 'Rajiv Kapoor',
+      role: 'Photographer',
     },
   ];
 

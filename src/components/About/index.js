@@ -169,16 +169,16 @@ const AboutSection = () => {
               className="text-[#513335] text-sm leading-relaxed"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
-              "Yuu" by Nahar is not just a name; it's a philosophy that places
-              you at the heart of every experience. The name "Yuu" is a
-              thoughtful blend of the word{" "}
-              <span className="text-[#d16f52] font-semibold">"you"</span> and
+              "YUU" by Nahar is not just a name; it’s a
+              philosophy that places you at the heart
+              of every experience. The name {" "}
+              <span className="text-[#d16f52] font-semibold">"YUU"</span>  is a
+              thoughtful blend of the word {" "}
+              <span className="text-[#d16f52] font-semibold">"you"</span>, and
               the Japanese character for{" "}
               <span className="text-[#d16f52] font-semibold">"悠"</span>, which
               means{" "}
-              <span className="text-[#d16f52] font-semibold">"leisurely"</span>{" "}
-              or{" "}
-              <span className="text-[#d16f52] font-semibold">"relaxed."</span>
+              <span className="text-[#d16f52] font-semibold">"individuality."</span>
             </p>
           </div>
 
@@ -188,17 +188,13 @@ const AboutSection = () => {
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               Inspired by the{" "}
-              <span className="text-[#d16f52] font-semibold">
-                dynamic studio living
-              </span>{" "}
-              culture of{" "}
-              <span className="text-[#d16f52] font-semibold">New York</span> and{" "}
-              <span className="text-[#d16f52] font-semibold">Dubai</span>, YUU
-              introduces a fresh perspective to Mumbai’s real estate
-              landscape—one that redefines{" "}
-              <span className="text-[#d16f52] font-semibold">
-                space, structure, and seamless living
-              </span>
+              <span className="text-[#d16f52] font-semibold">dynamic studio living</span>,
+              culture of Japan & Europe, YUU
+              introduces a
+              {" "}<span className="text-[#d16f52] font-semibold">fresh perspective</span>,
+              to Mumbai’s real estate landscape one that{" "}
+              <span className="text-[#d16f52] font-semibold"> redefines space, structure, and
+                seamless living.</span>
               .
             </p>
           </div>
@@ -229,13 +225,18 @@ const AboutSection = () => {
               className="text-[#513335] text-sm leading-relaxed"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
-              At YUU by Nahar, we believe that the essence of great living lies
-              in balance. Drawing inspiration from the Japanese philosophy of{" "}
-              <span className="text-[#d16f52] font-semibold">Wabi-Sabi</span>,
-              we embrace the beauty of simplicity, functionality, and finding
-              elegance in{" "}
-              <span className="text-[#d16f52] font-semibold">imperfection</span>
-              .
+              YUU by Nahar is inspired by{" "}
+              <span className="text-[#d16f52] font-semibold">
+                Yugen (幽玄),
+              </span>{" "}
+              the Japanese philosophy
+              of subtle elegance, depth, and beauty
+              felt rather than seen. The name
+              embodies {" "}
+              <span className="text-[#d16f52] font-semibold">serenity</span> and{" "}
+              <span className="text-[#d16f52] font-semibold">sophistication, </span>, offering thoughtfully designed spaces
+              that inspire calm, elevate daily living,
+              and reflect understated opulence.
             </p>
           </div>
         </div>
@@ -246,10 +247,16 @@ const AboutSection = () => {
 
 const FloorPlanIntro = () => {
   return (
-    <section className="w-full bg-[#fdf7f0] pt-20 px-6 max-[768px]:pb-16">
+    <section className="w-full relative bg-[#fdf7f0] pt-44 desktop:pt-48 px-6 max-[768px]:pb-16">
+      <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white left-0 bg-[#fcf9f2] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
+        <h1 className="text-black mr-16">
+          YUU
+          <br /> NOVA
+        </h1>
+      </div>
       <div className="max-w-7xl mx-auto flex items-start gap-12 max-[768px]:flex-col max-[768px]:gap-8">
         <div className="w-1/2 max-[768px]:w-full">
-          <h2 className="mb-4 max-[768px]:text-3xl">
+          <h2 className="mb-5 font-normal max-[768px]:text-3xl">
             Every Square Foot,
             <br />A Thoughtful Expression
           </h2>
@@ -261,13 +268,13 @@ const FloorPlanIntro = () => {
             and space, these themed studio apartments offer the perfect canvas
             for your lifestyle. Whether you're a young professional, a
             first-time homeowner, or someone seeking mindful living in the heart
-            of the city — this space adapts beautifully to your rhythm.
+            of the city this space adapts beautifully to your rhythm.
           </p>
         </div>
         <div className="w-1/2 flex justify-center max-[768px]:w-full">
           <div className="relative bottom-[150px] w-[420px] h-[560px] rounded-t-[220px] overflow-hidden  max-[768px]:w-[260px] max-[768px]:h-[360px] max-[768px]:rounded-t-[140px] max-[768px]:bottom-[0px]">
             <img
-              src="images/Asset12.png"
+              src="images/about-nova.webp"
               alt="Studio living"
               className="w-full h-full object-cover"
             />
@@ -275,27 +282,27 @@ const FloorPlanIntro = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto relative bottom-[150px] max-[768px]:bottom-[0px] max-[768px]:mt-5">
-        <p className="uppercase font-bold mb-4">HIGHLIGHTS</p>
+        <p className="uppercase text-black font-bold mb-4">HIGHLIGHTS</p>
         <div className="flex text-[15px] gap-6 text-center max-[768px]:flex-col">
           <span className="px-10 py-1 rounded-full bg-[#fcf9f2] shadow-xl">
             Thoughtfully designed
-            <br /> 350 sq. ft. studios
+            <br /> fully finished studios
           </span>
           <span className="px-10 py-1 rounded-full bg-[#fcf9f2] shadow-xl">
-            Zen-inspired interiors
-            <br /> with modern finishes
+            Vaastu-compliant design
+            <br />ensuring peaceful living
           </span>
           <span className="px-10 py-1 rounded-full bg-[#fcf9f2] shadow-xl">
-            Multi-purpose living
-            <br /> zones
+            Modular Kitchen &
+            <br /> Dining table for two
           </span>
           <span className="px-10 py-1 rounded-full bg-[#fcf9f2] shadow-xl">
-            Intelligent space
-            <br /> optimization
+            Built-in wardrobe for
+            <br />organized storage
           </span>
           <span className="px-10 py-1 rounded-full bg-[#fcf9f2] shadow-xl">
-            Customisation-friendly
-            <br /> layout options
+            Fully-fitted bathroom with
+            <br />premium sanitaryware
           </span>
         </div>
       </div>
@@ -305,55 +312,53 @@ const FloorPlanIntro = () => {
 
 const FloorPlanCulinary = () => {
   return (
-    <section className="w-full bg-[#eee9d6] py-16">
+    <section className="w-full relative bg-[#eee9d6] py-16">
+
+      <div className="absolute hidden -top-20 drop-shadow-xl shadow-lg shadow-white right-0 bg-[#fcf9f2] rounded-s-full py-3 w-60 desktop:w-80 desktop:flex justify-end">
+        <h1 className="text-black mr-12">
+          YUU NOVA
+          <br /> SQUARE
+        </h1>
+      </div>
       {/* Flavours part */}
-      <div className="max-w-7xl mx-auto grid grid-cols-2 gap-12 items-center max-[768px]:grid-cols-1">
+      <div className="max-w-7xl mx-auto px-6 desktop:px-0 grid grid-cols-2 gap-12 items-center max-[768px]:grid-cols-1">
         {/* Left large image */}
-        <div className="w-full relative bottom-[18%] max-[768px]:bottom-[25%]">
+        <div className="w-full relative bottom-[18%] max-[768px]:bottom-[0%]">
           <img
-            src="images/about4.png"
+            src="images/nova-square.webp"
             alt="Culinary Cove"
             className="w-full h-auto rounded-[24px] shadow-md"
           />
         </div>
         {/* Right text */}
         <div className="w-full">
-          <h1 className="mb-4 max-[768px]:text-3xl">
-            Where Flavours
+          <h2 className="mb-4 desktop:mb-8 max-[768px]:text-3xl">
+            A LIFESTYLE MADE OF
             <br />
-            Meet Flow
-          </h1>
-          <p className="mb-6 max-[768px]:text-sm">
-            Culinary Cove is a handpicked space for restaurateurs and café
-            owners who seek more than just a location — they seek ambiance,
-            footfall, and synergy. Designed with modern infrastructure and
-            ventilation provisions, this zone is made for everything from
-            gourmet dining to cozy cafes and contemporary global cuisine hubs.
-            Positioned amidst a lifestyle-driven community, Culinary Cove is
-            your canvas to craft a culinary destination. Whether it's
-            grab-and-go or slow dining, the atmosphere is yours to shape.
+            ENDLESS POSSIBILITIES.
+          </h2>
+          <p className="mb-6 desktop:mb-20 max-[768px]:text-sm">
+            With seamless integration into YUU Nova studio homes & the
+            larger Chandivali community, these retail spaces become
+            more than destinations they become part of people’s
+            everyday rhythm.
           </p>
-          <p className="uppercase font-bold mb-4">HIGHLIGHTS</p>
-          <div className="flex flex-wrap gap-4">
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-              Designed for restaurants, cafés,
-              <br /> co-working and dessert bars
-            </span>
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-              Pre-provisioned for
-              <br /> ventilation & kitchen setups
-            </span>
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-              Al fresco-friendly
-              <br /> layout options
-            </span>
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-              Premium visibility in a<br /> lifestyle-led environment
-            </span>
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
-              Attracts residents, visitors,
-              <br /> and working professionals
-            </span>
+          <p className="uppercase font-bold mb-4 text-black">HIGHLIGHTS</p>
+          <div className="grid grid-cols-1 desktop:grid-cols-2 gap-6">
+            <div className="px-10 flex items-center justify-center h-16 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+              14’ Height Showrooms
+            </div>
+            <div className="px-10 flex items-center justify-center h-16 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+              Glass Facade
+            </div>
+            <div className="px-10 flex items-center justify-center h-16 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+              Futuristic marketing
+              <br />panels
+            </div>
+            <div className="px-10 flex items-center justify-center h-16 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+              Premium visibility in a
+              <br />lifestyle-led environment
+            </div>
           </div>
         </div>
       </div>
@@ -361,7 +366,7 @@ const FloorPlanCulinary = () => {
       {/* Retail part */}
       <div className="pt-10 grid grid-cols-2 desktop:pl-10 overflow-hidden gap-12 items-center max-[768px]:grid-cols-1">
         {/* left text */}
-        <div className="w-full">
+        <div className="w-full px-6">
           <h1 className="mb-10 max-[768px]:text-3xl">
             Retail That Reflects Your
             <br />
@@ -378,36 +383,36 @@ const FloorPlanCulinary = () => {
             optimal footfall, YUU Luna offers you a rare blend: visibility, foot
             traffic, and a brand-enhancing atmosphere.
           </p>
-          <p className="uppercase font-bold mb-4">HIGHLIGHTS</p>
+          <p className="uppercase font-bold mb-4 text-black">HIGHLIGHTS</p>
           <div className="flex flex-wrap gap-4">
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+            <span className="w-72 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
               Street-facing retail frontage
               <br /> with glass facades
             </span>
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+            <span className="w-72 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
               Double-height
               <br /> showrooms available
             </span>
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+            <span className="w-72 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
               Footfall from in-house residents
               <br /> and Chandivali catchment
             </span>
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+            <span className="w-72 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
               Ideal for lifestyle stores, salons,
               <br /> wellness & concept brands
             </span>
-            <span className="px-10 py-1 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
+            <span className="w-72 py-1 rounded-full bg-[#eee9d6] shadow-xl mb-4 text-sm text-center">
               Smart-sized units for
               <br /> curated brand experiences
             </span>
           </div>
         </div>
         {/* right large image */}
-        <div className="w-full relative">
+        <div className="w-full relative px-6">
           <img
-            src="images/about4.png"
+            src="images/about-luna.webp"
             alt="Culinary Cove"
-            className="w-full h-[550px] rounded-s-[24px] shadow-md max-[768px]:h-[400px]"
+            className="w-full h-[550px] rounded-s-[24px] shadow-md max-[768px]:h-[300px]"
           />
         </div>
       </div>
@@ -502,7 +507,7 @@ const VisionarySection = () => {
     keys.length > 1 ? (currentSlide / (keys.length - 1)) * 100 : 0;
 
   return (
-    <section className="relative w-full bg-[#fdf7f0] py-16 px-4 lg:px-8 overflow-hidden">
+    <section id="management" className="relative w-full bg-[#fdf7f0] py-16 px-4 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-row items-center lg:gap-10 md:flex-col relative max-[768px]:flex-col ">
           {/* Mobile: Slider */}
@@ -618,12 +623,12 @@ const AwardsSection = () => {
   return (
     <section className="w-full relative bg-[#fdf7f0] py-20 px-4 max-[768px]:px-6">
       <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-full desktop:w-[500px] flex justify-end">
-        <h1 className="text-black mr-16">
+        <h1 className="text-black mr-28 desktop:mr-16 max-[768px]:text-4xl">
           AWARDS
           <br /> & RECOGNITION
         </h1>
       </div>
-      <div className="max-w-7xl mx-auto mt-36">
+      <div className="max-w-7xl mx-auto mt-10 desktop:mt-36">
         {/* Main Content */}
         <div className="flex flex-row items-center justify-center max-[1024px]:flex-col">
           {/* Left Column */}
@@ -688,7 +693,7 @@ const About = () => {
       <AboutSection />
       <FloorPlanIntro />
       <FloorPlanCulinary />
-      <ImageReveal/>
+      <ImageReveal />
       <VisionarySection />
       <AwardsSection />
     </>

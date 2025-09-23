@@ -3,19 +3,24 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <div className="bg-[#e2d2b7] w-full flex flex-col desktop:flex-row justify-evenly items-center gap-6 px-6 py-0 pt-20 desktop:pt-14 desktop:py-8 desktop:px-16">
-        <h2 className="text-center desktop:text-left">STAY CONNECTED</h2>
+      <div className="bg-[#e2d2b7] w-full flex flex-col desktop:flex-row justify-between items-center gap-6 px-6 py-0 pt-20 desktop:pt-14 desktop:py-8 desktop:px-16">
+        <div className="flex flex-col desktop:flex-row gap-8 items-start w-full desktop:w-1/2">
+          <h2 className="text-center desktop:text-left">STAY CONNECTED</h2>
 
-        <div className="w-36 h-20 z-40 flex items-center justify-between">
-          <a href="https://www.linkedin.com/company/yuu-by-nahar/" target="_blank">
-            <img width={30} height={30} src="/images/linkendin.png" />
-          </a>
-          <a href="https://youtube.com/@yuubynahar?si=1lc6x8FCjD9CaM6P" target="_blank">
-            <img width={30} height={30} src="/images/youtube.png" />
-          </a>
-          <a href="https://www.instagram.com/yuu_by_nahar" target="_blank">
-            <img width={30} height={30} src="/images/insta.png" />
-          </a>
+          <div className="z-40 w-60 flex gap-x-6 justify-between">
+            <a className="flex items-center" href="https://www.linkedin.com/company/yuu-by-nahar/" target="_blank">
+              <img className="" src="/images/linkedin.png" />
+            </a>
+            <a className="flex items-center" href="https://youtube.com/@yuubynahar?si=1lc6x8FCjD9CaM6P" target="_blank">
+              <img className="" src="/images/yt.png" />
+            </a>
+            <a className="flex items-center" href="https://www.instagram.com/yuu_by_nahar" target="_blank">
+              <img className="" src="/images/insta.png" />
+            </a>
+            <a className="flex items-center" href="https://www.instagram.com/yuu_by_nahar" target="_blank">
+              <img className="" src="/images/maps.png" />
+            </a>
+          </div>
         </div>
 
         <div className="w-full desktop:w-[30%] flex items-center">
@@ -53,10 +58,11 @@ const Footer = () => {
                 About YUU
               </p>
               <div className="flex flex-col mt-4 space-y-1">
-                <a href="">YUU By Nahar</a>
+                <a href="/about">YUU By Nahar</a>
                 <a href="">YUU Nova</a>
                 <a href="">YUU Luna</a>
-                <a href="">Management Design</a>
+                <a href="/about#management">Management</a>
+                {/* <a href="">Design</a> */}
               </div>
             </div>
             <div className="">
@@ -64,10 +70,10 @@ const Footer = () => {
                 Quick Links
               </p>
               <div className="flex flex-col mt-4 space-y-1">
-                <a href="">Whatsapp</a>
-                <a href="">NRI Center</a>
-                <a href="">Privay Policy</a>
-                <a href="">FAQs</a>
+                <a href="https://wa.link/5fi3ox">WhatsApp</a>
+                {/* <a href="">NRI Center</a> */}
+                <a href="/privacy-policy">Privay Policy</a>
+                <a href="#faqs">FAQs</a>
                 <a target="_blank" href="https://maps.app.goo.gl/DYwQyfiBF1KNEKZQA?g_st=ipc">Google Maps</a>
               </div>
             </div>
@@ -83,14 +89,14 @@ const Footer = () => {
                   <img src="/images/nova-qr.png" alt="QR code" className="w-14 h-auto object-contain" />
                   <div className="">
                     <h3 className="text-[23px] text-black">YUU NOVA</h3>
-                    <p className="text-sm"> MahaRERA No.: PMI80002500398</p>
+                    <p className="text-sm"> MahaRERA No: PMI80002500398</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <img src="/images/luna-qr.png" alt="QR code" className="w-14 h-auto object-contain" />
+                  <img src="/images/luna-qr.webp" alt="QR code" className="w-14 h-auto object-contain" />
                   <div className="">
                     <h3 className="text-[23px] text-black">YUU LUNA</h3>
-                    <p className="text-sm"> MahaRERA No.:PMI80002500398</p>
+                    <p className="text-sm"> MahaRERA No: PC1180002500839</p>
                   </div>
                 </div>
               </div>
