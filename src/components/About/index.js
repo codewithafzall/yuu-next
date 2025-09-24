@@ -261,8 +261,8 @@ const FloorPlanIntro = () => {
             <br />A Thoughtful Expression
           </h2>
           <p className="mb-6 max-[768px]:text-sm">
-            Discover studio living reimagined for the urban soul. Each 350 sq.
-            ft. residence at our upcoming development is a testament to
+            Discover studio living reimagined for the urban soul. Each
+            residence at our upcoming development is a testament to
             minimalism, balance, and smart design. From seamless storage
             solutions to integrated design elements that maximise natural light
             and space, these themed studio apartments offer the perfect canvas
@@ -338,10 +338,7 @@ const FloorPlanCulinary = () => {
             ENDLESS POSSIBILITIES.
           </h2>
           <p className="mb-6 desktop:mb-20 max-[768px]:text-sm">
-            With seamless integration into YUU Nova studio homes & the
-            larger Chandivali community, these retail spaces become
-            more than destinations they become part of people’s
-            everyday rhythm.
+            Located on the lower levels of Nova  a vibrant retail square with seamless integration into YUU Nova studio homes & the larger Chandivali community, these retail spaces become more than destinations they become part of people’s everyday rhythm.
           </p>
           <p className="uppercase font-bold mb-4 text-black">HIGHLIGHTS</p>
           <div className="grid grid-cols-1 desktop:grid-cols-2 gap-6">
@@ -364,7 +361,13 @@ const FloorPlanCulinary = () => {
       </div>
 
       {/* Retail part */}
-      <div className="pt-10 grid grid-cols-2 desktop:pl-10 overflow-hidden gap-12 items-center max-[768px]:grid-cols-1">
+      <div className="pt-32 relative desktop:pt-48 grid grid-cols-2 desktop:pl-10 overflow-hidden gap-12 items-center max-[768px]:grid-cols-1">
+        <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white left-0 bg-[#fcf9f2] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
+          <h1 className="text-black mr-16">
+            YUU
+            <br /> LUNA
+          </h1>
+        </div>
         {/* left text */}
         <div className="w-full px-6">
           <h1 className="mb-10 max-[768px]:text-3xl">
@@ -635,17 +638,14 @@ const AwardsSection = () => {
           <div className="w-1/2 flex justify-center  max-[1024px]:w-full">
 
             <p className="mt-10 desktop:w-96">
-              The Nahar Group’s commitment to excellence has
-              been recognized time and again with <span className="text-[#d06d52]">prestigious
-                awards</span> and media features that celebrate innovation,
-              sustainability, and architectural brilliance.
+              Every award we receive is more than an <span className="text-[#d06d52]">accolade</span>, it is a testimony to the trust our customers place in us, the dedication of our team, and the vision of creating spaces that truly enrich lives. These milestones strengthen our belief in setting new benchmarks and inspire us to keep raising the bar.
             </p>
           </div>
 
           {/* Right Column */}
           <div className="w-1/2 flex justify-center max-[1024px]:w-full max-[1024px]:mt-8">
             <div className="max-[1024px]:text-left">
-              <img src="/images/Asset5.png" alt="Awards" className="desktop:w-[300px]" />
+              <img src="/images/Award.png" alt="Awards" className="desktop:w-[300px]" />
             </div>
           </div>
         </div>
