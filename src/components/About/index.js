@@ -341,7 +341,7 @@ const FloorPlanCulinary = () => {
             Located on the lower levels of Nova  a vibrant retail square with seamless integration into YUU Nova studio homes & the larger Chandivali community, these retail spaces become more than destinations they become part of people’s everyday rhythm.
           </p>
           <p className="uppercase font-bold mb-4 text-black">HIGHLIGHTS</p>
-          <div className="grid grid-cols-1 desktop:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 mb-12 desktop:mb-0 desktop:grid-cols-2 gap-6">
             <div className="px-10 flex items-center justify-center h-16 rounded-full bg-[#eee9d6] shadow-xl text-sm text-center">
               14’ Height Showrooms
             </div>
@@ -361,7 +361,7 @@ const FloorPlanCulinary = () => {
       </div>
 
       {/* Retail part */}
-      <div className="pt-32 relative desktop:pt-48 grid grid-cols-2 desktop:pl-10 overflow-hidden gap-12 items-center max-[768px]:grid-cols-1">
+      <div className="pt-40 relative desktop:pt-48 grid grid-cols-2 desktop:pl-10 overflow-hidden gap-12 items-center max-[768px]:grid-cols-1">
         <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white left-0 bg-[#fcf9f2] rounded-e-full py-3 w-60 desktop:w-72 flex justify-end">
           <h1 className="text-black mr-16">
             YUU
