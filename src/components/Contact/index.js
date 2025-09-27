@@ -80,19 +80,19 @@ const index = () => {
       />
 
       <div className="bg-[#f7f4ed]">
-        <div className="w-full desktop:w-[75%] mx-auto relative">
+        <div className="w-full desktop:w-[78%] mx-auto relative">
           <div className="relative -top-[70px] flex flex-col desktop:flex-row justify-between max-[768px]:ml-[43px]">
-            <div className="bg-[#fcf9f2] shadow-lg shadow-white w-[300px] rounded-full py-5 flex flex-col items-center justify-center max-[768px]:mb-8">
+            <div className="bg-[#fcf9f2] shadow-lg shadow-white w-[350px] rounded-full py-5 flex flex-col items-center justify-center max-[768px]:mb-8">
               <img src="/images/call.png" />
               <h3 className="border-b-4 mt-2 border-[#d06d52] pb-1 text-[30px]">PHONE</h3>
               <p className="mt-2 font-bold">+91 97694 46633</p>
             </div>
-            <div className="bg-[#fcf9f2] shadow-lg shadow-white w-[300px] rounded-full py-5 flex flex-col items-center justify-center max-[768px]:mb-8">
+            <div className="bg-[#fcf9f2] shadow-lg shadow-white w-[350px] rounded-full py-5 flex flex-col items-center justify-center max-[768px]:mb-8">
               <img src="/images/email.png" />
               <h3 className="border-b-4 mt-2 border-[#d06d52] pb-1 text-[30px]">EMAIL</h3>
-              <p className="mt-2 font-bold">sales@yuubynahar.in</p>
+              <p className="mt-2 font-bold">execsales1@yuubynahar.com</p>
             </div>
-            <div className="bg-[#fcf9f2] shadow-lg shadow-white w-[300px] rounded-full py-5 flex flex-col items-center justify-center max-[768px]:mb-8">
+            <div className="bg-[#fcf9f2] shadow-lg shadow-white w-[350px] rounded-full py-5 flex flex-col items-center justify-center max-[768px]:mb-8">
               <img src="/images/location.png" />
               <h3 className="border-b-4 mt-2 border-[#d06d52] pb-1 text-[30px]">
                 SALES OFFICE

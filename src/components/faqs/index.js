@@ -53,7 +53,7 @@ export default function FAQAccordion() {
             question: "What are the sizes of units available?",
             answer: (
                 <p className="text-xs">
-                    Studios are designed with compact yet efficient layouts ranging from 299sqft to 400 sqft, while retail shops and restaurant commercial spaces are available in a variety of sizes to suit business needs. This makes it an attractive choice for both homeowners and investors looking for ready to move flats in Mumbai real estate.
+                    Studios are designed with compact yet efficient layouts ranging from 299 sq.ft. to 318 sq.ft., while retail shops and restaurant commercial spaces are available in a variety of sizes to suit business needs. This makes it an attractive choice for both homeowners and investors looking for ready to move flats in Mumbai real estate.
                 </p>
             ),
         },

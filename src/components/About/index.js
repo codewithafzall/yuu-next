@@ -452,11 +452,11 @@ const VisionarySection = () => {
     },
     legacy: {
       topTitle: "THE LEGACY OF NAHAR AMRIT SHAKTI",
-      name: "",
+      name: "NAHAR AMRIT SHAKTI",
       title: "A landmark township loped by Nahar Group",
       description:
         "This self-sufficient community has set new standards for integrated living with world-class education, healthcare, business, and green spaces.<br/><br/> <span style={{color:'#d16f52'}}>Nahar International School –</span> Aleading institution shaping young minds for a global future. Awarded as Asia's top international school 2025. Nahar Medical Centre – Offering state-of-the-art healthcare services to the community.<br/><br/> Nahar Business Centre – A premium commercial hub designed for modern professionals.<br/><br/> Miyawaki Forest by Nahar Group – A lush, dense green space developed using the Japanese afforestation technique, bringing sustainability and nature closer to urban life.<br/><br/> At YUU by Nahar, the legacy continues, elevating the concept of holistic living to the next level.",
-      image: "/images/Asset21.png",
+      image: "/images/amrit-shakti.webp",
     },
   };
 
@@ -532,7 +532,7 @@ const VisionarySection = () => {
                       <img
                         src={person.image}
                         alt={person.name}
-                        className={`w-36 h-48 object-cover rounded-t-full mx-auto transition-all duration-300 ${isSelected ? "" : "grayscale"
+                        className={`w-36 h-48 object-contain rounded-t-full mx-auto transition-all duration-300 ${isSelected ? "" : "grayscale"
                           }`}
                       />
                     </div>
@@ -591,7 +591,7 @@ const VisionarySection = () => {
                 <img
                   src={getPersonData(selectedPerson).image}
                   alt={getPersonData(selectedPerson).name}
-                  className="w-[300px] h-[400px] relative top-4"
+                  className="w-[300px] h-[400px] relative object-cover rounded-t-full top-4"
                 />
               </div>
             </div>
@@ -621,70 +621,70 @@ const VisionarySection = () => {
   );
 };
 
-const AwardsSection = () => {
+// const AwardsSection = () => {
 
-  return (
-    <section className="w-full relative bg-[#fdf7f0] py-20 px-4 max-[768px]:px-6">
-      <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-full desktop:w-[500px] flex justify-end">
-        <h1 className="text-black mr-28 desktop:mr-16 max-[768px]:text-4xl">
-          AWARDS
-          <br /> & RECOGNITION
-        </h1>
-      </div>
-      <div className="max-w-7xl mx-auto mt-10 desktop:mt-36">
-        {/* Main Content */}
-        <div className="flex flex-row items-center justify-center max-[1024px]:flex-col">
-          {/* Left Column */}
-          <div className="w-1/2 flex justify-center  max-[1024px]:w-full">
+//   return (
+//     <section className="w-full relative bg-[#fdf7f0] py-20 px-4 max-[768px]:px-6">
+//       <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-full desktop:w-[500px] flex justify-end">
+//         <h1 className="text-black mr-28 desktop:mr-16 max-[768px]:text-4xl">
+//           AWARDS
+//           <br /> & RECOGNITION
+//         </h1>
+//       </div>
+//       <div className="max-w-7xl mx-auto mt-10 desktop:mt-36">
+//         {/* Main Content */}
+//         <div className="flex flex-row items-center justify-center max-[1024px]:flex-col">
+//           {/* Left Column */}
+//           <div className="w-1/2 flex justify-center  max-[1024px]:w-full">
 
-            <p className="mt-10 desktop:w-96">
-              Every award we receive is more than an <span className="text-[#d06d52]">accolade</span>, it is a testimony to the trust our customers place in us, the dedication of our team, and the vision of creating spaces that truly enrich lives. These milestones strengthen our belief in setting new benchmarks and inspire us to keep raising the bar.
-            </p>
-          </div>
+//             <p className="mt-10 desktop:w-96">
+//               Every award we receive is more than an <span className="text-[#d06d52]">accolade</span>, it is a testimony to the trust our customers place in us, the dedication of our team, and the vision of creating spaces that truly enrich lives. These milestones strengthen our belief in setting new benchmarks and inspire us to keep raising the bar.
+//             </p>
+//           </div>
 
-          {/* Right Column */}
-          <div className="w-1/2 flex justify-center max-[1024px]:w-full max-[1024px]:mt-8">
-            <div className="max-[1024px]:text-left">
-              <img src="/images/Award.png" alt="Awards" className="desktop:w-[300px]" />
-            </div>
-          </div>
-        </div>
+//           {/* Right Column */}
+//           <div className="w-1/2 flex justify-center max-[1024px]:w-full max-[1024px]:mt-8">
+//             <div className="max-[1024px]:text-left">
+//               <img src="/images/Award.png" alt="Awards" className="desktop:w-[300px]" />
+//             </div>
+//           </div>
+//         </div>
 
-        {/* Profile Images */}
-        {/* <div className="grid grid-cols-4 max-[1024px]:grid-cols-2 max-[768px]:grid-cols-2 max-[768px]:gap-2 gap-8">
-          {expertsData.map((expert, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="relative mb-4">
-                <div className="w-32 h-48"></div>
+//         {/* Profile Images */}
+//         {/* <div className="grid grid-cols-4 max-[1024px]:grid-cols-2 max-[768px]:grid-cols-2 max-[768px]:gap-2 gap-8">
+//           {expertsData.map((expert, index) => (
+//             <div key={index} className="flex flex-col items-center">
+//               <div className="relative mb-4">
+//                 <div className="w-32 h-48"></div>
 
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-48">
-                    <img
-                      src={expert.image}
-                      alt={expert.name}
-                      className="w-full h-full "
-                    />
-                  </div>
-                </div>
-              </div>
+//                 <div className="absolute inset-0 flex items-center justify-center">
+//                   <div className="w-32 h-48">
+//                     <img
+//                       src={expert.image}
+//                       alt={expert.name}
+//                       className="w-full h-full "
+//                     />
+//                   </div>
+//                 </div>
+//               </div>
 
-              <div className="relative w-40">
-                <div className="bg-[#353434] w-full text-white py-4 rounded-full text-center absolute bottom-8 left-20 max-[768px]:w-32 max-[768px]:left-10">
-                  <p className="text-[12px] text-white font-semibold max-[768px]:text-[10px]">
-                    {expert.name}
-                  </p>
-                  <p className="text-[10px] text-white opacity-90 max-[768px]:text-[8px]">
-                    ({expert.role})
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div> */}
-      </div>
-    </section>
-  );
-};
+//               <div className="relative w-40">
+//                 <div className="bg-[#353434] w-full text-white py-4 rounded-full text-center absolute bottom-8 left-20 max-[768px]:w-32 max-[768px]:left-10">
+//                   <p className="text-[12px] text-white font-semibold max-[768px]:text-[10px]">
+//                     {expert.name}
+//                   </p>
+//                   <p className="text-[10px] text-white opacity-90 max-[768px]:text-[8px]">
+//                     ({expert.role})
+//                   </p>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div> */}
+//       </div>
+//     </section>
+//   );
+// };
 
 const About = () => {
   return (
@@ -695,7 +695,6 @@ const About = () => {
       <FloorPlanCulinary />
       <ImageReveal />
       <VisionarySection />
-      <AwardsSection />
     </>
   );
 };

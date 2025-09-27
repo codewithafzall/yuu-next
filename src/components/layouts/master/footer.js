@@ -38,9 +38,7 @@ const Footer = () => {
           {/* Left card */}
           <div className="w-1/2 max-[768px]:w-full desktop:border desktop:border-white rounded-tr-[3rem] grid grid-cols-3 max-[768px]:grid-cols-1 gap-x-6 gap-y-8 p-10 max-[768px]:p-6">
             <div className="">
-              <p className="text-black font-semibold">
-                Nahar Group
-              </p>
+              <img src="/images/footer-nahar.png" className="w-20 h-auto object-contain ml-4" />
               <div className="mt-4">
                 <p className="text-xs leading-snug w-[90%]">
                   From residential townships
@@ -72,19 +70,17 @@ const Footer = () => {
               <div className="flex flex-col mt-4 space-y-1">
                 <a href="https://wa.link/5fi3ox">WhatsApp</a>
                 {/* <a href="">NRI Center</a> */}
-                <a href="/privacy-policy">Privay Policy</a>
+                <a href="/privacy-policy">Privacy Policy</a>
                 <a href="#faqs">FAQs</a>
                 <a target="_blank" href="https://maps.app.goo.gl/DYwQyfiBF1KNEKZQA?g_st=ipc">Google Maps</a>
+                <a target="_blank" href="/nri">NRI Corner</a>
               </div>
             </div>
           </div>
           {/* Right card */}
           <div className="w-1/2 relative max-[768px]:w-full border border-white rounded-tl-[3rem] grid grid-cols-3 max-[768px]:grid-cols-1 gap-x-6 gap-y-8 p-10 max-[768px]:p-6">
             <div className="">
-              <p className="text-black font-semibold">
-                Regulatory Info
-              </p>
-              <div className="flex flex-col mt-4 space-y-4">
+              <div className="flex flex-col space-y-4">
                 <div className="flex items-center gap-3">
                   <img src="/images/nova-qr.png" alt="QR code" className="w-14 h-auto object-contain" />
                   <div className="">
@@ -111,16 +107,16 @@ const Footer = () => {
             </div>
             <div className="">
               <p className="text-black font-semibold">
-                Project by
+                Created by
               </p>
               <div className="flex items-center gap-4 mt-6">
-                <img src="/images/footer-nahar.png" alt="Nahar Group" className="w-20 h-auto object-contain" />
+                <a target="_blank" href="http://www.naharprojects.com" >
+                  <img src="/images/nahar-projects.png" alt="Nahar Group" className="w-28 h-auto object-contain" />
+                </a>
               </div>
             </div>
             <small className="w-full desktop:col-span-3 text-xs">
-              Disclaimer: Visuals shown are artist’s impressions for representational purposes only.
-              The project is financed by RBL Bank. Loan approvals are at the sole discretion of the bank.
-              Project is Funded by and mortgaged to RBL bank limited
+              Disclaimer: All images, illustrations, and renders in this brochure are indicative and subject to change. The specifications of the exterior and interior for both projects under RERA No. PM1180002500398 and RERA No. PC1180002500839 are subject to modifications as per architectural and design requirements. Buyers are advised to independently verify all project details before making any purchase decision.
             </small>
           </div>
         </div>

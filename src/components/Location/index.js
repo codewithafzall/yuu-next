@@ -57,7 +57,7 @@ const LocationAbout = () => (
           className="mb-6"
         >
           EVERYTHING YOU NEED,
-          JUST AROUND YUU
+          JUST AROUND YUU.
         </h2>
 
         {/* First Paragraph */}
@@ -134,7 +134,7 @@ const DistanceMap = () => (
             style={{ marginBottom: "30px" }}
           >
             <p className="text-center text-sm max-[768px]:text-xs font-semibold">
-              Nahar International<br/> School
+              Nahar Miyawaki <br/> Forest
             </p>
           </div>
           <div
@@ -142,12 +142,12 @@ const DistanceMap = () => (
             style={{ marginBottom: "30px" }}
           >
             <p className="text-center text-sm max-[768px]:text-xs font-semibold">
-              Nahar Medical<br/> Centre
+              Nahar International<br/> School
             </p>
           </div>
           <div className="p-3 bg-[#fcf9f2] shadow-xl rounded-full bg-transparent border border-white">
             <p className="text-center text-sm max-[768px]:text-xs font-semibold">
-              Nahar Business<br/> Centre
+              Nahar Medical<br/> Center
             </p>
           </div>
         </div>

@@ -4,24 +4,24 @@ const Testimonials = () => {
   const initial = [
     {
       id: 1,
-      icon: '/images/Asset 30.png',
-      text: `As an architect, I was impressed by the precision and finish of the YUU by Nahar sales office. If this attention to detail carries into the whole project, it’s going to be a landmark project.`,
-      name: 'Arjun Mehta',
-      role: 'Architect',
-    },
-    {
-      id: 2,
       icon: '/images/Asset 32.png',
       text: `The professionalism at YUU by Nahar gave me real confidence. Even though construction is on, the sales office reflects the quality and care that makes it feel like a safe investment.`,
       name: 'Priya Rao',
       role: 'Bank Employee',
     },
     {
-      id: 3,
+      id: 2,
       icon: '/images/Asset 32.png',
       text: `Buying my first home felt overwhelming, but the YUU by Nahar3 team made it simple. The sales office quality gave me the reassurance I needed to take the next step.`,
       name: 'Rajiv Kapoor',
       role: 'Photographer',
+    },
+    {
+      id: 3,
+      icon: '/images/Asset 30.png',
+      text: `As an architect, I was impressed by the precision and finish of the YUU by Nahar sales office. If this attention to detail carries into the whole project, it’s going to be a landmark project.`,
+      name: 'Arjun Mehta',
+      role: 'Designer',
     },
   ];
 
