@@ -19,7 +19,7 @@ const Testimonials = () => {
     {
       id: 3,
       icon: '/images/Asset 30.png',
-      text: `As an architect, I was impressed by the precision and finish of the YUU by Nahar sales office. If this attention to detail carries into the whole project, it’s going to be a landmark project.`,
+      text: `As a designer, I was impressed by the precision and finish of the YUU by Nahar sales office. If this attention to detail carries into the whole project, it’s going to be a landmark project.`,
       name: 'Arjun Mehta',
       role: 'Designer',
     },

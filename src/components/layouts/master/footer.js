@@ -17,7 +17,7 @@ const Footer = () => {
             <a className="flex items-center" href="https://www.instagram.com/yuu_by_nahar" target="_blank">
               <img className="" src="/images/insta.png" />
             </a>
-            <a className="flex items-center" href="https://www.instagram.com/yuu_by_nahar" target="_blank">
+            <a className="flex items-center" href="https://maps.app.goo.gl/k2SZn32isnBN1CDUA" target="_blank">
               <img className="" src="/images/maps.png" />
             </a>
           </div>

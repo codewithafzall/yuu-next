@@ -262,7 +262,7 @@ const FloorPlanIntro = () => {
           </h2>
           <p className="mb-6 max-[768px]:text-sm">
             Discover studio living reimagined for the urban soul. Each
-            residence at our upcoming development is a testament to
+            residence ranging from 299sq.ft. to 318sq.ft. at our upcoming development is a testament to
             minimalism, balance, and smart design. From seamless storage
             solutions to integrated design elements that maximise natural light
             and space, these themed studio apartments offer the perfect canvas
@@ -376,11 +376,11 @@ const FloorPlanCulinary = () => {
             Brand’s Light
           </h1>
           <p className="mb-6 max-[768px]:text-sm">
-            Step into a retail space that does more than sell — it tells a
+            Step into a retail space that does more than sell, it tells a
             story. YUU Luna is thoughtfully planned to house boutique
             storefronts and elegant showrooms that align with your brand’s
             sensibilities. Positioned within a vibrant mixed-use ecosystem, it’s
-            designed to welcome a discerning customer base — from urban
+            designed to welcome a discerning customer base, from urban
             professionals to residents within the development and the larger
             Chandivali neighborhood. With high visibility, modern frontage, and
             optimal footfall, YUU Luna offers you a rare blend: visibility, foot
@@ -423,268 +423,69 @@ const FloorPlanCulinary = () => {
   );
 };
 
-const VisionarySection = () => {
-  const [selectedPerson, setSelectedPerson] = useState("ajay");
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const visionaryData = {
-    ajay: {
-      topTitle: "FROM THE VISIONARIES OF YUU",
-      name: "AJAY NAHAR",
-      title: "The Mind Behind YUU by Nahar",
-      description:
-        "A visionary leader and a pioneer in redefining Mumbai's skyline, Ajay Nahar, MD of Nahar Group, has always believed in creating spaces that enhance the way people live, work, and interact. With a portfolio of award-winning developments such as luxury real estate, theme-based residential towers, modern healthcare infrastructure, Asia's 1st International School and philanthropic developments for the Jain community, he continues to push boundaries in real estate innovation. With YUU by Nahar, his vision is to introduce a dynamic and immersive lifestyle hub—one that blends urban convenience with timeless elegance, setting a new benchmark for Mumbai's modern living experience.",
-      image: "/images/Asset7.png",
-    },
-    awards: {
-      topTitle: " From the Architect of YUU",
-      name: " ar. shitesh agarwal",
-      title: " Sankalp Architects",
-      description:
-        "Great architecture is a collaboration of vision, expertise, and craftsmanship. YUU by Nahar is brought to life by some of the finest minds in the industry, ensuring excellence in design, execution, and innovation.<br/> <br/> TOGETHER, THEY SHAPE YUU INTO A SPACE THAT IS MODERN, EFFICIENT, AND BUILT TO INSPIRE.",
-      image: "/images/sankalp.png",
-    },
-    legacy: {
-      topTitle: "THE LEGACY OF NAHAR AMRIT SHAKTI",
-      name: "NAHAR AMRIT SHAKTI",
-      title: "A landmark township loped by Nahar Group",
-      description:
-        "This self-sufficient community has set new standards for integrated living with world-class education, healthcare, business, and green spaces.<br/><br/> <span style={{color:'#d16f52'}}>Nahar International School –</span> Aleading institution shaping young minds for a global future. Awarded as Asia's top international school 2025. Nahar Medical Centre – Offering state-of-the-art healthcare services to the community.<br/><br/> Nahar Business Centre – A premium commercial hub designed for modern professionals.<br/><br/> Miyawaki Forest by Nahar Group – A lush, dense green space developed using the Japanese afforestation technique, bringing sustainability and nature closer to urban life.<br/><br/> At YUU by Nahar, the legacy continues, elevating the concept of holistic living to the next level.",
-      image: "/images/amrit-shakti.webp",
-    },
-  };
-
-  const keys = Object.keys(visionaryData);
-  const [isMobile, setIsMobile] = useState(false);
-
-  const sliderRef = useRef(null);
-
-  const initialIndex = Math.max(0, keys.indexOf(selectedPerson));
-
-  const [currentSlide, setCurrentSlide] = useState(initialIndex);
-
-  useEffect(() => {
-    // keep slider and state synced if selectedPerson changes programmatically
-    const idx = keys.indexOf(selectedPerson);
-    if (idx >= 0) {
-      setCurrentSlide(idx);
-      sliderRef.current?.slickGoTo(idx);
-    }
-  }, [selectedPerson, keys]);
-
-  const handlePersonSelect = (personKey) => {
-    const idx = keys.indexOf(personKey);
-    setSelectedPerson(personKey);
-    setCurrentSlide(idx);
-    sliderRef.current?.slickGoTo(idx);
-  };
-
-  const getPersonData = (key) => visionaryData[key];
-
-  // Slider settings for mobile
-  const sliderSettings = {
-    dots: false,
-    infinite: false,
-    speed: 350,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    swipeToSlide: true,
-    arrows: false,
-    centerMode: true,
-    centerPadding: "18px", // shows a peek of adjacent slides
-    initialSlide: initialIndex,
-    afterChange: (index) => {
-      setCurrentSlide(index);
-      setSelectedPerson(keys[index]);
-    },
-  };
-
-  // progress percent for the small scroll indicator dot (0..100)
-  const progressPercent =
-    keys.length > 1 ? (currentSlide / (keys.length - 1)) * 100 : 0;
+const AjayNahar = () => {
 
   return (
-    <section id="management" className="relative w-full bg-[#fdf7f0] py-16 px-4 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-row items-center lg:gap-10 md:flex-col relative max-[768px]:flex-col ">
-          {/* Mobile: Slider */}
-          {isMobile ? (
-            <div className="w-full mb-6">
-              <Slider ref={sliderRef} {...sliderSettings}>
-                {keys.map((key, index) => {
-                  const person = getPersonData(key);
-                  const isSelected = key === selectedPerson; // <-- defined here
-                  return (
-                    <div
-                      key={key}
-                      onClick={() => handlePersonSelect(key)}
-                      className="cursor-pointer flex flex-col items-center px-2"
-                    >
-                      <h3 className="text-xs mb-2 text-gray-500 text-center uppercase tracking-wide w-full leading-tight">
-                        {person.name}
-                      </h3>
-                      <img
-                        src={person.image}
-                        alt={person.name}
-                        className={`w-36 h-48 object-contain rounded-t-full mx-auto transition-all duration-300 ${isSelected ? "" : "grayscale"
-                          }`}
-                      />
-                    </div>
-                  );
-                })}
-              </Slider>
+    <>
+    <section className="w-full relative bg-[#fdf7f0] py-10 px-4 max-[768px]:px-6"> 
+      <h2 className="mt-10 text-center">The Mind Behind YUU by Nahar</h2>
+      <div className="max-w-7xl mx-auto mt-10">
+        {/* Main Content */}
+        <div className="flex flex-row items-center justify-center max-[1024px]:flex-col">
+          {/* Left Column */}
+          <div className="w-1/2 flex flex-col justify-center  max-[1024px]:w-full">
+            <h2 className="mt-10 text-center">Ar. AJAY NAHAR</h2>
+            <p className="text-center mt-2 text-[#513335] font-semibold">MD Nahar Group</p>
+            <small className="mt-10">
+              A visionary leader and a pioneer in redefining Mumbai's skyline, Ajay Nahar, MD of Nahar Group, has always believed in creating spaces that enhance the way people live, work, and interact. With a portfolio of award-winning developments such as luxury real estate, theme-based residential towers, modern healthcare infrastructure, Asia's 1st International School and philanthropic developments for the Jain community, he continues to push boundaries in real estate innovation. With YUU by Nahar, his vision is to introduce a dynamic and immersive lifestyle hub—one that blends urban convenience with timeless elegance, setting a new benchmark for Mumbai's modern living experience.
+            </small>
+          </div>
 
-              {/* Scroll indicator (small moving dot) */}
-              <div className="mt-3 flex justify-center">
-                <div className="relative w-40 h-2 bg-[#e2d2b7] rounded-full">
-                  <div
-                    className="absolute top-1/2 bg-[#c46c4a] w-3 h-3 rounded-full"
-                    style={{
-                      left: `${progressPercent}%`,
-                      transform: "translate(-50%, -50%)",
-                      transition: "left 0.28s ease",
-                    }}
-                  />
-                </div>
-              </div>
+          {/* Right Column */}
+          <div className="w-1/2 flex flex-col mx-auto justify-center max-[1024px]:w-full max-[1024px]:mt-8">
+            <div className="">
+              <img src="/images/ajay-nahar.webp" alt="Awards" className="desktop:w-[400px] desktop:h-[500px] mx-auto mt-3 object-cover rounded-t-full" />
             </div>
-          ) : (
-            // Desktop: original left-side images
-            <div className="flex flex-row justify-start gap-12 mt-[18%] md:mt-0 md:gap-6">
-              {Object.keys(visionaryData)
-                .filter((key) => key !== selectedPerson)
-                .map((key) => {
-                  const person = getPersonData(key);
-                  return (
-                    <div
-                      key={key}
-                      onClick={() => handlePersonSelect(key)}
-                      className="cursor-pointer flex flex-col items-center hover:opacity-80 transition-all"
-                    >
-                      <h3 className="text-xs mb-5 text-gray-500 mt-3 text-center uppercase tracking-wide w-full leading-tight">
-                        {person.name}
-                      </h3>
-                      <img
-                        src={person.image}
-                        alt={person.name}
-                        className="w-48 h-60 object-cover rounded-t-full grayscale"
-                      />
-                    </div>
-                  );
-                })}
-            </div>
-          )}
-
-          {/* Main image */}
-          {!isMobile && (
-            <div className="relative flex flex-col items-center mx-12">
-              <h2 className="text-4xl text-center mb-6 uppercase">
-                {getPersonData(selectedPerson).topTitle}
-              </h2>
-              <div className="relative flex justify-center items-center">
-                <img
-                  src={getPersonData(selectedPerson).image}
-                  alt={getPersonData(selectedPerson).name}
-                  className="w-[300px] h-[400px] relative object-cover rounded-t-full top-4"
-                />
-              </div>
-            </div>
-          )}
-
-          {/* Text section */}
-          <div className={`max-w-md space-y-4 ${isMobile ? "" : "mt-20"}`}>
-            {isMobile && (
-              <h2 className="text-2xl text-center uppercase">
-                {getPersonData(selectedPerson).topTitle}
-              </h2>
-            )}
-            <h3>{getPersonData(selectedPerson).name}</h3>
-            <p className="text-[#fca286]">
-              {getPersonData(selectedPerson).title}
-            </p>
-            <p
-              className="text-[15px] leading-relaxed text-gray-700"
-              dangerouslySetInnerHTML={{
-                __html: getPersonData(selectedPerson).description,
-              }}
-            ></p>
           </div>
         </div>
       </div>
     </section>
+    <section className="w-full relative bg-[#fdf7f0] py-10 px-4 max-[768px]:px-6">
+      <div className="max-w-7xl mx-auto mt-10">
+        {/* Main Content */}
+        <div className="flex flex-row-reverse items-center justify-center max-[1024px]:flex-col">
+          {/* Left Column */}
+          <div className="w-1/2 flex flex-col justify-center  max-[1024px]:w-full">
+            <h2 className="mt-10 text-center">NAHAR AMRIT SHAKTI</h2>
+            <p className="text-[#d06d52] mt-3 text-center">A landmark township loped by Nahar Group</p>
+            <small className="mt-10">
+              This self-sufficient community has set new standards for integrated living with world-class education, healthcare, business, and green spaces.<br/>
+
+              <span className="text-[#d06d52] font-semibold">Nahar International School</span> – A leading institution shaping young minds for a global future. Awarded as Asia's top international school 2025.<br/>
+              
+              <span className="text-[#d06d52] font-semibold">Nahar Medical Centre</span> – Offering state-of-the-art healthcare services to the community.<br/>
+
+              <span className="text-[#d06d52] font-semibold">Nahar Business Centre</span> – A premium commercial hub designed for modern professionals.<br/>
+
+              <span className="text-[#d06d52] font-semibold">Miyawaki Forest by Nahar Group</span> – A lush, dense green space developed using the Japanese afforestation technique, bringing sustainability and nature closer to urban life.<br/>
+
+              At YUU by Nahar, the legacy continues, elevating the concept of holistic living to the next level.<br/> 
+              </small>
+          </div>
+
+          {/* Right Column */}
+          <div className="w-1/2 flex justify-center max-[1024px]:w-full max-[1024px]:mt-8">
+            <div className="max-[1024px]:text-right">
+              <img src="/images/amrit-shakti.webp" alt="Awards" className="w-[400px] h-[500px] object-cover rounded-t-full" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </>
   );
 };
 
-// const AwardsSection = () => {
-
-//   return (
-//     <section className="w-full relative bg-[#fdf7f0] py-20 px-4 max-[768px]:px-6">
-//       <div className="absolute top-0 drop-shadow-xl shadow-lg shadow-white desktop:top-20 left-0 bg-[#fcf9f2] rounded-e-full py-3 w-full desktop:w-[500px] flex justify-end">
-//         <h1 className="text-black mr-28 desktop:mr-16 max-[768px]:text-4xl">
-//           AWARDS
-//           <br /> & RECOGNITION
-//         </h1>
-//       </div>
-//       <div className="max-w-7xl mx-auto mt-10 desktop:mt-36">
-//         {/* Main Content */}
-//         <div className="flex flex-row items-center justify-center max-[1024px]:flex-col">
-//           {/* Left Column */}
-//           <div className="w-1/2 flex justify-center  max-[1024px]:w-full">
-
-//             <p className="mt-10 desktop:w-96">
-//               Every award we receive is more than an <span className="text-[#d06d52]">accolade</span>, it is a testimony to the trust our customers place in us, the dedication of our team, and the vision of creating spaces that truly enrich lives. These milestones strengthen our belief in setting new benchmarks and inspire us to keep raising the bar.
-//             </p>
-//           </div>
-
-//           {/* Right Column */}
-//           <div className="w-1/2 flex justify-center max-[1024px]:w-full max-[1024px]:mt-8">
-//             <div className="max-[1024px]:text-left">
-//               <img src="/images/Award.png" alt="Awards" className="desktop:w-[300px]" />
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* Profile Images */}
-//         {/* <div className="grid grid-cols-4 max-[1024px]:grid-cols-2 max-[768px]:grid-cols-2 max-[768px]:gap-2 gap-8">
-//           {expertsData.map((expert, index) => (
-//             <div key={index} className="flex flex-col items-center">
-//               <div className="relative mb-4">
-//                 <div className="w-32 h-48"></div>
-
-//                 <div className="absolute inset-0 flex items-center justify-center">
-//                   <div className="w-32 h-48">
-//                     <img
-//                       src={expert.image}
-//                       alt={expert.name}
-//                       className="w-full h-full "
-//                     />
-//                   </div>
-//                 </div>
-//               </div>
-
-//               <div className="relative w-40">
-//                 <div className="bg-[#353434] w-full text-white py-4 rounded-full text-center absolute bottom-8 left-20 max-[768px]:w-32 max-[768px]:left-10">
-//                   <p className="text-[12px] text-white font-semibold max-[768px]:text-[10px]">
-//                     {expert.name}
-//                   </p>
-//                   <p className="text-[10px] text-white opacity-90 max-[768px]:text-[8px]">
-//                     ({expert.role})
-//                   </p>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div> */}
-//       </div>
-//     </section>
-//   );
-// };
 
 const About = () => {
   return (
@@ -694,7 +495,7 @@ const About = () => {
       <FloorPlanIntro />
       <FloorPlanCulinary />
       <ImageReveal />
-      <VisionarySection />
+      <AjayNahar />
     </>
   );
 };

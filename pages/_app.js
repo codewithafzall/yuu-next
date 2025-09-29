@@ -21,8 +21,7 @@ function MyApp({ Component, pageProps }) {
     return () => scroll.destroy();
   }, []);
 
-  // Restrict right-click, inspect mode, print screen, drag images
-  useEffect(() => {
+   useEffect(() => {
     // Disable right click
     const handleContextMenu = (e) => e.preventDefault();
 
@@ -63,6 +62,7 @@ function MyApp({ Component, pageProps }) {
       document.removeEventListener("dragstart", handleDragStart);
     };
   }, []);
+  
 
   return (
     <MasterLayout>

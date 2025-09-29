@@ -29,7 +29,7 @@ const initialForm = {
   verificationCode: "",
 };
 
-const Tablet = () => {
+const Tablet = ({ openFormType, setOpenFormType }) => {
   const [activeForm, setActiveForm] = useState(null); // "callback" | "visit" | "brochure"
   const [user, setUser] = useState(null);
   const [isOTPSent, setIsOTPSent] = useState(false);
@@ -42,6 +42,13 @@ const Tablet = () => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (openFormType) {
+      openForm(openFormType); // your existing openForm logic
+      setOpenFormType(null);  // reset parent trigger
+    }
+  }, [openFormType]);
 
   // ── Auth state sync & non-persistent sessions ─────────────────────────────
   useEffect(() => {
@@ -309,7 +316,7 @@ const Tablet = () => {
     ) : null;
 
   return (
-    <div className="relative w-full" id="form">
+    <div className="relative w-full z-50" id="form">
       {/* Button Group */}
       <div className="absolute left-1/2 transform -translate-x-1/2 w-[90%] desktop:w-[60%] py-3 desktop:py-7 shadow-2xl rounded-full bg-[#f7f6f2] flex justify-between items-center mx-auto">
         <button

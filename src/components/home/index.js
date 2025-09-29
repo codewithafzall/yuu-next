@@ -14,6 +14,8 @@ const index = () => {
   const containerRef = useRef(null);
   const imageRef = useRef(null);
   const router = useRouter();
+  const [tabletForm, setTabletForm] = useState(null);
+
 
   const onMove = (e) => {
     const rect = containerRef.current.getBoundingClientRect();
@@ -88,7 +90,10 @@ const index = () => {
       {/* Second Section of Home Page */}
 
       <div className="relative pb-10 desktop:pb-0 w-full bg-[#f7f4ed]">
-        <Tablet />
+        <Tablet
+          openFormType={tabletForm}
+          setOpenFormType={setTabletForm}
+        />
         <div className="flex flex-col desktop:flex-row items-center w-full gap-x-16">
           <img
             className="w-full desktop:w-[50%] pr-3 desktop:pr-0"
@@ -147,8 +152,8 @@ const index = () => {
             </h3>
             <small className="">
               From residential townships and
-              commercial<br/> spaces to healthcare,
-              education, and philanthropy.<br/> Nahar
+              commercial<br /> spaces to healthcare,
+              education, and philanthropy.<br /> Nahar
               Group has shaped the skyline and
               soul of Mumbai for over five decades.
             </small>
@@ -265,14 +270,11 @@ const index = () => {
             BE A PART OF THE FUTURE
           </h1>
           <small className="mt-6">
-            Secure your place in this exceptional township today;<br/>
+            Secure your place in this exceptional township today;<br />
             experience the best of urban living, retail, and lifestyle.
           </small>
           <div className="flex mx-auto gap-x-4 mt-6">
-            <a href="#form" className="drop-shadow-xl cursor-pointer shadow-sm shadow-white bg-[#f7f4ec] flex rounded-full px-4 py-2 uppercase text-sm">
-              Send Enquiry
-            </a>
-            <a href="#form" className="drop-shadow-xl cursor-pointer shadow-sm shadow-white bg-[#f7f4ed] flex rounded-full px-4 py-2 uppercase text-sm">
+            <a onClick={() => setTabletForm("visit")} className="drop-shadow-xl cursor-pointer shadow-sm shadow-white bg-[#f7f4ed] flex rounded-full px-4 py-2 uppercase text-sm">
               Book a visit
             </a>
           </div>

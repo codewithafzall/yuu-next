@@ -44,6 +44,7 @@ const ImageReveal = () => {
             </>
           )}
         </button>
+        <p className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white teext-black font-semibold rounded-full px-4 py-2 hidden tablet:block">Designed by Sankalp Architects</p>
       </div>
 
       <h3 className="text-center mt-8 mb-8 desktop:mb-16 max-[768px]:text-2xl">

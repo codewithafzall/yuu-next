@@ -97,11 +97,9 @@ const index = () => {
               <h3 className="border-b-4 mt-2 border-[#d06d52] pb-1 text-[30px]">
                 SALES OFFICE
               </h3>
-              <p className="mt-2 font-bold text-[14px]">
+              <p className="mt-2 font-bold text-center text-[14px]">
                 {" "}
-                NAS, Chandivali, Andheri East,
-                <br />
-                Mumbai – 400072
+                YUU by Nahar sales lounge,<br /> Chandivali Farm Rd, Chandivali, Powai,<br /> Mumbai, Maharashtra 400072
               </p>
             </div>
           </div>
@@ -121,14 +119,19 @@ const index = () => {
                 </a>
               </div>
             </div>
-            <img
-              className="absolute right-0 z-50 hidden desktop:block"
-              src="/images/contact-map.png"
-            />
-            <img
-              className="mx-4 desktop:hidden"
-              src="/images/contact-map.png"
-            />
+            <a href="https://maps.app.goo.gl/k2SZn32isnBN1CDUA" target="_blank" rel="noopener noreferrer">
+              <img
+                className="absolute right-0 z-50 hidden desktop:block"
+                src="/images/contact-map.png"
+              />
+            </a>
+
+            <a href="https://maps.app.goo.gl/k2SZn32isnBN1CDUA" target="_blank" rel="noopener noreferrer">
+              <img
+                className="mx-4 desktop:hidden"
+                src="/images/contact-map.png"
+              />
+            </a>
           </div>
         </div>
         <div className="bg-[#fcf9f2] relative w-full py-10">
@@ -138,7 +141,7 @@ const index = () => {
                 <div className="w-full">
                   <input
                     type="text"
-                    placeholder="NAME"
+                    placeholder="NAME*"
                     value={form.name}
                     onChange={(e) => updateField("name", e.target.value)}
                     className="text-xl w-full placeholder-[#000] shadow-lg shadow-white rounded-full bg-[#f7f4ed] py-2 px-4 desktop:py-3"
@@ -147,7 +150,7 @@ const index = () => {
                 <div className="w-full">
                   <input
                     type="text"
-                    placeholder="OCCUPATION"
+                    placeholder="OCCUPATION*"
                     value={form.occupation}
                     onChange={(e) => updateField("occupation", e.target.value)}
                     className="text-xl w-full placeholder-[#000] shadow-lg shadow-white rounded-full bg-[#f7f4ed] py-2 px-4 desktop:py-3"
@@ -159,7 +162,7 @@ const index = () => {
                 <div className="w-full">
                   <input
                     type="tel"
-                    placeholder="PHONE NUMBER"
+                    placeholder="PHONE NUMBER*"
                     value={form.phone}
                     onChange={(e) => updateField("phone", e.target.value)}
                     className="text-xl w-full placeholder-[#000] shadow-lg shadow-white rounded-full bg-[#f7f4ed] py-2 px-4 desktop:py-3"
@@ -168,7 +171,7 @@ const index = () => {
                 <div className="w-full">
                   <input
                     type="email"
-                    placeholder="EMAIL"
+                    placeholder="EMAIL*"
                     value={form.email}
                     onChange={(e) => updateField("email", e.target.value)}
                     className="text-xl w-full placeholder-[#000] shadow-lg shadow-white rounded-full bg-[#f7f4ed] py-2 px-4 desktop:py-3"
@@ -183,7 +186,7 @@ const index = () => {
                   onChange={(e) => updateField("interestedIn", e.target.value)}
                 >
                   <option value="" disabled>
-                    INTERESTED IN
+                    INTERESTED IN*
                   </option>
                   <option value="studio apartment">Studio Apartments</option>
                   <option value="retail showroom">Retail Showrooms</option>
@@ -201,14 +204,39 @@ const index = () => {
               </div>
               <div className="flex items-center gap-x-5 mt-6">
                 <button
-                  className="rounded-full bg-[#000] bg-opacity-25 shadow-sm shadow-black px-4 py-2 text-lg"
+                  className="rounded-full bg-[#d06d52] shadow-sm px-4 py-2 text-lg"
                   type="submit"
                   disabled={loading}
                 >
-                  <h3 className="text-2xl text-[#000]">{loading ? "Submitting..." : "SUBMIT"}</h3>
+                  <h3 className="text-2xl text-[#fff]">
+                    {loading ? (
+                      <svg
+                        className="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                        ></path>
+                      </svg>
+                    ) : (
+                      "SUBMIT"
+                    )}
+                  </h3>
                 </button>
                 <small className="font-thin max-[768px]:text-[12px]">
-                  Our team typically responds within 24 hours
+                  Our team typically responds within 48 hours
                 </small>
               </div>
             </form>
