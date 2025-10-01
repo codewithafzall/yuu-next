@@ -142,7 +142,7 @@ const AboutSection = () => {
       onComplete: () => {
         document.querySelector(".about-text-three").innerHTML = `
           <h3>
-            and every moment is built aroud YUU
+            and every moment is built aroud YUU.
           </h3>`;
       },
     }).fromTo(
@@ -158,7 +158,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section className="about-section relative w-full bg-[#fdf7f0] flex flex-col items-center justify-center py-24 max-[768px]:py-10 px-4 overflow-visible">
+    <section className="about-section relative w-full bg-[#fdf7f0] flex flex-col items-center justify-center py-10 max-[768px]:py-10 px-4 overflow-visible">
       <img className="about-title" src="/images/Asset 29.png" />
       {/* Main Content Row */}
       <div className="w-full flex flex-row max-[900px]:flex-col items-center justify-center gap-8 relative">
@@ -212,9 +212,9 @@ const AboutSection = () => {
           />
           {/* Tree image */}
           <img
-            src="/images/about-tree.png"
+            src="/images/cherry-blossom.webp"
             alt="Yuu Tree"
-            className="about-tree relative z-20 w-[450px] h-[450px] max-[768px]:w-[260px] max-[768px]:h-[260px]"
+            className="about-tree relative z-20 w-[450px] max-[768px]:w-[260px] max-[768px]:h-[260px]"
             style={{ marginBottom: 0 }}
           />
         </div>
@@ -258,7 +258,7 @@ const FloorPlanIntro = () => {
         <div className="w-1/2 max-[768px]:w-full">
           <h2 className="mb-5 font-normal max-[768px]:text-3xl">
             Every Square Foot,
-            <br />A Thoughtful Expression
+            <br />A Thoughtful Expression.
           </h2>
           <p className="mb-6 max-[768px]:text-sm">
             Discover studio living reimagined for the urban soul. Each

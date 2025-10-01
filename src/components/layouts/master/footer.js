@@ -107,7 +107,7 @@ const Footer = () => {
             </div>
             <div className="">
               <p className="text-black font-semibold">
-                Created by
+                A project by
               </p>
               <div className="flex items-center gap-4 mt-6">
                 <a target="_blank" href="http://www.naharprojects.com" >

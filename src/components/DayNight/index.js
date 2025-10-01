@@ -27,29 +27,25 @@ const ImageReveal = () => {
           {mode === "day" ? (
             <>
               <img
-                src="/images/moon.png"
-                alt="Switch to Night"
-                className="w-5 h-5 object-contain"
-              />
-              <span className="text-gray-800 font-medium">Night</span>
-            </>
-          ) : (
-            <>
-              <img
                 src="/images/sun.png"
                 alt="Switch to Day"
                 className="w-5 h-5 object-contain"
               />
               <span className="text-gray-800 font-medium">Day</span>
             </>
+          ) : (
+            <>
+              <img
+                src="/images/moon.png"
+                alt="Switch to Night"
+                className="w-5 h-5 object-contain"
+              />
+              <span className="text-gray-800 font-medium">Night</span>
+            </>
           )}
         </button>
         <p className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white teext-black font-semibold rounded-full px-4 py-2 hidden tablet:block">Designed by Sankalp Architects</p>
       </div>
-
-      <h3 className="text-center mt-8 mb-8 desktop:mb-16 max-[768px]:text-2xl">
-        TAP TO SWITCH BETWEEN DAY & NIGHT
-      </h3>
     </section>
   );
 };
