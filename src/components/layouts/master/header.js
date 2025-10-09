@@ -121,7 +121,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#virtual"
+                href="/virtual-tour"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/virtual-tour")
                     ? "after:w-full"
                     : "after:w-0 hover:after:w-full"
@@ -165,7 +165,7 @@ const Header = () => {
             <li><a href="/about" className="uppercase">About yuu</a></li>
             <li><a href="/location" className="uppercase">Location</a></li>
             <li><a href="#home" className="uppercase">Latest</a></li>
-            <li><a href="#virtual" className="uppercase">Virtual Tour</a></li>
+            <li><a href="/virtual-tour" className="uppercase">Virtual Tour</a></li>
             <li><a href="#faqs" className="uppercase">FAQs</a></li>
             <li><a href="/contact" className="uppercase">Contact Us</a></li>
           </ul>
