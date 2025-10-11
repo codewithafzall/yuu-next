@@ -7,7 +7,7 @@ const VirtualTourPage = () => {
         <title>YUU by Nahar</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="w-full h-screen pt-24">
+      <div className="w-full h-screen">
         <iframe
           src="https://yuunova.futeservices.in"
           title="YUU Virtual Tour"

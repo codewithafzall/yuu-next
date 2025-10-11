@@ -121,7 +121,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="/virtual-tour"
+                href="/yuunova-virtualtour"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/virtual-tour")
                     ? "after:w-full"
                     : "after:w-0 hover:after:w-full"
