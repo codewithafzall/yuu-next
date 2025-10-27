@@ -165,7 +165,7 @@ const Header = () => {
             <li><a href="/about" className="uppercase">About yuu</a></li>
             <li><a href="/location" className="uppercase">Location</a></li>
             <li><a href="#home" className="uppercase">Latest</a></li>
-            <li><a href="/virtual-tour" className="uppercase">Virtual Tour</a></li>
+            <li><a href="/yuunova-virtualtour" className="uppercase">Virtual Tour</a></li>
             <li><a href="#faqs" className="uppercase">FAQs</a></li>
             <li><a href="/contact" className="uppercase">Contact Us</a></li>
           </ul>
