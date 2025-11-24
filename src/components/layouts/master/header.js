@@ -110,7 +110,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="#home"
+                href="/latest"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/latest")
                     ? "after:w-full"
                     : "after:w-0 hover:after:w-full"
@@ -164,7 +164,7 @@ const Header = () => {
             <li><a href="/" className="uppercase">Home</a></li>
             <li><a href="/about" className="uppercase">About yuu</a></li>
             <li><a href="/location" className="uppercase">Location</a></li>
-            <li><a href="#home" className="uppercase">Latest</a></li>
+            <li><a href="/latest" className="uppercase">Latest</a></li>
             <li><a href="/yuunova-virtualtour" className="uppercase">Virtual Tour</a></li>
             <li><a href="#faqs" className="uppercase">FAQs</a></li>
             <li><a href="/contact" className="uppercase">Contact Us</a></li>

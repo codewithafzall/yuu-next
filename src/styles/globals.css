@@ -66,6 +66,10 @@ small{
 .faq{
   font-family: "Heading-Font", sans-serif;
 }
-/* p{
-  color:#e8d5b4;
-} */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

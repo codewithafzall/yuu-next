@@ -22,48 +22,48 @@ function MyApp({ Component, pageProps }) {
     return () => scroll.destroy();
   }, []);
 
-   useEffect(() => {
-    // Disable right click
-    const handleContextMenu = (e) => e.preventDefault();
+  //  useEffect(() => {
+  //   // Disable right click
+  //   const handleContextMenu = (e) => e.preventDefault();
 
-    // Disable key shortcuts
-    const handleKeyDown = (e) => {
-      if (
-        e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
-        (e.ctrlKey && e.key.toUpperCase() === "U")
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
+  //   // Disable key shortcuts
+  //   const handleKeyDown = (e) => {
+  //     if (
+  //       e.key === "F12" ||
+  //       (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+  //       (e.ctrlKey && e.key.toUpperCase() === "U")
+  //     ) {
+  //       e.preventDefault();
+  //       e.stopPropagation();
+  //     }
 
-      // Block PrintScreen
-      if (e.key === "PrintScreen") {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    };
+  //     // Block PrintScreen
+  //     if (e.key === "PrintScreen") {
+  //       e.preventDefault();
+  //       e.stopPropagation();
+  //     }
+  //   };
 
-    // Disable image dragging
-    const handleDragStart = (e) => {
-      if (e.target.tagName === "IMG") {
-        e.preventDefault();
-      }
-    };
+  //   // Disable image dragging
+  //   const handleDragStart = (e) => {
+  //     if (e.target.tagName === "IMG") {
+  //       e.preventDefault();
+  //     }
+  //   };
 
 
-    // Attach
-    document.addEventListener("contextmenu", handleContextMenu);
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("dragstart", handleDragStart);
+  //   // Attach
+  //   document.addEventListener("contextmenu", handleContextMenu);
+  //   document.addEventListener("keydown", handleKeyDown);
+  //   document.addEventListener("dragstart", handleDragStart);
 
-    // Cleanup
-    return () => {
-      document.removeEventListener("contextmenu", handleContextMenu);
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("dragstart", handleDragStart);
-    };
-  }, []);
+  //   // Cleanup
+  //   return () => {
+  //     document.removeEventListener("contextmenu", handleContextMenu);
+  //     document.removeEventListener("keydown", handleKeyDown);
+  //     document.removeEventListener("dragstart", handleDragStart);
+  //   };
+  // }, []);
   
 
   return (

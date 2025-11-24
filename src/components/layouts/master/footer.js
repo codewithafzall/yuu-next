@@ -1,34 +1,34 @@
-import Image from "next/image";
+import BlogSlider from "../../Blogs/BlogSlider.js";
+import posts from "../../Blogs/posts.js";
 
 const Footer = () => {
   return (
-    <>
-      <div className="bg-[#e2d2b7] w-full flex flex-col desktop:flex-row justify-between items-center gap-6 px-6 py-0 pt-20 desktop:pt-14 desktop:py-8 desktop:px-16">
-        <div className="flex flex-col desktop:flex-row gap-8 items-start w-full desktop:w-1/2">
-          <h2 className="text-center desktop:text-left">STAY CONNECTED</h2>
-
-          <div className="z-40 w-60 flex gap-x-6 justify-between">
-            <a className="flex items-center" href="https://www.linkedin.com/company/yuu-by-nahar/" target="_blank">
-              <img className="" src="/images/linkedin.png" />
-            </a>
-            <a className="flex items-center" href="https://youtube.com/@yuubynahar?si=1lc6x8FCjD9CaM6P" target="_blank">
-              <img className="" src="/images/yt.png" />
-            </a>
-            <a className="flex items-center" href="https://www.instagram.com/yuu_by_nahar" target="_blank">
-              <img className="" src="/images/insta.png" />
-            </a>
-            <a className="flex items-center" href="https://maps.app.goo.gl/k2SZn32isnBN1CDUA" target="_blank">
-              <img className="" src="/images/maps.png" />
-            </a>
-          </div>
+    <section>
+      <div className="flex desktop:flex-row flex-col bg-[#e2d2b7] py-6">
+        <div className="w-full desktop:w-1/2">
+          <BlogSlider posts={posts} perView={{ mobile: 1, tablet: 1, desktop: 1 }} />
         </div>
+        <div className="w-full desktop:w-1/2 desktop:border-l-2 border-white flex flex-col justify-center items-center pr-6">
+          <div className="flex flex-col gap-8 pl-4 desktop:pl-0 desktop:items-end justify-between py-auto w-full">
+            <h2 className="">STAY CONNECTED</h2>
 
-        <div className="w-full desktop:w-[30%] flex items-center">
-          <iframe
-            src="https://open.spotify.com/embed/playlist/2Z8Saq6h771zWN7eJ3owVP"
-            className="w-full h-[100px]"
-            loading="lazy"
-          />
+            <div className="z-40 w-60 flex gap-x-6 justify-between">
+              <a className="flex items-center" href="https://www.linkedin.com/company/yuu-by-nahar/" target="_blank">
+                <img className="" src="/images/linkedin.png" />
+              </a>
+              <a className="flex items-center" href="https://youtube.com/@yuubynahar?si=1lc6x8FCjD9CaM6P" target="_blank">
+                <img className="" src="/images/yt.png" />
+              </a>
+              <a className="flex items-center" href="https://www.instagram.com/yuu_by_nahar" target="_blank">
+                <img className="" src="/images/insta.png" />
+              </a>
+            </div>
+            <iframe
+              src="https://open.spotify.com/embed/playlist/2Z8Saq6h771zWN7eJ3owVP"
+              className="w-full desktop:w-2/3 h-[100px]"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
 
@@ -121,7 +121,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </>
+    </section>
   );
 };
 
