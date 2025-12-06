@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
-import axios from "axios";
+import axios from "axios"; // still unused here, but keeping since you had it
 
 // ── Firebase config (unchanged) ──────────────────────────────────────────────
 const firebaseConfig = {
@@ -45,9 +45,10 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
 
   useEffect(() => {
     if (openFormType) {
-      openForm(openFormType); // your existing openForm logic
-      setOpenFormType(null);  // reset parent trigger
+      openForm(openFormType);
+      setOpenFormType(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openFormType]);
 
   // ── Auth state sync & non-persistent sessions ─────────────────────────────
@@ -56,30 +57,38 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
     return () => unsub();
   }, []);
 
+  useEffect(() => {
+    firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.NONE)
+      .catch(console.error);
+  }, []);
+
   const downloadBrochure = () => {
     const link = document.createElement("a");
-    link.href = "/images/Yuu-Brochure.pdf"; // path to your brochure file in public folder
-    link.download = "Yuu-Brochure";    // suggested filename
+    link.href = "/images/Yuu-Brochure.pdf";
+    link.download = "Yuu-Brochure";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
-
-  useEffect(() => {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).catch(console.error);
-  }, []);
-
   // ── Validation helpers ────────────────────────────────────────────────────
   const validators = {
-    name: (v) => (!v.trim() ? "Name is required." : v.trim().length < 2 ? "Enter full name." : ""),
+    name: (v) =>
+      !v.trim()
+        ? "Name is required."
+        : v.trim().length < 2
+        ? "Enter full name."
+        : "",
     occupation: (v) => (v && v.trim().length < 2 ? "Too short." : ""),
     phone: (v) => {
       const trimmed = v.replace(/\s+/g, "");
       if (!trimmed) return "Phone is required.";
       if (trimmed.startsWith("+")) {
-        // E.164-ish: +, 8–15 digits
-        return /^\+\d{8,15}$/.test(trimmed) ? "" : "Enter a valid phone format.";
+        return /^\+\d{8,15}$/.test(trimmed)
+          ? ""
+          : "Enter a valid phone format.";
       }
       return /^\d{10}$/.test(trimmed) ? "" : "Enter 10-digit number";
     },
@@ -87,12 +96,17 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       !v.trim()
         ? "Email is required."
         : !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)
-          ? "Enter a valid email."
-          : "",
+        ? "Enter a valid email."
+        : "",
     interestedIn: (v) => (!v ? "Please select an option." : ""),
-    message: (v) => (v.length > 1000 ? "Message too long (max 1000 chars)." : ""),
+    message: (v) =>
+      v.length > 1000 ? "Message too long (max 1000 chars)." : "",
     verificationCode: (v) =>
-      !v ? "Enter the OTP." : !/^\d{4,8}$/.test(v) ? "OTP should be 4–8 digits." : "",
+      !v
+        ? "Enter the OTP."
+        : !/^\d{4,8}$/.test(v)
+        ? "OTP should be 4–8 digits."
+        : "",
   };
 
   const validateField = (name, value) => {
@@ -105,7 +119,6 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
     Object.keys(validators).forEach((k) => {
       nextErrors[k] = validateField(k, fields[k] ?? "");
     });
-    // Only enforce OTP if OTP flow is in progress (isOTPSent)
     if (!isOTPSent) delete nextErrors.verificationCode;
     return nextErrors;
   };
@@ -122,7 +135,10 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
 
   const markTouched = (name) => {
     setTouched((prev) => ({ ...prev, [name]: true }));
-    setErrors((prev) => ({ ...prev, [name]: validateField(name, form[name]) }));
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(name, form[name]),
+    }));
   };
 
   // ── Auth + reCAPTCHA lifecycle ────────────────────────────────────────────
@@ -148,7 +164,10 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
     setRecaptchaVerifier(null);
 
     try {
-      if (window.grecaptcha && typeof window.recaptchaWidgetId !== "undefined") {
+      if (
+        window.grecaptcha &&
+        typeof window.recaptchaWidgetId !== "undefined"
+      ) {
         window.grecaptcha.reset(window.recaptchaWidgetId);
       }
     } catch (e) {
@@ -159,7 +178,10 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
   const ensureRecaptcha = async () => {
     if (recaptchaVerifier) {
       try {
-        if (window.grecaptcha && typeof window.recaptchaWidgetId !== "undefined") {
+        if (
+          window.grecaptcha &&
+          typeof window.recaptchaWidgetId !== "undefined"
+        ) {
           window.grecaptcha.reset(window.recaptchaWidgetId);
         }
         return recaptchaVerifier;
@@ -168,10 +190,13 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       }
     }
 
-    const verifier = new firebase.auth.RecaptchaVerifier("recaptcha-container", {
-      size: "invisible",
-      callback: () => { },
-    });
+    const verifier = new firebase.auth.RecaptchaVerifier(
+      "recaptcha-container",
+      {
+        size: "invisible",
+        callback: () => {},
+      }
+    );
     setRecaptchaVerifier(verifier);
     const widgetId = await verifier.render();
     window.recaptchaWidgetId = widgetId;
@@ -196,7 +221,6 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
   };
 
   const sendOTP = async () => {
-    // validate minimal fields needed for OTP (phone + email/name if you want)
     const phoneError = validators.phone(form.phone);
     setErrors((prev) => ({ ...prev, phone: phoneError }));
     setTouched((prev) => ({ ...prev, phone: true }));
@@ -207,14 +231,15 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       const verifier = await ensureRecaptcha();
 
       const trimmed = form.phone.replace(/\s+/g, "");
-      const phoneNumber =
-        trimmed.startsWith("+")
-          ? trimmed
-          : /^\d{10}$/.test(trimmed)
-            ? `+91${trimmed}`
-            : trimmed;
+      const phoneNumber = trimmed.startsWith("+")
+        ? trimmed
+        : /^\d{10}$/.test(trimmed)
+        ? `+91${trimmed}`
+        : trimmed;
 
-      const confirmationResult = await firebase.auth().signInWithPhoneNumber(phoneNumber, verifier);
+      const confirmationResult =
+        await firebase.auth().signInWithPhoneNumber(phoneNumber, verifier);
+
       window.confirmationResult = confirmationResult;
       setIsOTPSent(true);
     } catch (err) {
@@ -222,7 +247,7 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       alert(err?.message || "Failed to send OTP.");
       try {
         if (recaptchaVerifier?.clear) await recaptchaVerifier.clear();
-      } catch { }
+      } catch {}
       setRecaptchaVerifier(null);
     } finally {
       setLoading(false);
@@ -252,20 +277,25 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
     }
   };
 
+  // ✅ UPDATED handleSubmit with raw response logging + safe JSON parsing
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!user) return alert("Please verify your phone number before submitting.");
+    if (!user)
+      return alert("Please verify your phone number before submitting.");
 
-    // Validate before send
     const nextErrors = validateForm(form);
     setErrors(nextErrors);
-    setTouched(Object.keys(form).reduce((acc, k) => ((acc[k] = true), acc), {}));
+    setTouched(
+      Object.keys(form).reduce((acc, k) => {
+        acc[k] = true;
+        return acc;
+      }, {})
+    );
     if (hasErrors(nextErrors)) return;
 
     setLoading(true);
     try {
-      // Build simple FormData body — avoids preflight CORS
       const body = new FormData();
       body.append("formType", activeForm || "");
       body.append("name", form.name || "");
@@ -277,20 +307,32 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       body.append("submittedAt", new Date().toISOString());
 
       const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbySLCYYIxSwPpJYwRtcKoOLCIs_VJ08_0YpnrgHYTLc2zwHRjbzC23TtZl6ON0Khf3_EQ/exec",
+        "https://script.google.com/macros/s/AKfycbxqbfU-RKQkxxOiSaW6fJkJPiLG6sX64Gh8XAQ1xR61QfPvQkNn-JJb0RfD-2nViW6OpQ/exec",
         {
           method: "POST",
           body,
         }
       );
 
+      // 👇 Always read raw text so we can see permission/deploy errors
+      const rawText = await res.text();
+      console.log("GAS status:", res.status);
+      console.log("GAS raw response:", rawText);
+
       if (!res.ok) {
-        const txt = await res.text().catch(() => "");
-        throw new Error(`GAS error ${res.status}: ${txt}`);
+        throw new Error(`GAS error ${res.status}: ${rawText}`);
       }
 
-      const data = await res.json().catch(() => ({}));
-      if (!data.ok) throw new Error(data.error || "Unknown GAS error");
+      let data = {};
+      try {
+        data = JSON.parse(rawText);
+      } catch {
+        throw new Error(
+          "GAS did not return JSON. Check Web App access / deployment."
+        );
+      }
+
+      if (!data.ok) throw new Error(data.error || "GAS returned ok:false");
 
       await forceFreshVerification();
       setActiveForm(null);
@@ -301,7 +343,6 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
         downloadBrochure();
       }
       setSuccess(true);
-
     } catch (err) {
       console.error("Submit failed:", err);
       alert(err.message || "Failed to submit. Please try again.");
@@ -312,8 +353,12 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
 
   const errorText = (key) =>
     touched[key] && errors[key] ? (
-      <small className="text-red-600 text-xs ml-3 block mt-1">{errors[key]}</small>
+      <small className="text-red-600 text-xs ml-3 block mt-1">
+        {errors[key]}
+      </small>
     ) : null;
+
+  const phoneLen = form.phone.replace(/\s+/g, "").length;
 
   return (
     <div className="relative w-full z-50" id="form">
@@ -358,7 +403,11 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
 
             <div className="flex items-center text-[#d7b18d]">
               <div className="w-full desktop:w-1/2">
-                <form className="px-4 desktop:px-16 enquiry-form" onSubmit={handleSubmit} noValidate>
+                <form
+                  className="px-4 desktop:px-16 enquiry-form"
+                  onSubmit={handleSubmit}
+                  noValidate
+                >
                   <small className="text-xs desktop:text-sm">
                     Fill out the form below to get exclusive
                     <br />
@@ -384,7 +433,9 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
                         type="text"
                         placeholder="OCCUPATION*"
                         value={form.occupation}
-                        onChange={(e) => updateField("occupation", e.target.value)}
+                        onChange={(e) =>
+                          updateField("occupation", e.target.value)
+                        }
                         onBlur={() => markTouched("occupation")}
                         className="text-xl w-full placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                       />
@@ -421,15 +472,21 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
                     <select
                       className="text-xl w-full rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                       value={form.interestedIn}
-                      onChange={(e) => updateField("interestedIn", e.target.value)}
+                      onChange={(e) =>
+                        updateField("interestedIn", e.target.value)
+                      }
                       onBlur={() => markTouched("interestedIn")}
                     >
                       <option value="" disabled>
                         INTERESTED IN*
                       </option>
-                      <option value="studio apartment">Studio Apartments</option>
+                      <option value="studio apartment">
+                        Studio Apartments
+                      </option>
                       <option value="retail showroom">Retail Showrooms</option>
-                      <option value="restaurant space">Restaurant Space</option>
+                      <option value="restaurant space">
+                        Restaurant Space
+                      </option>
                     </select>
                     {errorText("interestedIn")}
                   </div>
@@ -445,7 +502,6 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
                     {errorText("message")}
                   </div>
 
-                  {/* Auth/Submit area — forces OTP each time */}
                   {!user ? (
                     <div className="mt-6">
                       {!isOTPSent ? (
@@ -453,7 +509,8 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
                           type="button"
                           onClick={sendOTP}
                           className="rounded-full cursor-pointer bg-[#d06d52] text-[#fef9f3] px-5 py-3 w-1/2 desktop:w-1/3 text-lg disabled:opacity-50"
-                          disabled={loading || !form.phone.length === 10}
+                          // ✅ FIXED disabled condition
+                          disabled={loading || phoneLen !== 10}
                         >
                           {loading ? "Sending OTP..." : "Send OTP"}
                         </button>
@@ -463,15 +520,24 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
                             type="text"
                             placeholder="Enter OTP"
                             value={form.verificationCode}
-                            onChange={(e) => updateField("verificationCode", e.target.value)}
-                            onBlur={() => markTouched("verificationCode")}
+                            onChange={(e) =>
+                              updateField(
+                                "verificationCode",
+                                e.target.value
+                              )
+                            }
+                            onBlur={() =>
+                              markTouched("verificationCode")
+                            }
                             className="text-xl w-[40%] placeholder-[#d7b18d] rounded-full bg-transparent border border-[#513335] py-2 px-4 desktop:py-3"
                           />
                           <button
                             type="button"
                             onClick={verifyOTP}
                             className="rounded-full bg-[#d06d52] text-[#fef9f3] py-2 px-4 desktop:py-3 text-lg disabled:opacity-60"
-                            disabled={loading || !form.verificationCode}
+                            disabled={
+                              loading || !form.verificationCode
+                            }
                           >
                             {loading ? "Verifying..." : "Verify OTP"}
                           </button>
@@ -488,32 +554,8 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
                       type="submit"
                       disabled={loading}
                     >
-                      {loading ? (
-                        <svg
-                          className="animate-spin h-5 w-5 text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                          ></path>
-                        </svg>
-                      ) : (
-                        "SUBMIT"
-                      )}
+                      {loading ? "Submitting..." : "SUBMIT"}
                     </button>
-
                   )}
                 </form>
 
@@ -523,17 +565,22 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
                 </small>
               </div>
 
-              <img className="w-1/2 desktop:block hidden" src="/images/Enquiry-img.png" alt="Form visual" />
+              <img
+                className="w-1/2 desktop:block hidden"
+                src="/images/Enquiry-img.png"
+                alt="Form visual"
+              />
             </div>
           </div>
         </div>
       )}
+
       {success && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-xl p-8 w-[90%] max-w-md text-center">
             <p className="text-gray-700">
-              Thank you! Your enquiry has been submitted successfully. Our team will
-              reach out to you soon.
+              Thank you! Your enquiry has been submitted successfully. Our team
+              will reach out to you soon.
             </p>
             <button
               onClick={() => setSuccess(false)}
@@ -544,9 +591,7 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
           </div>
         </div>
       )}
-
     </div>
-
   );
 };
 
