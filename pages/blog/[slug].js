@@ -37,7 +37,7 @@ export default function BlogDetailPage({ post }) {
 
                         {/* Image */}
                         {post.image ? (
-                            <div className="w-full h-[400px] relative mb-6 rounded-lg overflow-hidden">
+                            <div className="w-full h-auto relative mb-6 rounded-lg overflow-hidden">
                                 <img
                                     src={post.image}
                                     alt={post.title}

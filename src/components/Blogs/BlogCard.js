@@ -7,7 +7,7 @@ export default function BlogCard({ post }) {
   return (
     <article className="bg-[#f7f4ec] rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
       <Link href={`/blog/${post.slug}`} className="block">
-        <div className="relative w-full h-44 desktop:h-72">
+        <div className="relative w-full h-auto desktop:h-72">
               <img
                 src={post.image}
                 alt={post.title}
