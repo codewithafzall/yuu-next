@@ -38,13 +38,11 @@ export default function BlogDetailPage({ post }) {
                         {/* Image */}
                         {post.image ? (
                             <div className="w-full h-[400px] relative mb-6 rounded-lg overflow-hidden">
-                                <Image
+                                <img
                                     src={post.image}
                                     alt={post.title}
-                                    fill
                                     sizes="(max-width: 640px) 100vw, 80vw"
                                     className="object-cover"
-                                    priority
                                 />
                             </div>
                         ) : null}
