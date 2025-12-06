@@ -7,16 +7,7 @@ export default function BlogCard({ post }) {
   return (
     <article className="bg-[#f7f4ec] rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
       <Link href={`/blog/${post.slug}`} className="block">
-        <div className="relative w-full h-44 sm:h-52 md:h-44 lg:h-56">
-          {post.image ? (
-            isLocalTestFile ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
+        <div className="relative w-full h-44 desktop:h-72">
               <Image
                 src={post.image}
                 alt={post.title}
@@ -24,10 +15,6 @@ export default function BlogCard({ post }) {
                 className="object-cover"
                 priority={false}
               />
-            )
-          ) : (
-            <div className="w-full h-full bg-gray-200" />
-          )}
         </div>
       </Link>
 

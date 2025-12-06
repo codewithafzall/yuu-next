@@ -29,7 +29,7 @@ export default function BlogDetailPage({ post }) {
             </Head>
 
             <main className="min-h-screen pt-20 desktop:pt-24 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-                <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+                <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
                     <article>
                         <h2 className="mb-4 text-4xl desktop:text-5xl">
                             {post.title}
@@ -37,7 +37,7 @@ export default function BlogDetailPage({ post }) {
 
                         {/* Image */}
                         {post.image ? (
-                            <div className="w-full h-[300px] relative mb-6 rounded-lg overflow-hidden">
+                            <div className="w-full h-[400px] relative mb-6 rounded-lg overflow-hidden">
                                 <Image
                                     src={post.image}
                                     alt={post.title}

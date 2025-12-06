@@ -5,7 +5,7 @@ const posts = [
     metaTitle: "Luxury Studio Apartments in Chandivali | Redefining Urban Living",
     metaDescription:
       "Explore luxury studio apartments in Chandivali crafted by Nahar Group, blending comfort, design, and urban convenience.",
-    image: "/images/Day.webp",
+    image: "/images/blog-3.webp",
     excerpt:
       "Compact, elegant, and intelligently designed — luxury studio apartments in Chandivali are redefining urban living.",
     content: `
@@ -53,7 +53,7 @@ const posts = [
     metaTitle: "YUU Luna | High-Street Retail Centre in Chandivali Mumbai",
     metaDescription:
       "Discover YUU Luna, a high-street retail centre in Chandivali designed for visibility, style, and success.",
-    image: "/images/about-banner.webp",
+    image: "/images/blog-2.webp",
     excerpt:
       "YUU Luna reimagines high-street retail in Chandivali — designed for visibility, style, and memorable brand experiences.",
     content: `
@@ -88,34 +88,6 @@ const posts = [
 <p><strong>Discover YUU Luna — retail that reflects your brand’s light.</strong></p>
     `,
   },
-
-  {
-    slug: "premium-residences-sustainable-luxury-mumbai",
-    title: "Premium Residences in Mumbai – The New Era of Sustainable Luxury",
-    metaTitle:
-      "Premium Residences in Mumbai | Sustainable Luxury Living by Nahar Group",
-    metaDescription:
-      "Explore premium residences in Mumbai by Nahar Group — elegant, sustainable homes redefining luxury and urban living.",
-    image: "/images/banner-home.jpg",
-    excerpt:
-      "YUU by Nahar presents premium, sustainable residences in Mumbai — where luxury meets conscious design.",
-    content: `
-<p>Mumbai has always been the city of dreams — where ambition meets artistry, and modernity fuses with heritage. But in today’s fast-paced world, luxury is no longer just about grandeur — it’s about balance. It’s about finding harmony between sophistication, sustainability, and a meaningful lifestyle.</p>
-
-<p>Enter YUU by Nahar, a collection of premium residences in Mumbai that redefine what it means to live luxuriously yet consciously. Every home is designed not merely to impress but to inspire — through design, function, and purpose.</p>
-
-<p>The Nahar Group Mumbai has always believed that modern development must coexist with nature. At YUU, this belief comes to life through green construction materials, energy-efficient systems, and design practices that minimize environmental impact.</p>
-
-<p>Strategically located between Powai and Andheri, Chandivali has emerged as Mumbai’s most desirable residential destination. It offers the perfect balance of connectivity and calm — close to employment hubs, entertainment zones, and cultural landmarks.</p>
-
-<p>Behind YUU’s vision stands Ar. Ajay Nahar, Managing Director of Nahar Group Mumbai — a visionary known for creating transformative developments across the city. The group’s legacy includes iconic projects like Nahar Amrit Shakti, Nahar International School, and Nahar Business Centre.</p>
-
-<p>Luxury living in Mumbai has found its new benchmark — and it’s YUU by Nahar. A project that reimagines urban comfort, it combines refined design, smart technology, and sustainable principles to create something extraordinary.</p>
-
-<p><strong>Experience the new era of sustainable luxury. Experience YUU by Nahar.</strong></p>
-    `,
-  },
-
   {
     slug: "chandivali-real-estate-booming",
     title:
@@ -124,7 +96,7 @@ const posts = [
       "Chandivali Real Estate | Smart, Stylish, and Connected Living in Mumbai",
     metaDescription:
       "Discover why Chandivali real estate is booming with luxury residences, retail spaces, and modern urban connectivity.",
-    image: "/images/floor-banner.png",
+    image: "/images/blog-1.webp",
     excerpt:
       "Chandivali is booming — strong connectivity, smart developments, and lifestyle projects are driving the rise.",
     content: `
