@@ -117,6 +117,35 @@ const posts = [
 <p><strong>Experience the evolution with YUU by Nahar — where style meets sustainability and community meets convenience.</strong></p>
     `,
   },
+  {
+    slug: "yuu-by-nahar-integrated-urban-design",
+    title: "A New Grammar for Integrated Urban Design",
+    metaTitle: "YUU by Nahar | Integrated Urban Design in Chandivali",
+    metaDescription:
+      "Discover YUU by Nahar, a thoughtfully designed mixed-use development in Chandivali that redefines urban living through integration and balance.",
+    image: "/images/about-banner.webp",
+    excerpt:
+      "YUU by Nahar offers a quieter approach to urban design — thoughtful, integrated, and built around how people actually live.",
+    content: `
+<p>At the Festival of Architecture and Interior Designing (FOAID) this year, amid conversations about scale and sameness, YUU by Nahar stood out for a quieter reason. It was not the loudest project on display, nor the most aggressively branded. Instead, it drew attention from architects and designers who paused, not to be sold to, but to look. At a forum where ideas are examined as closely as buildings, that pause mattered.</p>
+
+<p>YUU is built on the belief that meaningful urban life cannot be rushed. It avoids creating identity through spectacle and instead focuses on continuity, where architecture supports everyday routines and spaces become relevant through use. At YUU, every detail is intentional, and every moment is built around how people live. The project values balance over excess and clarity over ornament, allowing daily life to unfold naturally.</p>
+
+<p>What sets YUU apart is its focus on integration. Homes, retail and social spaces are planned together rather than separated or layered as afterthoughts. This reflects a wider shift in urban design, where mixed use is no longer a label but a response to how cities are actually experienced, through walking, repetition and everyday movement.</p>
+
+<p>The retail precinct, YUU Luna, follows this thinking. Designed as an open high-street environment rather than an enclosed mall, it brings together boutique stores and well-planned showrooms. Located within a mixed-use setting, it serves both residents and the wider Chandivali neighbourhood. With clear visibility, modern frontage and steady foot traffic, YUU Luna supports brands without relying on spectacle. The upcoming Culinary Cove continues this idea, offering places people return to as part of daily life rather than one-time destinations.</p>
+
+<p>On the residential side, YUU Nova reflects the same approach. Its fully finished studio homes are planned for flexibility and ease, suited to professionals, students, business travellers and investors. The layouts are efficient without feeling restrictive, responding to how people live today.</p>
+
+<p>Strong urban projects depend on leadership that understands time, how places evolve and how use patterns change. That perspective comes from Ajay Nahar, Managing Director of the Nahar Group. With experience across residential developments, healthcare infrastructure, education and philanthropic projects, his work reflects a consistent focus on building spaces that support real life. YUU continues this approach, shaped by long-term thinking rather than short-term trends.</p>
+
+<p>YUU does not present itself as a bold statement. It offers something quieter and more durable. Thoughtful design, applied with consistency, and allowed to speak for itself.</p>
+
+<p>The project does not argue for attention. It assumes that, over time, attention will follow.</p>
+
+<p><strong>Discover YUU by Nahar — where integration meets intentional living.</strong></p>
+  `,
+  }
 ];
 
 export default posts;
