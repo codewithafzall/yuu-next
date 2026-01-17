@@ -42,6 +42,7 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [success, setSuccess] = useState(false);
+  const [hasAutoOpened, setHasAutoOpened] = useState(false);
 
   useEffect(() => {
     if (openFormType) {
@@ -56,6 +57,17 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
     const unsub = firebase.auth().onAuthStateChanged((u) => setUser(u));
     return () => unsub();
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!hasAutoOpened && !activeForm) {
+        openForm("callback"); // Opens "Request Callback" form by default
+        setHasAutoOpened(true);
+      }
+    }, 7000); // 7 seconds
+
+    return () => clearTimeout(timer);
+  }, [hasAutoOpened, activeForm]);
 
   useEffect(() => {
     firebase
@@ -79,8 +91,8 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       !v.trim()
         ? "Name is required."
         : v.trim().length < 2
-        ? "Enter full name."
-        : "",
+          ? "Enter full name."
+          : "",
     occupation: (v) => (v && v.trim().length < 2 ? "Too short." : ""),
     phone: (v) => {
       const trimmed = v.replace(/\s+/g, "");
@@ -96,8 +108,8 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       !v.trim()
         ? "Email is required."
         : !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)
-        ? "Enter a valid email."
-        : "",
+          ? "Enter a valid email."
+          : "",
     interestedIn: (v) => (!v ? "Please select an option." : ""),
     message: (v) =>
       v.length > 1000 ? "Message too long (max 1000 chars)." : "",
@@ -105,8 +117,8 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       !v
         ? "Enter the OTP."
         : !/^\d{4,8}$/.test(v)
-        ? "OTP should be 4–8 digits."
-        : "",
+          ? "OTP should be 4–8 digits."
+          : "",
   };
 
   const validateField = (name, value) => {
@@ -194,7 +206,7 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       "recaptcha-container",
       {
         size: "invisible",
-        callback: () => {},
+        callback: () => { },
       }
     );
     setRecaptchaVerifier(verifier);
@@ -211,6 +223,7 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
     setErrors({});
     setTouched({});
   };
+
 
   const closeForm = async () => {
     await forceFreshVerification();
@@ -234,8 +247,8 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       const phoneNumber = trimmed.startsWith("+")
         ? trimmed
         : /^\d{10}$/.test(trimmed)
-        ? `+91${trimmed}`
-        : trimmed;
+          ? `+91${trimmed}`
+          : trimmed;
 
       const confirmationResult =
         await firebase.auth().signInWithPhoneNumber(phoneNumber, verifier);
@@ -247,7 +260,7 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
       alert(err?.message || "Failed to send OTP.");
       try {
         if (recaptchaVerifier?.clear) await recaptchaVerifier.clear();
-      } catch {}
+      } catch { }
       setRecaptchaVerifier(null);
     } finally {
       setLoading(false);
