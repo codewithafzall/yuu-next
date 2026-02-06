@@ -46,7 +46,6 @@ const posts = [
 <p><strong>Discover YUU by Nahar — studio living reimagined for the urban soul.</strong></p>
     `,
   },
-
   {
     slug: "yuu-luna-high-street-retail-chandivali",
     title: "YUU Luna – A New Landmark for High-Street Retail in Chandivali",
@@ -123,7 +122,7 @@ const posts = [
     metaTitle: "YUU by Nahar | Integrated Urban Design in Chandivali",
     metaDescription:
       "Discover YUU by Nahar, a thoughtfully designed mixed-use development in Chandivali that redefines urban living through integration and balance.",
-    image: "/images/about-banner.webp",
+    image: "/images/foaid-desktop.webp",
     excerpt:
       "YUU by Nahar offers a quieter approach to urban design — thoughtful, integrated, and built around how people actually live.",
     content: `

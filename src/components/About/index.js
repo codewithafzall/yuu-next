@@ -274,7 +274,7 @@ const FloorPlanIntro = () => {
         <div className="w-1/2 flex justify-center max-[768px]:w-full">
           <div className="relative bottom-[150px] w-[420px] h-[560px] rounded-t-[220px] overflow-hidden  max-[768px]:w-[260px] max-[768px]:h-[360px] max-[768px]:rounded-t-[140px] max-[768px]:bottom-[0px]">
             <img
-              src="images/about-nova.webp"
+              src="/images/about-nova.webp"
               alt="Studio living"
               className="w-full h-full object-cover"
             />
@@ -325,7 +325,7 @@ const FloorPlanCulinary = () => {
         {/* Left large image */}
         <div className="w-full relative bottom-[18%] max-[768px]:bottom-[0%]">
           <img
-            src="images/nova-square.webp"
+            src="/images/nova-square.webp"
             alt="Culinary Cove"
             className="w-full h-auto rounded-[24px] shadow-md"
           />
@@ -413,7 +413,7 @@ const FloorPlanCulinary = () => {
         {/* right large image */}
         <div className="w-full relative px-6">
           <img
-            src="images/about-luna.webp"
+            src="/images/about-luna.webp"
             alt="Culinary Cove"
             className="w-full h-[550px] rounded-s-[24px] shadow-md max-[768px]:h-[300px]"
           />

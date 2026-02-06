@@ -23,7 +23,7 @@ export default function BlogListPage() {
               Explore our latest updates, stories, and insights.
             </p>
           </header>
-          <section className="mt-10 grid gap-6 grid-cols-3">
+          <section className="mt-10 grid gap-6 grid-cols-1 md:grid-cols-3">
             {posts.map((post) => (
               <BlogCard key={post.slug} post={post} />
             ))}

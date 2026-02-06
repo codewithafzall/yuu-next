@@ -580,7 +580,7 @@ const Tablet = ({ openFormType, setOpenFormType }) => {
 
               <img
                 className="w-1/2 desktop:block hidden"
-                src="/images/Enquiry-img.png"
+                src="/images/enquiry-img.png"
                 alt="Form visual"
               />
             </div>
