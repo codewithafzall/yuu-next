@@ -23,8 +23,8 @@ export default function BlogListPage() {
               Explore our latest updates, stories, and insights.
             </p>
           </header>
-          <section className="mt-10 grid gap-6 grid-cols-1 md:grid-cols-3">
-            {posts.map((post) => (
+          <section className="mt-10 grid gap-6 grid-cols-1 desktop:grid-cols-2">
+            {[...posts].reverse().map((post) => (
               <BlogCard key={post.slug} post={post} />
             ))}
           </section>

@@ -102,7 +102,7 @@ export default function BlogSlider({ posts = [], perView = { mobile: 1, tablet: 
             /* default CSS var fallback (in case script fires after render) */
             style={{ "--perView": String(perView.mobile || 1) }}
           >
-            {posts.map((post) => (
+            {[...posts].reverse().map((post) => (
               <div
                 key={post.slug}
                 className="snap-start shrink-0 "

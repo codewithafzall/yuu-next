@@ -144,7 +144,52 @@ const posts = [
 
 <p><strong>Discover YUU by Nahar — where integration meets intentional living.</strong></p>
   `,
+  },
+  {
+    slug: "yuu-by-nahar-smarter-way-to-live-shop-invest",
+    title: "YUU by Nahar: A Smarter Way to Live, Shop and Invest",
+    metaTitle: "YUU by Nahar | Smart Living & Mixed-Use Investment in Chandivali",
+    metaDescription:
+      "Explore YUU by Nahar, a globally inspired mixed-use development in Chandivali offering studio homes, high-street retail, and long-term investment potential in Mumbai’s growth corridor.",
+    image: "/images/yuu-mixed.webp",
+    excerpt:
+      "YUU by Nahar blends smart living, curated retail and high-growth investment into one seamless mixed-use destination in Chandivali.",
+    content: `
+      <p>For over two decades, Nahar Amrit Shakti (NAS) has grown into one of Mumbai’s most complete townships, bringing together homes, schools, healthcare, green spaces and sports facilities within a thoughtfully planned urban environment. This steady evolution has shaped the surrounding region into a high-potential growth corridor. Today, that journey enters a new phase with <strong>YUU by Nahar</strong> — a globally inspired mixed-use destination rooted in the Japanese philosophy of Yūgen, which celebrates subtle beauty, depth, balance and calm in everyday living.</p>
+
+      <p>This philosophy reflects in every aspect of the project: its architecture, spaces, light, movement and the quiet sophistication it brings to urban life.</p>
+
+      <p>Well connected to Mumbai’s major hubs, YUU enjoys strong locational advantages with SEEPZ just 3.5 km away, the International Airport at 6 km, IIT Powai at 4.5 km, and quick access to both the Eastern and Western Express Highways. This makes it ideal for daily living, business travel and long-term asset growth.</p>
+
+      <p>What makes YUU truly distinctive is its international design language, blending Japanese minimalism with European architectural finesse. Clean lines, open layouts and walkable planning create a refreshing, people-first environment — something rarely seen in organised developments within this zone.</p>
+
+      <p>At the heart of the project is <strong>YUU Luna</strong>, a curated high-street retail destination where investors and brands can own their outlets with an advantage that supports steady income and long-term value growth. Residents benefit from direct access to premium retail, cafés, dining and daily conveniences. Its highlight is the upcoming <strong>Culinary Cove</strong>, a dedicated food and beverage zone designed to attract restaurateurs, specialty dining brands, boutique cafés and artisanal concepts. Supported by a ready catchment of 5000+ Chandivali families and strengthened by open, pedestrian-friendly architecture, it offers strong footfall potential.</p>
+
+      <p>On the residential side, <strong>YUU Nova</strong> introduces well-planned, fully finished studio homes starting from ₹1.11 crore onwards, crafted for today’s mobile and fast-moving lifestyles. These studios are perfectly suited for:</p>
+
+      <ul>
+      <li>International business travellers, especially those visiting from Dubai and other global cities</li>
+      <li>Inter-city businessmen who prefer owning a studio over frequent hotel stays</li>
+      <li>Students and young professionals around Powai and neighbouring business districts</li>
+      <li>Investors seeking high rental demand and consistent returns</li>
+      </ul>
+
+      <p>Beyond infrastructure and design, YUU derives its strength from the visionary leadership of Ajay Sukhraj Nahar, award-winning architect and developer. His forward-thinking approach to town planning has shaped Nahar Amrit Shakti and its surrounding area into the landmark township of 5000+ families that exists today. With YUU, his vision goes a step further — creating a future-ready urban model that blends living, working, shopping and socialising into one seamless ecosystem.</p>
+
+      <p>Importantly, YUU is not just a project for Chandivali; it is a prototype for many future cities across India, setting a new benchmark for integrated, lifestyle-first developments.</p>
+
+      <p><strong>MahaRERA Details</strong></p>
+      <p>YUU NOVA: PM1180002500398<br/>
+      YUU LUNA: PC1180002500839</p>
+
+      <p>As Mumbai steadily moves towards integrated, lifestyle-first developments, YUU by Nahar stands at the intersection of smart living, retail ownership and high-growth investment — offering end-users, brands and investors a rare and well-balanced urban opportunity.</p>
+
+      <p>For details, visit <a href="https://www.yuubynahar.com" target="_blank" rel="noopener noreferrer">www.yuubynahar.com</a></p>
+
+      <p><strong><a href="https://www.yuubynahar.com" target="_blank" rel="noopener noreferrer">YUU. Feel the difference.</a></strong></p>
+      `
   }
+
 ];
 
 export default posts;

@@ -28,7 +28,7 @@ export default function BlogDetailPage({ post }) {
                 <meta name="description" content={post.metaDescription || post.excerpt} />
             </Head>
 
-            <main className="min-h-screen pt-20 desktop:pt-24 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+            <main className="min-h-screen pt-20 desktop:pt-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
                     <article>
                         <h2 className="mb-4 text-4xl desktop:text-5xl">
