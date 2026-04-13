@@ -85,7 +85,7 @@ const Footer = () => {
                   <img src="/images/nova-qr.png" alt="QR code" className="w-14 h-auto object-contain" />
                   <div className="">
                     <h3 className="text-[23px] text-black">YUU NOVA</h3>
-                    <p className="text-sm"> MahaRERA No: PMI80002500398</p>
+                    <p className="text-sm"> MahaRERA No: PM1180002500398</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
