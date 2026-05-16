@@ -44,10 +44,8 @@ const Header = () => {
       <div className="bg-transparent">
         <nav className="flex items-center justify-between py-7 pl-[5%] bg-transparent">
           {/* Logo */}
-          <div>
-            <a
-              href="/"
-            >
+          <div className={router.pathname === "/yuunova-virtualtour" ? "invisible" : "visible"}>
+            <a href="/">
               <img src="/images/Logo.png" className="w-32 h-16" alt="Logo" />
             </a>
           </div>
@@ -59,8 +57,8 @@ const Header = () => {
           >
             <span
               className={`block w-full h-1 bg-[#C46C4A] rounded transition-transform duration-300 ${isMenuOpen
-                  ? "transform rotate-45 translate-y-2"
-                  : "transform rotate-0"
+                ? "transform rotate-45 translate-y-2"
+                : "transform rotate-0"
                 }`}
             ></span>
             <span
@@ -69,8 +67,8 @@ const Header = () => {
             ></span>
             <span
               className={`block w-full h-1 bg-[#C46C4A] rounded transition-transform duration-300 ${isMenuOpen
-                  ? "transform -rotate-45 -translate-y-2"
-                  : "transform rotate-0"
+                ? "transform -rotate-45 -translate-y-2"
+                : "transform rotate-0"
                 }`}
             ></span>
           </button>
@@ -90,8 +88,8 @@ const Header = () => {
               <a
                 href="/about"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/about")
-                    ? "after:w-full"
-                    : "after:w-0 hover:after:w-full"
+                  ? "after:w-full"
+                  : "after:w-0 hover:after:w-full"
                   }`}
               >
                 About yuu
@@ -101,8 +99,8 @@ const Header = () => {
               <a
                 href="/location"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/location")
-                    ? "after:w-full"
-                    : "after:w-0 hover:after:w-full"
+                  ? "after:w-full"
+                  : "after:w-0 hover:after:w-full"
                   }`}
               >
                 Location
@@ -112,8 +110,8 @@ const Header = () => {
               <a
                 href="/latest"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/latest")
-                    ? "after:w-full"
-                    : "after:w-0 hover:after:w-full"
+                  ? "after:w-full"
+                  : "after:w-0 hover:after:w-full"
                   }`}
               >
                 Latest
@@ -123,8 +121,8 @@ const Header = () => {
               <a
                 href="/yuunova-virtualtour"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/virtual-tour")
-                    ? "after:w-full"
-                    : "after:w-0 hover:after:w-full"
+                  ? "after:w-full"
+                  : "after:w-0 hover:after:w-full"
                   }`}
               >
                 Virtual Tour
@@ -134,8 +132,8 @@ const Header = () => {
               <a
                 href="#faqs"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/faqs")
-                    ? "after:w-full"
-                    : "after:w-0 hover:after:w-full"
+                  ? "after:w-full"
+                  : "after:w-0 hover:after:w-full"
                   }`}
               >
                 FAQs
@@ -145,8 +143,8 @@ const Header = () => {
               <a
                 href="/contact"
                 className={`uppercase relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[3px] after:bg-[#C46C4A] after:rounded-sm after:transition-all after:duration-300 ${isActive("/contact")
-                    ? "after:w-full"
-                    : "after:w-0 hover:after:w-full"
+                  ? "after:w-full"
+                  : "after:w-0 hover:after:w-full"
                   }`}
               >
                 Contact Us

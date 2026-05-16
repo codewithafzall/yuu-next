@@ -188,6 +188,35 @@ const posts = [
 
       <p><strong><a href="https://www.yuubynahar.com" target="_blank" rel="noopener noreferrer">YUU. Feel the difference.</a></strong></p>
       `
+  },
+  {
+    slug: "designing-cities-that-work-for-everyone-yuu-nahar-mann-foundation",
+    title: "Designing Cities That Work for Everyone (YUU by Nahar x MANN Foundation)",
+    metaTitle: "Inclusive Urban Design | YUU by Nahar x MANN Foundation",
+    metaDescription:
+      "Discover how YUU by Nahar and the MANN Foundation are embedding inclusive employment into Mumbai's mixed-use future — training individuals with special needs for real roles within the YUU ecosystem.",
+    image: "/images/yuu-mann-foundation.webp",
+    excerpt:
+      "YUU by Nahar and the MANN Foundation are turning inclusion from an intention into a built-in feature of urban development — starting two years before the doors open.",
+    content: `
+    <p>In conversations around urban development, inclusion is often acknowledged, but rarely embedded into how spaces actually function. A recent collaboration between <strong>YUU by Nahar</strong> and the <strong>MANN Foundation</strong> attempts to move this from intent to implementation.</p>
+
+    <p>Anchored within <strong>YUU Nova Square</strong> and <strong>YUU Luna</strong> retail, the initiative focuses on creating structured employment opportunities for young adults and individuals with special needs. The approach is straightforward: integrate inclusive hiring into the everyday ecosystem of a mixed-use development, rather than treating it as a parallel or charitable effort.</p>
+
+    <p>As outlined by our MD <strong>Ajay Nahar</strong>, the goal is to ensure that individuals are not just accommodated within urban spaces, but are able to participate meaningfully in them. This translates into a range of roles — valet supervisors, shopping concierges, housekeeping attendants, safety managers, personal shoppers, restaurant service staff, and showroom assistants.</p>
+
+    <p>What distinguishes the initiative is its early start. With possession still nearly two years away, the focus has already shifted to training and capability building.</p>
+
+    <p>The process begins with identification and orientation — mapping individual strengths, setting expectations with families, and introducing candidates to workplace environments. This is followed by foundational training over several months, covering communication, grooming, routine discipline, and basic financial awareness.</p>
+
+    <p>As the program progresses, candidates move into role-based training, where they are aligned to specific functions within retail, hospitality, and service environments. This includes simulated work settings, assisted internships, and structured, repetitive learning methods designed to build confidence and independence over time.</p>
+
+    <p>Closer to completion, the focus shifts to integration — with on-site familiarisation, employer onboarding, and supervised transitions into live roles within the YUU ecosystem. By the time the development becomes fully operational, the intent is to have a workforce that is not just placed, but prepared.</p>
+
+    <p>For the MANN Foundation, the collaboration extends its work into a high-visibility, real-world environment. For YUU, it reflects a broader understanding of development — one that considers social infrastructure alongside physical and commercial growth.</p>
+
+    <p>In a city like Mumbai, where progress is often measured in scale and speed, such initiatives offer a different perspective. They suggest that the future of urban living may not just be defined by what is built, but by who it enables along the way.</p>
+  `
   }
 
 ];
